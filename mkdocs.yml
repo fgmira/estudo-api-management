@@ -37,3 +37,10 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Módulo 1 — Fundamentos: modulo-1-fundamentos/index.md
+  - Módulo 2 — Ciclo de Vida de APIs: modulo-2-ciclo-de-vida/index.md
+  - Módulo 3 — Governança de APIs: modulo-3-governanca/index.md
+  - Módulo 4 — ITIL & APIs: modulo-4-itil/index.md
+  - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
+  - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
+  - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
