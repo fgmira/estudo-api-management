@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "estudo-api-management"
+version = "0.1.0"
+description = "Documentação de estudos sobre API Management"
+authors = ["Fabio <fgmira@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+mkdocs = "^1.6.1"
+mkdocs-material = "^9.7.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
