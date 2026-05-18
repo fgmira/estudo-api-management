@@ -46,6 +46,18 @@ Uma das lentes conceituais mais úteis para entender a arquitetura de API Manage
 
 ---
 
+### [1.6 · Estilos Arquiteturais e suas Implicações de Governança](cap_1_6_estilos_arquiteturais.md)
+
+A escolha entre REST, GraphQL, gRPC ou AsyncAPI não é apenas uma decisão técnica — é uma decisão de governança. Cada estilo define como contratos são especificados, como mudanças são gerenciadas, como segurança é aplicada e quais ferramentas de observabilidade fazem sentido. O capítulo analisa as implicações de governança de cada estilo e o desafio de governar portfólios heterogêneos onde múltiplos estilos coexistem.
+
+---
+
+### [1.7 · Heterogeneidade de Infraestrutura e Governança Multi-ambiente](cap_1_7_heterogeneidade.md)
+
+O ideal de uma infraestrutura homogênea — um único cloud, um único gateway, um único padrão — raramente corresponde à realidade de organizações maduras. Este capítulo desmonta o mito da homogeneidade, explora as quatro dimensões da heterogeneidade (cloud, gateway, estilo arquitetural e maturidade dos times) e apresenta estratégias para governar portfólios distribuídos por múltiplos ambientes sem perder visibilidade e controle. Serve também de ponte para o Módulo 7, onde as ferramentas que viabilizam essa governança são exploradas em profundidade.
+
+---
+
 ## Progressão conceitual
 
 ```mermaid
@@ -54,4 +66,6 @@ flowchart LR
     B --> C["1.3\nGovernança —\nConceitos"]
     C --> D["1.4\nGerenciamento\nvs Governança"]
     D --> E["1.5\nOs Três\nPlanos"]
+    E --> F["1.6\nEstilos\nArquiteturais"]
+    F --> G["1.7\nHeterogeneidade\ne Multi-ambiente"]
 ```
