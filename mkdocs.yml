@@ -53,7 +53,12 @@ nav:
     - 1.5 Os Três Planos — Controle, Dados e Observabilidade: modulo-1-fundamentos/cap_1_5_tres_planos.md
     - 1.6 Estilos arquiteturais e suas implicações de governança: modulo-1-fundamentos/cap_1_6_estilos_arquiteturais.md
     - 1.7 Heterogeneidade de infraestrutura e governança multi-ambiente: modulo-1-fundamentos/cap_1_7_heterogeneidade.md
-  - Módulo 2 — Ciclo de Vida de APIs: modulo-2-ciclo-de-vida/index.md
+  - Módulo 2 — Ciclo de Vida de APIs:
+    - Visão Geral: modulo-2-ciclo-de-vida/index.md
+    - 2.1 As Fases do Ciclo de Vida: modulo-2-ciclo-de-vida/cap_2_1_ciclo_vida.md
+    - 2.2 Design-first vs. Code-first: modulo-2-ciclo-de-vida/cap_2_2_design_code.md
+    - 2.3 Contratos de API — OpenAPI, AsyncAPI e gRPC: modulo-2-ciclo-de-vida/cap_2_3_contratos.md
+    - 2.4 Documentação de APIs: modulo-2-ciclo-de-vida/cap_2_4_documentacao.md
   - Módulo 3 — Governança de APIs: modulo-3-governanca/index.md
   - Módulo 4 — ITIL & APIs: modulo-4-itil/index.md
   - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
