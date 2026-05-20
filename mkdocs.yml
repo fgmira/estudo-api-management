@@ -19,9 +19,9 @@ theme:
         icon: material/brightness-4
         name: Modo claro
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.expand
     - search.highlight
     - content.code.copy
 
@@ -59,8 +59,19 @@ nav:
     - 2.2 Design-first vs. Code-first: modulo-2-ciclo-de-vida/cap_2_2_design_code.md
     - 2.3 Contratos de API — OpenAPI, AsyncAPI e gRPC: modulo-2-ciclo-de-vida/cap_2_3_contratos.md
     - 2.4 Documentação de APIs: modulo-2-ciclo-de-vida/cap_2_4_documentacao.md
-  - Módulo 3 — Governança de APIs: modulo-3-governanca/index.md
+    - 2.5 Versionamento e Gestão de Breaking Changes: modulo-2-ciclo-de-vida/cap_2_5_versionamento.md
+    - 2.6 Depreciação e Sunset Controlado: modulo-2-ciclo-de-vida/cap_2_6_depreciacao.md
+    - 2.7 Os Três Planos ao Longo do Ciclo de Vida: modulo-2-ciclo-de-vida/cap_2_7_tres_planos.md
+  - Módulo 3 — Governança de APIs:
+    - Visão Geral: modulo-3-governanca/index.md
+    - 3.1 Pilares da Governança: modulo-3-governanca/cap_3_1_pilares.md
   - Módulo 4 — ITIL & APIs: modulo-4-itil/index.md
   - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
   - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
   - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
+  - Anexos:
+    - A.1 Breaking Changes em APIs REST: anexos/a_1_breaking_changes_REST.md
+    - A.2 Breaking Changes em APIs GraphQL: anexos/a_2_breaking_changes_graphQL.md
+    - A.3 Breaking Changes em Protocol Buffers (gRPC): anexos/a_3_breaking_changes_grpc.md
+    - A.4 Breaking Changes em AsyncAPI: anexos/a_4_breaking_changes_asyncapi.md
+    - B. Template de Plano de Depreciação: anexos/b_plano_depreciacao.md
