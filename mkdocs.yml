@@ -19,9 +19,8 @@ theme:
         icon: material/brightness-4
         name: Modo claro
   features:
-    - navigation.sections
+    - navigation.indexes
     - navigation.top
-    - navigation.expand
     - search.highlight
     - content.code.copy
 
@@ -65,6 +64,12 @@ nav:
   - Módulo 3 — Governança de APIs:
     - Visão Geral: modulo-3-governanca/index.md
     - 3.1 Pilares da Governança: modulo-3-governanca/cap_3_1_pilares.md
+    - 3.2 Papéis e Responsabilidades: modulo-3-governanca/cap_3_2_papeis_reponsabilidades.md
+    - 3.3 O Centro de Excelência de APIs: modulo-3-governanca/cap_3_3_coe.md
+    - 3.4 Style Guides e Políticas: modulo-3-governanca/cap_3_4_guia_estilo_politica.md
+    - 3.5 Catálogo e Descoberta de APIs: modulo-3-governanca/cap_3_5_catalogo.md
+    - 3.6 Governança de APIs de Parceiros: modulo-3-governanca/cap_3_6_parceiros.md
+    - 3.7 Modelos Organizacionais — Centralizado, Federado e Híbrido: modulo-3-governanca/cap_3_7_modelos_organizacionais.md
   - Módulo 4 — ITIL & APIs: modulo-4-itil/index.md
   - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
   - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
@@ -75,3 +80,4 @@ nav:
     - A.3 Breaking Changes em Protocol Buffers (gRPC): anexos/a_3_breaking_changes_grpc.md
     - A.4 Breaking Changes em AsyncAPI: anexos/a_4_breaking_changes_asyncapi.md
     - B. Template de Plano de Depreciação: anexos/b_plano_depreciacao.md
+    - C. Modelo RACI para Governança de APIs: anexos/c_raci.md
