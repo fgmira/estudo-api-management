@@ -1,28 +1,41 @@
 site_name: Estudo API Management
 site_description: Documentação de estudos sobre API Management
 site_author: Fabio
+repo_url: https://github.com/fgmira/estudo-api-management
+repo_name: fgmira/estudo-api-management
 
 theme:
   name: material
   language: pt-BR
   palette:
     - scheme: default
-      primary: indigo
+      primary: black
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Modo escuro
     - scheme: slate
-      primary: indigo
+      primary: black
       accent: indigo
       toggle:
         icon: material/brightness-4
         name: Modo claro
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
     - navigation.indexes
     - navigation.top
     - search.highlight
+    - search.suggest
     - content.code.copy
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/fgmira/estudo-api-management
+
+copyright: Copyright &copy; 2026 Fabio Mira
 
 markdown_extensions:
   - admonition
@@ -37,6 +50,9 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css
 
 extra_javascript:
   - https://unpkg.com/mermaid@11/dist/mermaid.esm.min.mjs
@@ -70,7 +86,10 @@ nav:
     - 3.5 Catálogo e Descoberta de APIs: modulo-3-governanca/cap_3_5_catalogo.md
     - 3.6 Governança de APIs de Parceiros: modulo-3-governanca/cap_3_6_parceiros.md
     - 3.7 Modelos Organizacionais — Centralizado, Federado e Híbrido: modulo-3-governanca/cap_3_7_modelos_organizacionais.md
-  - Módulo 4 — ITIL & APIs: modulo-4-itil/index.md
+    - 3.8 Os Três Planos como Instrumentos de Governança: modulo-3-governanca/cap_3_8_tres_planos.md
+  - Módulo 4 — ITIL & APIs:
+    - Visão Geral: modulo-4-itil/index.md
+    - 4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs: modulo-4-itil/cap_4_1_itil_api.md
   - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
   - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
   - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
