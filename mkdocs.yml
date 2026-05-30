@@ -90,6 +90,9 @@ nav:
   - Módulo 4 — ITIL & APIs:
     - Visão Geral: modulo-4-itil/index.md
     - 4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs: modulo-4-itil/cap_4_1_itil_api.md
+    - 4.2 As Quatro Dimensões do ITIL 4 no contexto de APIs: modulo-4-itil/cap_4_2_quatro_dimensoes.md
+    - 4.3 Configuration Management e CMDB para APIs: modulo-4-itil/cap_4_3_cmdb_api.md
+    - 4.4 Change Enablement para APIs: modulo-4-itil/cap_4_4_change_api.md
   - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
   - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
   - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
