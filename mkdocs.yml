@@ -95,6 +95,8 @@ nav:
     - 4.4 Change Enablement para APIs: modulo-4-itil/cap_4_4_change_api.md
     - 4.5 Service Catalog e SLM para APIs: modulo-4-itil/cap_4_5_catalogo_servico_slm_api.md
     - 4.6 Incident, Problem e Continual Improvement para APIs: modulo-4-itil/cap_4_6_incidente_problema_melhoria.md
+    - 4.7 ITIL, SRE e DevOps — Convergências e Complementaridades: modulo-4-itil/cap_4_7_itil_devops_sre.md
+    - 4.8 Descoberta de APIs — os Dois Prismas: modulo-4-itil/cap_4_8_descoberta.md
   - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
   - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
   - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
