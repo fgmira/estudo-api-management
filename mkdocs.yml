@@ -93,6 +93,8 @@ nav:
     - 4.2 As Quatro Dimensões do ITIL 4 no contexto de APIs: modulo-4-itil/cap_4_2_quatro_dimensoes.md
     - 4.3 Configuration Management e CMDB para APIs: modulo-4-itil/cap_4_3_cmdb_api.md
     - 4.4 Change Enablement para APIs: modulo-4-itil/cap_4_4_change_api.md
+    - 4.5 Service Catalog e SLM para APIs: modulo-4-itil/cap_4_5_catalogo_servico_slm_api.md
+    - 4.6 Incident, Problem e Continual Improvement para APIs: modulo-4-itil/cap_4_6_incidente_problema_melhoria.md
   - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
   - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
   - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
@@ -103,3 +105,4 @@ nav:
     - A.4 Breaking Changes em AsyncAPI: anexos/a_4_breaking_changes_asyncapi.md
     - B. Template de Plano de Depreciação: anexos/b_plano_depreciacao.md
     - C. Modelo RACI para Governança de APIs: anexos/c_raci.md
+    - D. Gestão do Conhecimento no Programa de APIs: anexos/d_gestao_conhecimento_api.md
