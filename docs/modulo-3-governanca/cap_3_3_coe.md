@@ -404,6 +404,8 @@ Esse conhecimento tem três formas:
 
 O conhecimento produzido pelo CoE é um ativo organizacional. Um CoE que existe há cinco anos e não tem esse conhecimento sistematizado é um CoE que pode ser desfeito sem perda real — porque o conhecimento está nas pessoas, não na organização.
 
+> A estrutura operacional de gestão do conhecimento — bases de conhecimento, runbooks, SKMS e sua integração com catálogo e CMDB — é tratada no **[Anexo D · Gestão do Conhecimento no programa de APIs](../anexos/d_gestao_conhecimento_api.md)**.
+
 ---
 
 ## 3.3.7 · Requisitos específicos de mercados regulados

@@ -344,6 +344,8 @@ Com um MCP que expõe o catálogo de APIs, o style guide e as políticas como ba
 
 A IA responde a partir do contexto real da organização — não de padrões genéricos de mercado. O CoE, nesse modelo, não é apenas o órgão que define políticas — é o **produtor de bases de conhecimento** que alimentam as ferramentas que os desenvolvedores usam no dia a dia.
 
+> A estrutura completa de gestão do conhecimento no programa de APIs — incluindo bases de conhecimento operacionais, runbooks, SKMS e sua relação com o catálogo e o CMDB — é tratada no **[Anexo D · Gestão do Conhecimento no programa de APIs](../anexos/d_gestao_conhecimento_api.md)**.
+
 > O ecossistema completo de ferramentas de IA aplicadas à governança de APIs — incluindo MCPs organizacionais, ferramentas de geração de specs e validação assistida — será explorado em profundidade no **Módulo 7**.
 
 ---

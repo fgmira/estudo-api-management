@@ -160,6 +160,8 @@ A dimensão de Informação e Tecnologia no ITIL 4 inclui explicitamente o conhe
 
 Esse conhecimento alimenta as integrações com sistemas agênticos mencionadas no Cap 3.3.5 e no Cap 3.5.6 — a qualidade das respostas que ferramentas de IA dão aos desenvolvedores sobre o portfólio é diretamente proporcional à qualidade do conhecimento que o CoE mantém e disponibiliza.
 
+> A estrutura completa de gestão do conhecimento no programa de APIs — incluindo SKMS, bases de conhecimento, runbooks e sua relação com o catálogo e o CMDB — é tratada no **[Anexo D · Gestão do Conhecimento no programa de APIs](../anexos/d_gestao_conhecimento_api.md)**.
+
 **Gestão de dados e compliance**
 
 A dimensão de Informação também levanta questões de conformidade regulatória que a perspectiva técnica de APIs às vezes deixa de lado. APIs que expõem dados pessoais não têm apenas um requisito de autenticação — têm requisitos de minimização de dados, de propósito de uso, de retenção e de portabilidade. A classificação de dados do catálogo do Cap 3.5.2 é o ponto de entrada para essas questões, mas a gestão do ciclo de vida dos dados que as APIs expõem vai além do que a governança técnica cobre sozinha.
