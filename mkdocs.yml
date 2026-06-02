@@ -22,13 +22,14 @@ theme:
         name: Modo claro
   font:
     text: Inter
-    code: JetBrains Mono
+    code: Fira Code
   features:
     - navigation.indexes
     - navigation.top
     - search.highlight
     - search.suggest
     - content.code.copy
+    - content.code.annotate
 
 extra:
   social:
@@ -37,10 +38,16 @@ extra:
 
 copyright: Copyright &copy; 2026 Fabio Mira
 
+plugins:
+  - search
+  - panzoom
+
 markdown_extensions:
   - admonition
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      linenums_style: pymdownx-inline
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences:
@@ -97,7 +104,12 @@ nav:
     - 4.6 Incident, Problem e Continual Improvement para APIs: modulo-4-itil/cap_4_6_incidente_problema_melhoria.md
     - 4.7 ITIL, SRE e DevOps — Convergências e Complementaridades: modulo-4-itil/cap_4_7_itil_devops_sre.md
     - 4.8 Descoberta de APIs — os Dois Prismas: modulo-4-itil/cap_4_8_descoberta.md
-  - Módulo 5 — Segurança de APIs: modulo-5-seguranca/index.md
+  - Módulo 5 — Segurança de APIs:
+    - Visão Geral: modulo-5-seguranca/index.md
+    - 5.1 Segurança como Propriedade do Design: modulo-5-seguranca/cap_5_1_seg_propriedade_desing.md
+    - 5.2 O Arsenal de Segurança de APIs: modulo-5-seguranca/cap_5_2_arsenal_seguranca.md
+    - 5.3 OWASP API Security Top 10: modulo-5-seguranca/cap_5_3_oswap.md
+    - 5.4 Autenticação e Autorização — os Fundamentos: modulo-5-seguranca/cap_5_4_autenticacao_autorizacao.md
   - Módulo 6 — Maturidade de APIs: modulo-6-maturidade/index.md
   - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
   - Anexos:
@@ -108,3 +120,11 @@ nav:
     - B. Template de Plano de Depreciação: anexos/b_plano_depreciacao.md
     - C. Modelo RACI para Governança de APIs: anexos/c_raci.md
     - D. Gestão do Conhecimento no Programa de APIs: anexos/d_gestao_conhecimento_api.md
+    - E. Falhas de Design Seguro em APIs — Casos Práticos: anexos/e_design_seguro.md
+    - F. SIEM e Correlação de Eventos de Segurança: anexos/f_siem.md
+    - G. Autorização e Controle de Acesso em APIs: anexos/g_autorizacao_controle.md
+    - H. Exposição de Dados em APIs: anexos/h_exposicao_dados.md
+    - I. Recursos, Injeção e Gestão em APIs: anexos/i_recursos_injecao_gestao.md
+    - J. Guia de leitura — os RFCs do OAuth 2.0: anexos/j_rfcs_oauth.md
+    - K. Guia de leitura — os RFCs dos tokens: anexos/k_rfcs_token.md
+    - L. Modelos e Ferramentas de Autorização Fina: anexos/l_rbac.md

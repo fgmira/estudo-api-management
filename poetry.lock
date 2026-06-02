@@ -465,6 +465,20 @@ files = [
 ]
 
 [[package]]
+name = "mkdocs-panzoom-plugin"
+version = "0.5.2"
+description = "MkDocs Plugin to enable pan & zoom on images and mermaid diagrams"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "mkdocs_panzoom_plugin-0.5.2-py3-none-any.whl", hash = "sha256:58746d7f7b8aef8787543a75b7a5ddcd04b67cfd6af964f25bbd9bc822ced68a"},
+    {file = "mkdocs_panzoom_plugin-0.5.2.tar.gz", hash = "sha256:f546356f5241fe5d499600be02a28cfe7d039c6f731d43f50eb6370065be2d3c"},
+]
+
+[package.dependencies]
+mkdocs = ">=1.0.4"
+
+[[package]]
 name = "packaging"
 version = "26.2"
 description = "Core utilities for Python packages"
@@ -753,4 +767,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "f6e4740660f040225483e305e4056d9e104bf94304f6fd65afcc5bd03bb1abf2"
+content-hash = "b75f441388909fb172b9c3e4e438f7122ba986ab94a6404a39c335595165d52e"
