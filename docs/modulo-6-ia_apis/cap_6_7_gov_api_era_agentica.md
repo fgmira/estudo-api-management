@@ -67,7 +67,7 @@ graph LR
 
 ## 6.7.2 · Onde a governança tradicional atrapalha
 
-Ser honesto sobre onde a governança cria friction desnecessária é necessário para que o CoE não se torne o obstáculo que times contornam — criando exatamente o ecossistema de shadow agents e shadow APIs que o programa de governança existe para prevenir.
+Ser honesto sobre onde a governança cria fricção desnecessária é necessário para que o CoE não se torne o obstáculo que times contornam — criando exatamente o ecossistema de shadow agents e shadow APIs que o programa de governança existe para prevenir.
 
 ---
 
@@ -276,7 +276,7 @@ graph TB
 
 ## 6.7.6 · O novo equilíbrio
 
-O programa de APIs na era agêntica não é nem o programa tradicional aplicado sem modificação — que cria friction que times contornam — nem a ausência de governança na esperança de que times façam as coisas certas autonomamente.
+O programa de APIs na era agêntica não é nem o programa tradicional aplicado sem modificação — que cria fricção que times contornam — nem a ausência de governança na esperança de que times façam as coisas certas autonomamente.
 
 É um programa que aprendeu com o que construiu nos cinco módulos anteriores e se adapta a um novo tipo de consumidor mantendo os princípios que provaram funcionar:
 
