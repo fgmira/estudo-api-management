@@ -56,4 +56,10 @@ O API Gateway tradicional foi projetado para tráfego HTTP estruturado com schem
 
 ### [6.7 · Governança de APIs na era agêntica — tensões e equilíbrios](cap_6_7_gov_api_era_agentica.md)
 
-O capítulo de fechamento do módulo. Agentes exigem APIs mais abertas, descoberta autônoma e autorização dinâmica — tudo o que a governança tradicional foi construída para restringir. O capítulo mapeia onde a **governança tradicional atrapalha** (gates lentos, contratos rígidos, catálogos estáticos) e onde ela se torna **ainda mais crítica** (rastreabilidade de ações autônomas, controle de escopo, auditabilidade). Cobre como o **CoE precisa evoluir**, os novos objetos de governança que emergem com agentes (tool registries, agent policies, trace stores) e o novo equilíbrio entre agilidade agêntica e controle institucional.
+Agentes exigem APIs mais abertas, descoberta autônoma e autorização dinâmica — tudo o que a governança tradicional foi construída para restringir. O capítulo mapeia onde a **governança tradicional atrapalha** (gates lentos, contratos rígidos, catálogos estáticos) e onde ela se torna **ainda mais crítica** (rastreabilidade de ações autônomas, controle de escopo, auditabilidade). Cobre como o **CoE precisa evoluir**, os novos objetos de governança que emergem com agentes (tool registries, agent policies, trace stores) e o novo equilíbrio entre agilidade agêntica e controle institucional.
+
+---
+
+### [6.8 · AI Readiness do portfólio — avaliação e roadmap](cap_6_8_ai_readiness_portifolio.md)
+
+O capítulo de fechamento do módulo. Define **AI Readiness** como a capacidade de um portfólio de APIs ser descoberto, consumido e orquestrado por sistemas de IA de forma segura e governada. Apresenta as **cinco dimensões de avaliação** (descobribilidade, contratos, segurança, observabilidade e experiência do consumidor agêntico), o **processo de avaliação** do portfólio, os perfis de API e suas trajetórias de evolução, e o **roadmap de AI Readiness** como instrumento de planejamento. Fecha com a síntese do módulo 6 e a ponte para o módulo 8 (maturidade).
