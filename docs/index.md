@@ -14,7 +14,8 @@ flowchart LR
     M4["📋 Módulo 4\nITIL & APIs"]
     M5["🔒 Módulo 5\nSegurança"]
     M6["🤖 Módulo 6\nIA & APIs"]
-    M7["🛠️ Módulo 7\nFerramentas"]
+    M7["🛠️ Módulo 7\nPlataforma"]
+    M8["📊 Módulo 8\nMaturidade"]
 
     M1 --> M2
     M1 --> M3
@@ -24,6 +25,8 @@ flowchart LR
     M4 --> M6
     M5 --> M6
     M6 --> M7
+    M6 --> M8
+    M7 --> M8
 
     style M1 fill:#dbeafe,color:#1e3a5f,stroke:#3b82f6
     style M2 fill:#dcfce7,color:#14532d,stroke:#16a34a
@@ -32,6 +35,7 @@ flowchart LR
     style M5 fill:#fee2e2,color:#7f1d1d,stroke:#dc2626
     style M6 fill:#d1fae5,color:#064e3b,stroke:#059669
     style M7 fill:#f3f4f6,color:#111827,stroke:#6b7280
+    style M8 fill:#fef9c3,color:#713f12,stroke:#ca8a04
 ```
 
 ---
@@ -80,10 +84,17 @@ O impacto da inteligência artificial no design, operação e governança de API
 
 ---
 
-### [Módulo 7 — Ferramentas & Padrões](modulo-7-ferramentas/index.md)
+### [Módulo 7 — Plataforma & Infraestrutura](modulo-7-plataforma_infraestrutura/index.md)
 **Em desenvolvimento**
 
-Panorama das ferramentas do ecossistema de API Management: gateways, portais de desenvolvedor, plataformas de governança, ferramentas de teste e padrões de mercado.
+Gateways, service meshes, portais de desenvolvedor, plataformas de governança e a infraestrutura que sustenta programas de API em escala.
+
+---
+
+### [Módulo 8 — Maturidade de APIs](modulo-8-maturidade/index.md)
+**Em desenvolvimento**
+
+Modelos de maturidade para programas de API — como avaliar onde a organização está e traçar o caminho de evolução.
 
 ---
 

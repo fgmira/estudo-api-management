@@ -115,8 +115,17 @@ nav:
     - 5.7 Segurança no Gateway e na Plataforma: modulo-5-seguranca/cap_5_7_seguranca_gtw_plat.md
     - 5.8 Segurança em APIs de Parceiros e APIs Públicas: modulo-5-seguranca/cap_5_8_seguranca_parceiros.md
     - 5.9 Resposta a Incidentes de Segurança: modulo-5-seguranca/cap_5_9_resposta_incidentes.md
-  - Módulo 6 — IA & APIs: modulo-6-ia_apis/index.md
-  - Módulo 7 — Ferramentas & Padrões: modulo-7-ferramentas/index.md
+  - Módulo 6 — IA & APIs:
+    - Visão Geral: modulo-6-ia_apis/index.md
+    - 6.1 IA e APIs — o Novo Paradigma: modulo-6-ia_apis/cap_6_1_ia_api_paradgma.md
+    - 6.2 MCP e os Protocolos Agênticos: modulo-6-ia_apis/cap_6_2_mcp_protocolos_agenticos.md
+    - 6.3 Identidade e Autorização de Agentes: modulo-6-ia_apis/cap_6_3_identidade_autorizacao_agentes.md
+    - 6.4 Segurança no Ecossistema Agêntico: modulo-6-ia_apis/cap_6_4_seguranca_agentica.md
+    - 6.5 IA Produzindo APIs — Riscos e Governança: modulo-6-ia_apis/cap_6_5_ia_produzindo_api.md
+    - 6.6 AI Gateway — o Novo Plano de Controle: modulo-6-ia_apis/cap_6_6_ai_gateway.md
+    - 6.7 Governança de APIs na Era Agêntica: modulo-6-ia_apis/cap_6_7_gov_api_era_agentica.md
+  - Módulo 7 — Plataforma & Infraestrutura: modulo-7-plataforma_infraestrutura/index.md
+  - Módulo 8 — Maturidade de APIs: modulo-8-maturidade/index.md
   - Anexos:
     - A.1 Breaking Changes em APIs REST: anexos/a_1_breaking_changes_REST.md
     - A.2 Breaking Changes em APIs GraphQL: anexos/a_2_breaking_changes_graphQL.md
