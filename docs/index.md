@@ -71,16 +71,16 @@ Aplica o framework ITIL 4 ao contexto de APIs. Cobre o Sistema de Valor de Servi
 ---
 
 ### [Módulo 5 — Segurança de APIs](modulo-5-seguranca/index.md)
-**4 capítulos · Nível: técnico e estratégico · Pré-requisito: Módulos 1 a 4**
+**9 capítulos · Nível: técnico e estratégico · Pré-requisito: Módulos 1 a 4**
 
-Trata segurança como propriedade de design, não como camada adicional. Cobre threat modeling, o arsenal de controles (preventivos, detectivos e corretivos), o OWASP API Security Top 10 e — no capítulo mais denso — a fundação completa de autenticação e autorização: OAuth 2.0, OIDC, JWT, mTLS, grant types, IdP, SAML e propagação de identidade em microserviços.
+Trata segurança como propriedade de design, não como camada adicional. Cobre threat modeling, o arsenal de controles (preventivos, detectivos e corretivos), o OWASP API Security Top 10, a fundação completa de autenticação e autorização (OAuth 2.0, OIDC, JWT, mTLS), Zero Trust, segurança no ciclo de vida, segurança no gateway, APIs de parceiros e resposta a incidentes.
 
 ---
 
 ### [Módulo 6 — IA & APIs](modulo-6-ia_apis/index.md)
-**Em desenvolvimento**
+**8 capítulos · Nível: estratégico e técnico · Pré-requisito: Módulos 1 a 5**
 
-O impacto da inteligência artificial no design, operação e governança de APIs — de LLMs como consumidores a APIs como infraestrutura de IA.
+O impacto da inteligência artificial no ecossistema de APIs — de agentes como consumidores ao MCP, identidade agêntica, segurança no ecossistema agêntico, IA produzindo APIs, AI Gateway, governança na era agêntica e AI Readiness do portfólio.
 
 ---
 
