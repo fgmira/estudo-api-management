@@ -84,10 +84,10 @@ O impacto da inteligência artificial no ecossistema de APIs — de agentes como
 
 ---
 
-### [Módulo 7 — Plataforma & Infraestrutura](modulo-7-plataforma_infraestrutura/index.md)
+### [Módulo 7 — A Plataforma de Governança](modulo-7-plataforma_infraestrutura/index.md)
 **Em desenvolvimento**
 
-Gateways, service meshes, portais de desenvolvedor, plataformas de governança e a infraestrutura que sustenta programas de API em escala.
+A plataforma de software que materializa políticas em código, automatiza gates e torna a governança operacional em escala — do prefácio filosófico (inspirado na PEP-20) ao design e posicionamento do produto.
 
 ---
 

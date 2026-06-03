@@ -125,7 +125,12 @@ nav:
     - 6.6 AI Gateway — o Novo Plano de Controle: modulo-6-ia_apis/cap_6_6_ai_gateway.md
     - 6.7 Governança de APIs na Era Agêntica: modulo-6-ia_apis/cap_6_7_gov_api_era_agentica.md
     - 6.8 AI Readiness do Portfólio — Avaliação e Roadmap: modulo-6-ia_apis/cap_6_8_ai_readiness_portifolio.md
-  - Módulo 7 — Plataforma & Infraestrutura: modulo-7-plataforma_infraestrutura/index.md
+  - Módulo 7 — A Plataforma de Governança:
+    - Visão Geral: modulo-7-plataforma_infraestrutura/index.md
+    - Prefácio — A Filosofia da Plataforma: modulo-7-plataforma_infraestrutura/prefacio.md
+    - 7.1 Visão e Posicionamento do Produto: modulo-7-plataforma_infraestrutura/cap_7_1_visao_posicionamento.md
+    - 7.2 Arquitetura de Referência: modulo-7-plataforma_infraestrutura/cap_7_2_arquitetura_referencia.md
+    - 7.3 O Registry Service — o Coração da Plataforma: modulo-7-plataforma_infraestrutura/cap_7_3_registry_service.md
   - Módulo 8 — Maturidade de APIs: modulo-8-maturidade/index.md
   - Anexos:
     - A.1 Breaking Changes em APIs REST: anexos/a_1_breaking_changes_REST.md
