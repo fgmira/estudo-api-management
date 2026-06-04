@@ -48,6 +48,7 @@ erDiagram
         string      name
         string      description
         enum        lifecycleStage
+        enum        type
     }
 
     SPEC_REFERENCE {
@@ -132,6 +133,28 @@ erDiagram
         datetime    evaluatedAt
     }
 
+    EXTERNAL_PROVIDER {
+        uuid        id
+        string      name
+        string      website
+        string      documentationUrl
+    }
+
+    VENDOR_RISK {
+        datetime    lastAssessment
+        enum        riskLevel
+        float       slaUptime
+        string      dataClassification
+    }
+
+    CONTRACT_TERMS {
+        string      reference
+        date        startDate
+        date        endDate
+        json        sla
+        json        notificationPolicy
+    }
+
     CONSUMER {
         uuid        id
         string      name
@@ -182,9 +205,18 @@ API {
   lifecycleStage: conception | development | production
                   deprecated | sunset
 
+  type:           internal   → produzida e consumida internamente
+                  partner    → produzida pela org · exposta a parceiros
+                  public     → produzida pela org · exposta ao público
+                  external   → produzida por terceiro · consumida internamente
+
   domain:         → Domain      (obrigatório)
   system:         → System      (opcional — referência leve)
   product:        → Product     (opcional — referência leve)
+
+  // apenas para type = external
+  provider:       → ExternalProvider
+  vendorRisk:     → VendorRisk
 
   activeSpec:     → SpecReference
   specHistory:    [SpecReference] (imutável — append only)
@@ -278,14 +310,25 @@ Consumer {
   id
   name
   type:    application | developer | agent | mcp_server
+           partner     → organização externa com contrato
+           public_dev  → desenvolvedor externo via self-service
   status:  active | suspended | revoked
-  team:    → Team
+  team:    → Team (para consumidores internos)
 
   profile: ConsumerProfile    atributos específicos por type
     application  → clientId, techStack
     developer    → idpRef
     agent        → purpose, identityType, maxScopes
     mcp_server   → toolsExposed, apisEncapsulated
+    partner      → contractTerms {
+                     reference, startDate, endDate
+                     sla, notificationPolicy {
+                       breakingChangeNoticeDays: 90
+                       deprecationNoticeDays: 180
+                       securityIncidentSlaHours: 24
+                     }
+                   }
+    public_dev   → portalProfile, tier, usageLimits
 }
 ```
 
@@ -385,6 +428,11 @@ Os eventos que o Registry publica — e quem os consome:
 | `DriftDetectado` | Estado real diverge do Registry | Analytics · CoE alertado |
 | `DependênciaDetectada` | Nova dependência entre APIs mapeada | Analytics |
 | `ExternalRefSincronizada` | CMDB confirmou vinculação | Analytics |
+| `APIExternaRegistrada` | API de terceiro adicionada ao Registry | Analytics · Discovery |
+| `VendorRiskAvaliado` | Avaliação de risco de fornecedor atualizada | Analytics · CoE alertado |
+| `SLAExternoViolado` | Discovery detectou degradação em API externa | CoE alertado · Analytics |
+| `ParceiroCriado` | Novo Consumer do tipo partner registrado | Analytics |
+| `ContratoPróximoDeVencer` | Contrato de parceiro vence em < 30 dias | CoE alertado |
 
 Os eventos que o Registry **consome** — de outros serviços:
 
@@ -430,6 +478,27 @@ Se a API X for depreciada:
 Se a spec da API X mudar com breaking change:
 → Quais consumers estão no deployment que usa a versão atual?
 → Quais repositórios têm integrações com esta API?
+```
+
+### Queries sobre APIs externas e parceiros
+
+```
+APIs externas com avaliação de risco desatualizada
+→ provider.vendorRisk.lastAssessment < hoje - 180 dias
+
+APIs externas com degradação detectada no último mês
+→ eventos SLAExternoViolado nas últimas 4 semanas
+
+Parceiros com contrato vencendo em 60 dias
+→ consumer.type = partner · contractTerms.endDate < hoje + 60
+
+APIs de parceiro com consumers sem chamadas em 90 dias
+→ consumer.type = partner · últimas chamadas > 90 dias atrás
+→ possível parceiro inativo — custo sem retorno
+
+Quais sistemas internos dependem de APIs externas críticas
+→ consumer.type = application · binding → api.type = external
+→ impacto se aquele provedor ficar indisponível
 ```
 
 ### Queries de descoberta
@@ -627,6 +696,10 @@ GET /apis/uuid-abc-123/impact?change=deprecation&environment=production
 | R-7.3.9 | O SpecReference.type determina como Pipeline e AI Service processam a spec — suporte mínimo: openapi, graphql, grpc, asyncapi, mcp | Agnóstico a protocolo |
 | R-7.3.10 | O Repository suporta branchMapping configurável — cada branch pode mapear para um lifecycle stage | Gitflow |
 | R-7.3.11 | Consumer.type é o discriminador que determina o profile — sem entidades separadas para Agent ou MCP Server | Modelo simplificado |
+| R-7.3.12 | API.type discrimina internal · partner · public · external — o mesmo aggregate com atributos específicos por tipo | APIs externas e parceiros |
+| R-7.3.13 | APIs do tipo external têm ExternalProvider e VendorRisk obrigatórios — avaliação de risco é requisito de registro | Governança de externos |
+| R-7.3.14 | Consumers do tipo partner têm ContractTerms obrigatórios — incluindo notificationPolicy com prazos contratuais | Governança de parceiros |
+| R-7.3.15 | O Registry publica ContratoPróximoDeVencer 60 e 30 dias antes do vencimento — automático, sem intervenção manual | Gestão de contratos |
 
 ---
 

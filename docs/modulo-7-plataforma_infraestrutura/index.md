@@ -37,3 +37,9 @@ A arquitetura técnica da plataforma: o modelo de produto com **API, CLI, SDK e 
 ### [7.3 · O Registry Service — o coração da plataforma](cap_7_3_registry_service.md)
 
 O serviço central que mantém o estado autoritativo de todo o portfólio de APIs. Cobre o **modelo de domínio** e suas entidades, o uso de **event sourcing** como mecanismo de persistência (estoque lógico com memória completa de mudanças), o **catálogo de eventos**, as **queries de governança** que o serviço expõe, o **context map** com os demais serviços e a especificação da API do Registry.
+
+---
+
+### [7.4 · O Pipeline Service](cap_7_4_pipeline_service.md)
+
+O serviço que integra a plataforma aos pipelines de CI/CD — o ponto onde governança se torna gate automatizado. Cobre a distinção entre **CI e CD** como dois contextos de validação distintos, a **taxonomia de políticas** do pipeline, o **modelo assíncrono** de execução de gates, o conceito de **spec bundle** (resolver referências antes de enviar), a divisão entre gates **platform-side e runner-side**, a **interface de gate** como contrato de extensão, **environment profiles**, o **fluxo de exceções** e o comando `agctl build` para geração de configuração de gateway.

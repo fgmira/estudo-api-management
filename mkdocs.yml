@@ -131,6 +131,7 @@ nav:
     - 7.1 Visão e Posicionamento do Produto: modulo-7-plataforma_infraestrutura/cap_7_1_visao_posicionamento.md
     - 7.2 Arquitetura de Referência: modulo-7-plataforma_infraestrutura/cap_7_2_arquitetura_referencia.md
     - 7.3 O Registry Service — o Coração da Plataforma: modulo-7-plataforma_infraestrutura/cap_7_3_registry_service.md
+    - 7.4 O Pipeline Service: modulo-7-plataforma_infraestrutura/cap_7_4_pipeline_service.md
   - Módulo 8 — Maturidade de APIs: modulo-8-maturidade/index.md
   - Anexos:
     - A.1 Breaking Changes em APIs REST: anexos/a_1_breaking_changes_REST.md

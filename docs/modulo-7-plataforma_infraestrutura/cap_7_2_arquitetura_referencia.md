@@ -40,6 +40,7 @@ graph TB
     subgraph servicos["Camada de Serviços — OLTP"]
         registry["Registry Service
         portfólio · ciclo de vida
+        APIs internas · parceiros · externas
         event sourcing"]
         pipeline["Pipeline Service
         gates · validações · resultados"]
@@ -118,7 +119,7 @@ graph TB
         subgraph interfaces["Interfaces construídas sobre a API"]
             cli_box["⌨️ CLI
             Para desenvolvedores e pipelines
-            governance lint · publish · diff
+            agctl lint · publish · diff
             login · whoami · dry-run
             config · watch
             roda localmente e na esteira"]
@@ -242,7 +243,7 @@ graph TB
     end
 
     cli_input["CLI
-    governance lint --spec api.yaml"]
+    agctl lint --spec api.yaml"]
     ci_input["CI/CD
     GitHub Actions · GitLab CI"]
     api_input["API
@@ -446,6 +447,12 @@ mindmap
       Gates com maior taxa de falha
       fricção por time — benchmarking interno
       Tempo de commit a publicação
+    APIs externas e parceiros
+      Disponibilidade de APIs externas críticas
+      Latência por provedor externo vs. SLA declarado
+      Consumo por parceiro — gestão de SLA e faturamento
+      APIs externas com avaliação de risco desatualizada
+      Parceiros com credenciais próximas de expirar
 ```
 
 ---
@@ -486,6 +493,11 @@ graph TB
             monitora Certificate Transparency logs
             detecta subdomínios ativos
             sem APIs registradas"]
+
+            s6["External API Monitor
+            consome logs do gateway
+            correlaciona com APIs externas registradas
+            detecta degradação de SLA de fornecedores"]
         end
 
         subgraph reconciliation_svc["Reconciliação"]
@@ -503,7 +515,9 @@ graph TB
     DriftDeContratoDetectado
     DeploymentNaoRegistrado
     SpecDesatualizada
-    ConsumerPotencialmenteInativo"| bus2
+    ConsumerPotencialmenteInativo
+    SLAExternoViolado
+    APIExternaDegradada"| bus2
 ```
 
 **O que cada divergência significa:**
@@ -591,62 +605,62 @@ graph TB
         direction LR
 
         subgraph local["Local — com autenticação"]
-            l1["governance lint --spec api.yaml
+            l1["agctl lint --spec api.yaml
             executa gates localmente
             usando regras padrão da plataforma
             zero dependência de rede
             zero telemetria"]
 
-            l2["governance diff --spec api.yaml --against main
+            l2["agctl diff --spec api.yaml --against main
             detecta breaking changes
             entre a versão atual e a referência
             antes de qualquer commit"]
         end
 
         subgraph autenticado["Autenticado — com contexto do portfólio"]
-            a1["governance login
+            a1["agctl login
             autentica via browser ou token
             credenciais armazenadas localmente"]
 
-            a2["governance lint --spec api.yaml
+            a2["agctl lint --spec api.yaml
             executa gates com políticas
             da organização
             verifica consistência com portfólio
             feedback contextualizado"]
 
-            a3["governance lint --spec api.yaml --dry-run
+            a3["agctl lint --spec api.yaml --dry-run
             usa contexto real do portfólio
             não publica nada
             'se publicasse agora, 3 gates falhariam'"]
 
-            a4["governance publish --spec api.yaml
+            a4["agctl publish --spec api.yaml
             valida · publica no catálogo
             atualiza scores no Registry
             telemetria opt-in enviada"]
         end
 
         subgraph ci_mode["Modo CI/CD — saída estruturada"]
-            ci1["governance lint --spec api.yaml --format json
+            ci1["agctl lint --spec api.yaml --format json
             saída JSON para processamento
             exit code 0 = pass · 1 = fail
             compatível com qualquer esteira"]
 
-            ci2["governance publish --spec api.yaml --ci
+            ci2["agctl publish --spec api.yaml --ci
             modo não-interativo
             autentica via env var
             GOVERNANCE_TOKEN"]
         end
 
         subgraph admin["Operações do CoE"]
-            ad1["governance policy publish --file policy.rego
+            ad1["agctl policy publish --file policy.rego
             publica nova política
             no Policy Service"]
 
-            ad2["governance catalog search --capability 'validação de endereço'
+            ad2["agctl catalog search --capability 'validação de endereço'
             busca semântica no catálogo
             antes de criar algo novo"]
 
-            ad3["governance report --type compliance --period 2025-Q1
+            ad3["agctl report --type compliance --period 2025-Q1
             gera relatório de compliance
             para o período informado"]
         end
@@ -692,7 +706,8 @@ graph TB
             g1["Kong · AWS APIM · Azure APIM · Apigee
             leitura de logs para reconciliação
             publicação de políticas como configuração
-            detecção de shadow APIs via tráfego"]
+            detecção de shadow APIs via tráfego
+            monitoramento de SLA de APIs externas"]
         end
 
         subgraph cmdb_int["CMDB"]
@@ -740,7 +755,7 @@ sequenceDiagram
     participant Bus as Event Bus
     participant CMDB as ServiceNow / CMDB
 
-    Dev->>CLI: governance publish --spec api.yaml
+    Dev->>CLI: agctl publish --spec api.yaml
     CLI->>Registry: POST /apis {spec, owner, domain}
     Registry->>Registry: cria registro com gov-id: uuid-abc-123
     Registry->>Bus: publica APIRegistrada {gov-id, nome, domínio, owner}
@@ -773,7 +788,7 @@ sequenceDiagram
     participant Bus as Event Bus
     participant Analytics as Analytics Service
 
-    Dev->>CLI: governance publish --spec api.yaml
+    Dev->>CLI: agctl publish --spec api.yaml
     CLI->>Pipeline: POST /pipeline/run {spec}
 
     par Gates em paralelo
@@ -810,7 +825,7 @@ sequenceDiagram
     participant Bus as Event Bus
     participant Analytics as Analytics Service
 
-    CoE->>CLI: governance policy publish --file nova_politica.rego
+    CoE->>CLI: agctl policy publish --file nova_politica.rego
     CLI->>Policy: POST /policies {content, version}
     Policy->>Policy: valida sintaxe e semântica
     Policy->>Policy: executa em modo dry-run
@@ -819,7 +834,7 @@ sequenceDiagram
     Policy->>CLI: impacto: 47 APIs afetadas · 12 falhariam
     CLI->>CoE: preview de impacto antes de publicar
 
-    CoE->>CLI: governance policy publish --confirm
+    CoE->>CLI: agctl policy publish --confirm
     Policy->>Bus: PolicyPublicada {policy-id, impacto}
     Bus->>Registry: reavalia compliance do portfólio
     Bus->>Analytics: persiste evento
@@ -873,7 +888,7 @@ graph TB
 
         subgraph cli_capture["CLI — sempre ativo quando autenticado"]
             c1["Comandos executados
-            governance lint · publish · diff
+            agctl lint · publish · diff
             policy publish · catalog search"]
             c2["Resultados por gate
             pass · fail · warn
@@ -1043,6 +1058,8 @@ Com captura em todos os canais, o time de produto consegue responder perguntas q
 | R-7.2.17 | O Discovery Service executa varreduras de forma independente dos outros serviços — via adaptadores ativos configuráveis | Discovery |
 | R-7.2.18 | O Discovery Service apenas publica eventos de divergência — nunca escreve diretamente no Registry | Separação de responsabilidades |
 | R-7.2.19 | Cada scanner do Discovery Service é habilitável e configurável independentemente | Flexibilidade de implantação |
+| R-7.2.20 | O Registry suporta quatro tipos de API: internal · partner · public · external | APIs externas e de parceiros |
+| R-7.2.21 | APIs externas são monitoradas via correlação de logs de gateway — não via polling ativo ao provedor | Monitoramento de externos |
 
 ---
 
