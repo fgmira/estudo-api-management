@@ -91,9 +91,9 @@ Framework de maturidade em cinco níveis e oito dimensões — como avaliar onde
 ---
 
 ### [Módulo 8 — Operacionalizando a Governança de APIs](modulo-8-operacionalizando_governança/index.md)
-**Em desenvolvimento**
+**14 capítulos · Nível: estratégico e técnico · Pré-requisito: Módulos 1 a 7**
 
-Como transformar intenção em infraestrutura — governança como capacidade operacional sustentável, não como processo manual.
+Como transformar intenção em infraestrutura — catálogo como fonte de verdade, políticas como código, pipeline de governança, inteligência de portfólio, portal e DX, identidade e acesso, e o lado humano da adoção.
 
 ---
 
