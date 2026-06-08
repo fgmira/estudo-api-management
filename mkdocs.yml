@@ -125,14 +125,20 @@ nav:
     - 6.6 AI Gateway — o Novo Plano de Controle: modulo-6-ia_apis/cap_6_6_ai_gateway.md
     - 6.7 Governança de APIs na Era Agêntica: modulo-6-ia_apis/cap_6_7_gov_api_era_agentica.md
     - 6.8 AI Readiness do Portfólio — Avaliação e Roadmap: modulo-6-ia_apis/cap_6_8_ai_readiness_portifolio.md
-  - Módulo 7 — A Plataforma de Governança:
-    - Visão Geral: modulo-7-plataforma_infraestrutura/index.md
-    - Prefácio — A Filosofia da Plataforma: modulo-7-plataforma_infraestrutura/prefacio.md
-    - 7.1 Visão e Posicionamento do Produto: modulo-7-plataforma_infraestrutura/cap_7_1_visao_posicionamento.md
-    - 7.2 Arquitetura de Referência: modulo-7-plataforma_infraestrutura/cap_7_2_arquitetura_referencia.md
-    - 7.3 O Registry Service — o Coração da Plataforma: modulo-7-plataforma_infraestrutura/cap_7_3_registry_service.md
-    - 7.4 O Pipeline Service: modulo-7-plataforma_infraestrutura/cap_7_4_pipeline_service.md
-  - Módulo 8 — Maturidade de APIs: modulo-8-maturidade/index.md
+  - Módulo 7 — Maturidade em Governança de APIs:
+    - Visão Geral: modulo-7-maturidade/index.md
+    - 7.1 O que é maturidade — e por que importa: modulo-7-maturidade/cap_7_1_maturidade.md
+    - 7.2 Os frameworks existentes: modulo-7-maturidade/cap_7_2_frameworks.md
+    - 7.3 A linguagem unificada: modulo-7-maturidade/cap_7_3_linguagem.md
+    - 7.4 Dimensão — Estratégia e Liderança: modulo-7-maturidade/cap_7_4_lideranca.md
+    - 7.5 Dimensão — Design e Padrões: modulo-7-maturidade/cap_7_5_desing_padroes.md
+    - 7.6 Dimensão — Ciclo de Vida: modulo-7-maturidade/cap_7_6_ciclo_vida.md
+    - 7.7 Dimensão — Segurança: modulo-7-maturidade/cap_7_7_segurança.md
+    - 7.8 Dimensão — Observabilidade: modulo-7-maturidade/cap_7_8_observabilidade.md
+    - 7.9 Dimensão — Developer Experience: modulo-7-maturidade/cap_7_9_dx.md
+    - 7.10 Dimensão — AI Readiness: modulo-7-maturidade/cap_7_10_ai_readness.md
+    - 7.11 Dimensão — Operacionalização: modulo-7-maturidade/cap_7_11_operacionalizacao.md
+    - 7.12 O diagnóstico holístico: modulo-7-maturidade/cap_7_12_diagnostico.md
   - Anexos:
     - A.1 Breaking Changes em APIs REST: anexos/a_1_breaking_changes_REST.md
     - A.2 Breaking Changes em APIs GraphQL: anexos/a_2_breaking_changes_graphQL.md
@@ -149,3 +155,5 @@ nav:
     - J. Guia de leitura — os RFCs do OAuth 2.0: anexos/j_rfcs_oauth.md
     - K. Guia de leitura — os RFCs dos tokens: anexos/k_rfcs_token.md
     - L. Modelos e Ferramentas de Autorização Fina: anexos/l_rbac.md
+    - M. Guia Comparativo dos Frameworks de Maturidade: anexos/m_frameworks_maturidade.md
+    - N. Questionário de Autodiagnóstico de Maturidade: anexos/n_diagnostico_formulario.md

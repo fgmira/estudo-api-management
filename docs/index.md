@@ -14,8 +14,7 @@ flowchart LR
     M4["📋 Módulo 4\nITIL & APIs"]
     M5["🔒 Módulo 5\nSegurança"]
     M6["🤖 Módulo 6\nIA & APIs"]
-    M7["🛠️ Módulo 7\nPlataforma"]
-    M8["📊 Módulo 8\nMaturidade"]
+    M7["📊 Módulo 7\nMaturidade"]
 
     M1 --> M2
     M1 --> M3
@@ -25,8 +24,6 @@ flowchart LR
     M4 --> M6
     M5 --> M6
     M6 --> M7
-    M6 --> M8
-    M7 --> M8
 
     style M1 fill:#dbeafe,color:#1e3a5f,stroke:#3b82f6
     style M2 fill:#dcfce7,color:#14532d,stroke:#16a34a
@@ -34,8 +31,7 @@ flowchart LR
     style M4 fill:#ffedd5,color:#7c2d12,stroke:#ea580c
     style M5 fill:#fee2e2,color:#7f1d1d,stroke:#dc2626
     style M6 fill:#d1fae5,color:#064e3b,stroke:#059669
-    style M7 fill:#f3f4f6,color:#111827,stroke:#6b7280
-    style M8 fill:#fef9c3,color:#713f12,stroke:#ca8a04
+    style M7 fill:#fef9c3,color:#713f12,stroke:#ca8a04
 ```
 
 ---
@@ -84,17 +80,10 @@ O impacto da inteligência artificial no ecossistema de APIs — de agentes como
 
 ---
 
-### [Módulo 7 — A Plataforma de Governança](modulo-7-plataforma_infraestrutura/index.md)
+### [Módulo 7 — Maturidade em Governança de APIs](modulo-7-maturidade/index.md)
 **Em desenvolvimento**
 
-A plataforma de software que materializa políticas em código, automatiza gates e torna a governança operacional em escala — do prefácio filosófico (inspirado na PEP-20) ao design e posicionamento do produto.
-
----
-
-### [Módulo 8 — Maturidade de APIs](modulo-8-maturidade/index.md)
-**Em desenvolvimento**
-
-Modelos de maturidade para programas de API — como avaliar onde a organização está e traçar o caminho de evolução.
+Modelos de maturidade para programas de API — como avaliar onde a organização está, o que significa evoluir e qual é o caminho de crescimento sustentável.
 
 ---
 
@@ -136,6 +125,13 @@ Materiais de referência e aprofundamento, organizados por tema.
 | [J · Guia de leitura — os RFCs do OAuth 2.0](anexos/j_rfcs_oauth.md) | Mapa dos RFCs do ecossistema OAuth |
 | [K · Guia de leitura — os RFCs dos tokens](anexos/k_rfcs_token.md) | JWT, JWS, JWE, JWK |
 | [L · Modelos e ferramentas de autorização fina](anexos/l_rbac.md) | OPA, Casbin, Cedar, OpenFGA |
+
+### Maturidade
+
+| Anexo | Tema |
+|-------|------|
+| [M · Guia comparativo dos frameworks de maturidade](anexos/m_frameworks_maturidade.md) | Platformable, Zuplo, Kong e Gartner lado a lado |
+| [N · Questionário de autodiagnóstico de maturidade](anexos/n_diagnostico_formulario.md) | Instrumento completo para diagnóstico por dimensão |
 
 ---
 
