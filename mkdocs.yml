@@ -139,6 +139,23 @@ nav:
     - 7.10 Dimensão — AI Readiness: modulo-7-maturidade/cap_7_10_ai_readness.md
     - 7.11 Dimensão — Operacionalização: modulo-7-maturidade/cap_7_11_operacionalizacao.md
     - 7.12 O diagnóstico holístico: modulo-7-maturidade/cap_7_12_diagnostico.md
+  - Módulo 8 — Operacionalizando a Governança de APIs:
+    - Visão Geral: modulo-8-operacionalizando_governança/index.md
+    - Prefácio — A plataforma como produto: modulo-8-operacionalizando_governança/prefacio.md
+    - 8.1 Da intenção à infraestrutura: modulo-8-operacionalizando_governança/cap_8_1_intensao_infra.md
+    - 8.2 Os contextos de uma plataforma de governança: modulo-8-operacionalizando_governança/cap_8_2_contextos_plataforma.md
+    - 8.3 O catálogo como fonte de verdade: modulo-8-operacionalizando_governança/cap_8_3_catalogo.md
+    - 8.4 Políticas como código: modulo-8-operacionalizando_governança/cap_8_4_politicas.md
+    - 8.5 O pipeline de governança: modulo-8-operacionalizando_governança/cap_8_5_pipeline.md
+    - 8.6 Inteligência de portfólio: modulo-8-operacionalizando_governança/cap_8_6_inteligencia.md
+    - 8.7 Descoberta e reconciliação: modulo-8-operacionalizando_governança/cap_8_7_descoberta.md
+    - 8.8 Portal e a experiência do desenvolvedor: modulo-8-operacionalizando_governança/cap_8_8_portal.md
+    - 8.9 Conhecimento como contexto independente: modulo-8-operacionalizando_governança/cap_8_9_conhecimento.md
+    - 8.10 Assistência inteligente: modulo-8-operacionalizando_governança/cap_8_10_assistencia.md
+    - 8.11 DX e inteligência de produto: modulo-8-operacionalizando_governança/cap_8_11_dx_inteligencia_produto.md
+    - 8.12 Identidade e acesso: modulo-8-operacionalizando_governança/cap_8_12_identidade_acesso.md
+    - 8.13 Build, buy ou compor: modulo-8-operacionalizando_governança/cap_8_13_comprar_fazer.md
+    - 8.14 Adoção — o problema mais difícil: modulo-8-operacionalizando_governança/cap_8_14_adocao.md
   - Anexos:
     - A.1 Breaking Changes em APIs REST: anexos/a_1_breaking_changes_REST.md
     - A.2 Breaking Changes em APIs GraphQL: anexos/a_2_breaking_changes_graphQL.md

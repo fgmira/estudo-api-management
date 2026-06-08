@@ -15,6 +15,7 @@ flowchart LR
     M5["🔒 Módulo 5\nSegurança"]
     M6["🤖 Módulo 6\nIA & APIs"]
     M7["📊 Módulo 7\nMaturidade"]
+    M8["🛠️ Módulo 8\nOperacionalização"]
 
     M1 --> M2
     M1 --> M3
@@ -24,6 +25,7 @@ flowchart LR
     M4 --> M6
     M5 --> M6
     M6 --> M7
+    M7 --> M8
 
     style M1 fill:#dbeafe,color:#1e3a5f,stroke:#3b82f6
     style M2 fill:#dcfce7,color:#14532d,stroke:#16a34a
@@ -32,6 +34,7 @@ flowchart LR
     style M5 fill:#fee2e2,color:#7f1d1d,stroke:#dc2626
     style M6 fill:#d1fae5,color:#064e3b,stroke:#059669
     style M7 fill:#fef9c3,color:#713f12,stroke:#ca8a04
+    style M8 fill:#f3f4f6,color:#111827,stroke:#6b7280
 ```
 
 ---
@@ -81,9 +84,16 @@ O impacto da inteligência artificial no ecossistema de APIs — de agentes como
 ---
 
 ### [Módulo 7 — Maturidade em Governança de APIs](modulo-7-maturidade/index.md)
+**12 capítulos · Nível: estratégico e diagnóstico · Pré-requisito: Módulos 1 a 6**
+
+Framework de maturidade em cinco níveis e oito dimensões — como avaliar onde a organização está, comparar com os modelos do mercado (Platformable, Zuplo, Kong, Gartner) e construir o roadmap de evolução.
+
+---
+
+### [Módulo 8 — Operacionalizando a Governança de APIs](modulo-8-operacionalizando_governança/index.md)
 **Em desenvolvimento**
 
-Modelos de maturidade para programas de API — como avaliar onde a organização está, o que significa evoluir e qual é o caminho de crescimento sustentável.
+Como transformar intenção em infraestrutura — governança como capacidade operacional sustentável, não como processo manual.
 
 ---
 
