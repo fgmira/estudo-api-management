@@ -144,7 +144,7 @@ O OWASP documenta as manifestações mais comuns:
 `Strict-Transport-Security` ausente permite downgrade de HTTPS para HTTP. `X-Content-Type-Options` ausente permite ataques de MIME sniffing. `Content-Security-Policy` ausente em portais de desenvolvedores permite XSS.
 
 **Mensagens de erro com informação técnica:**
-Stack traces, nomes de classes, queries SQL e versões de frameworks em respostas de erro fornecem ao atacante um mapa do sistema interno — como discutido no Anexo E.
+Stack traces, nomes de classes, queries SQL e versões de frameworks em respostas de erro fornecem ao atacante um mapa do sistema interno — como discutido no [Anexo E](e_design_seguro.md).
 
 **HTTPS desabilitado ou TLS desatualizado:**
 APIs acessíveis via HTTP, ou que aceitam TLS 1.0 e 1.1, expõem tráfego a interceptação.

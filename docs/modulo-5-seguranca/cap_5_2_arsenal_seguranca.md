@@ -116,7 +116,7 @@ O TLS — Transport Layer Security — garante confidencialidade e integridade d
 
 Validação de input no gateway complementa — nunca substitui — a validação na aplicação. O gateway pode validar: formato e tipo de parâmetros, presença de headers obrigatórios, tamanho máximo do payload, e conformidade com o schema OpenAPI declarado.
 
-A combinação de validação no gateway com `additionalProperties: false` no schema — como discutido no Cap 5.1 — rejeita automaticamente payloads com campos não declarados, reduzindo a superfície de mass assignment sem código adicional na aplicação.
+A combinação de validação no gateway com `additionalProperties: false` no schema — como discutido no [Cap 5.1](cap_5_1_seg_propriedade_desing.md) — rejeita automaticamente payloads com campos não declarados, reduzindo a superfície de mass assignment sem código adicional na aplicação.
 
 ---
 

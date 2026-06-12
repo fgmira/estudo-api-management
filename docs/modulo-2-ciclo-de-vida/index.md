@@ -46,7 +46,7 @@ Documentação não é spec. A distinção parece óbvia, mas é sistematicament
 
 APIs precisam evoluir — mas evolução sem controle quebra consumidores. Este capítulo define o que é uma breaking change (e o que não é), apresenta as estratégias de versionamento disponíveis e seus trade-offs, e detalha como uma *deprecation policy* torna o versionamento previsível e governável. Aborda também o processo de change management para breaking changes e os desafios específicos de portfólios heterogêneos.
 
-> Referencia os Anexos A.1 a A.4 com classificação exaustiva de breaking changes por estilo arquitetural.
+> Referencia os Anexos [A.1](../anexos/a_1_breaking_changes_REST.md), [A.2](../anexos/a_2_breaking_changes_graphQL.md), [A.3](../anexos/a_3_breaking_changes_grpc.md) e [A.4](../anexos/a_4_breaking_changes_asyncapi.md) com classificação exaustiva de breaking changes por estilo arquitetural.
 
 ---
 
@@ -54,7 +54,7 @@ APIs precisam evoluir — mas evolução sem controle quebra consumidores. Este 
 
 Encerrar uma API é tão crítico quanto lançá-la — e frequentemente mais difícil. Este capítulo trata a depreciação como processo, não como evento: desde a decisão de deprecar, passando pelo plano de depreciação, comunicação com consumidores, suporte à migração e execução do sunset, até as salvaguardas jurídicas necessárias quando há consumidores externos. A governança tem papel central em cada uma dessas etapas.
 
-> Referencia o Anexo B com template de plano de depreciação.
+> Referencia o [Anexo B](../anexos/b_plano_depreciacao.md) com template de plano de depreciação.
 
 ---
 
