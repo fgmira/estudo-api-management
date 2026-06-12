@@ -1,0 +1,13 @@
+.md-typeset {
+  font-size: 0.75rem;
+}
+
+:root {
+  --md-code-font: "Fira Code", monospace;
+}
+
+code {
+  font-variant-ligatures: common-ligatures;
+  direction: ltr;
+  display: inline-block;
+}

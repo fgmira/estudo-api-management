@@ -1,0 +1,4819 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de estudos sobre API Management">
+      
+      
+        <meta name="author" content="Fabio">
+      
+      
+      
+        <link rel="prev" href="../cap_5_1_seg_propriedade_desing/">
+      
+      
+        <link rel="next" href="../cap_5_3_oswap/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>5.2 O Arsenal de Segurança de APIs - Estudo API Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/panzoom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="panzoom-theme" content="material">
+<meta name="panzoom-data" content='{"selectors": [".d2", ".mermaid"], "initial_zoom_level": 1.0}'> </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-5-seguranca-de-apis" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Estudo API Management" class="md-header__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estudo API Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.2 O Arsenal de Segurança de APIs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estudo API Management" class="md-nav__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Estudo API Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-1-fundamentos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 1 — Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 1 — Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_1_o_que_e_uma_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 O que é uma API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_2_api_como_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 API como Produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_3__governanca_de_api_conceitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Governança de API — Conceitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_4_diferenca_gerenciamento_governanca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Diferença entre Gerenciamento e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_5_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Os Três Planos — Controle, Dados e Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_6_estilos_arquiteturais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 Estilos arquiteturais e suas implicações de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_7_heterogeneidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 Heterogeneidade de infraestrutura e governança multi-ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-2-ciclo-de-vida/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_1_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 As Fases do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_2_design_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Design-first vs. Code-first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_3_contratos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Contratos de API — OpenAPI, AsyncAPI e gRPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_4_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Documentação de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_5_versionamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Versionamento e Gestão de Breaking Changes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_6_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 Depreciação e Sunset Controlado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_7_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 Os Três Planos ao Longo do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-3-governanca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 3 — Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 3 — Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_1_pilares/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Pilares da Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_2_papeis_reponsabilidades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Papéis e Responsabilidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_3_coe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 O Centro de Excelência de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_4_guia_estilo_politica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Style Guides e Políticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_5_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Catálogo e Descoberta de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_6_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Governança de APIs de Parceiros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_7_modelos_organizacionais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 Modelos Organizacionais — Centralizado, Federado e Híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_8_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 Os Três Planos como Instrumentos de Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-4-itil/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 4 — ITIL & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 4 — ITIL & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_1_itil_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_2_quatro_dimensoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 As Quatro Dimensões do ITIL 4 no contexto de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_3_cmdb_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Configuration Management e CMDB para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_4_change_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Change Enablement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_5_catalogo_servico_slm_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Service Catalog e SLM para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_6_incidente_problema_melhoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Incident, Problem e Continual Improvement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_7_itil_devops_sre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 ITIL, SRE e DevOps — Convergências e Complementaridades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_8_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 Descoberta de APIs — os Dois Prismas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 5 — Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 5 — Segurança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_1_seg_propriedade_desing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Segurança como Propriedade do Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 O Arsenal de Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 O Arsenal de Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-52-o-arsenal-de-seguranca-de-apis-preventivo-detectivo-e-corretivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 5.2 · O arsenal de segurança de APIs — preventivo, detectivo e corretivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#521-a-taxonomia-preventivo-detectivo-e-corretivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1 · A taxonomia preventivo, detectivo e corretivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#522-controles-preventivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2 · Controles preventivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.2 · Controles preventivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waf-web-application-firewall-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WAF — Web Application Firewall para APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting-e-throttling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate limiting e throttling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-e-mtls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TLS e mTLS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validacao-de-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação de input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets-management-gestao-de-credenciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secrets management — gestão de credenciais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analise-de-codigo-sast-e-sca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Análise de código — SAST e SCA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#523-controles-detectivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3 · Controles detectivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.3 · Controles detectivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoramento-de-comportamento-e-anomalias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoramento de comportamento e anomalias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analise-de-logs-de-seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Análise de logs de segurança
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dast-dynamic-application-security-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAST — Dynamic Application Security Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#siem-e-correlacao-de-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIEM e correlação de eventos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#524-auditoria-e-nao-repudio-o-vetor-humano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.4 · Auditoria e não-repúdio — o vetor humano
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.4 · Auditoria e não-repúdio — o vetor humano">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-principio-de-nao-repudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O princípio de não-repúdio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-uma-trilha-de-auditoria-de-apis-precisa-registrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que uma trilha de auditoria de APIs precisa registrar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protecao-da-trilha-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proteção da trilha de auditoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-efeito-dissuasorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O efeito dissuasório
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#525-controles-corretivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.5 · Controles corretivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.5 · Controles corretivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#revogacao-de-tokens-e-credenciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revogação de tokens e credenciais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloqueio-de-ips-e-consumidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloqueio de IPs e consumidores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-breaker-e-isolamento-de-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuit breaker e isolamento de endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollback-de-mudancas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback de mudanças
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#526-defense-in-depth-os-tres-tipos-como-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.6 · Defense in depth — os três tipos como sistema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.6 · Defense in depth — os três tipos como sistema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#um-cenario-integrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Um cenário integrado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_3_oswap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OWASP API Security Top 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_4_autenticacao_autorizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Autenticação e Autorização — os Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_5_zero_trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Zero Trust para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_6_seguranca_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Segurança no Ciclo de Vida — Shift Left
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_7_seguranca_gtw_plat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 Segurança no Gateway e na Plataforma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_8_seguranca_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 Segurança em APIs de Parceiros e APIs Públicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_9_resposta_incidentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 Resposta a Incidentes de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-6-ia_apis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 6 — IA & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 6 — IA & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_1_ia_api_paradgma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 IA e APIs — o Novo Paradigma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_2_mcp_protocolos_agenticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 MCP e os Protocolos Agênticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_3_identidade_autorizacao_agentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Identidade e Autorização de Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_4_seguranca_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Segurança no Ecossistema Agêntico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_5_ia_produzindo_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 IA Produzindo APIs — Riscos e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_6_ai_gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 AI Gateway — o Novo Plano de Controle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_7_gov_api_era_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Governança de APIs na Era Agêntica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_8_ai_readiness_portifolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.8 AI Readiness do Portfólio — Avaliação e Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-7-maturidade/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_1_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 O que é maturidade — e por que importa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_2_frameworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Os frameworks existentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_3_linguagem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 A linguagem unificada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_4_lideranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Dimensão — Estratégia e Liderança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_5_desing_padroes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5 Dimensão — Design e Padrões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_6_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6 Dimensão — Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_7_seguran%C3%A7a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.7 Dimensão — Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_8_observabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.8 Dimensão — Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_9_dx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.9 Dimensão — Developer Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_10_ai_readness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.10 Dimensão — AI Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_11_operacionalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.11 Dimensão — Operacionalização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_12_diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.12 O diagnóstico holístico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-8-operacionalizando_governan%C3%A7a/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/prefacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prefácio — A plataforma como produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_1_intensao_infra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Da intenção à infraestrutura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_2_contextos_plataforma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Os contextos de uma plataforma de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_3_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 O catálogo como fonte de verdade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_4_politicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 Políticas como código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_5_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.5 O pipeline de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_6_inteligencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.6 Inteligência de portfólio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_7_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.7 Descoberta e reconciliação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_8_portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.8 Portal e a experiência do desenvolvedor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_9_conhecimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.9 Conhecimento como contexto independente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_10_assistencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.10 Assistência inteligente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_11_dx_inteligencia_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.11 DX e inteligência de produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_12_identidade_acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.12 Identidade e acesso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_13_comprar_fazer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.13 Build, buy ou compor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_14_adocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.14 Adoção — o problema mais difícil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_1_breaking_changes_REST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.1 Breaking Changes em APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_2_breaking_changes_graphQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.2 Breaking Changes em APIs GraphQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_3_breaking_changes_grpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.3 Breaking Changes em Protocol Buffers (gRPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_4_breaking_changes_asyncapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.4 Breaking Changes em AsyncAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/b_plano_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Template de Plano de Depreciação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/c_raci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Modelo RACI para Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/d_gestao_conhecimento_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Gestão do Conhecimento no Programa de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/e_design_seguro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E. Falhas de Design Seguro em APIs — Casos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/f_siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    F. SIEM e Correlação de Eventos de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/g_autorizacao_controle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    G. Autorização e Controle de Acesso em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/h_exposicao_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H. Exposição de Dados em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/i_recursos_injecao_gestao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I. Recursos, Injeção e Gestão em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/j_rfcs_oauth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    J. Guia de leitura — os RFCs do OAuth 2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/k_rfcs_token/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K. Guia de leitura — os RFCs dos tokens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/l_rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L. Modelos e Ferramentas de Autorização Fina
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/m_frameworks_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M. Guia Comparativo dos Frameworks de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/n_diagnostico_formulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    N. Questionário de Autodiagnóstico de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-52-o-arsenal-de-seguranca-de-apis-preventivo-detectivo-e-corretivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 5.2 · O arsenal de segurança de APIs — preventivo, detectivo e corretivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#521-a-taxonomia-preventivo-detectivo-e-corretivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1 · A taxonomia preventivo, detectivo e corretivo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#522-controles-preventivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2 · Controles preventivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.2 · Controles preventivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#waf-web-application-firewall-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        WAF — Web Application Firewall para APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting-e-throttling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rate limiting e throttling
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tls-e-mtls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TLS e mTLS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validacao-de-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validação de input
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secrets-management-gestao-de-credenciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Secrets management — gestão de credenciais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analise-de-codigo-sast-e-sca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Análise de código — SAST e SCA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#523-controles-detectivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3 · Controles detectivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.3 · Controles detectivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monitoramento-de-comportamento-e-anomalias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoramento de comportamento e anomalias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analise-de-logs-de-seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Análise de logs de segurança
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dast-dynamic-application-security-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DAST — Dynamic Application Security Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#siem-e-correlacao-de-eventos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SIEM e correlação de eventos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#524-auditoria-e-nao-repudio-o-vetor-humano" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.4 · Auditoria e não-repúdio — o vetor humano
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.4 · Auditoria e não-repúdio — o vetor humano">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-principio-de-nao-repudio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O princípio de não-repúdio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-uma-trilha-de-auditoria-de-apis-precisa-registrar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que uma trilha de auditoria de APIs precisa registrar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protecao-da-trilha-de-auditoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proteção da trilha de auditoria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-efeito-dissuasorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O efeito dissuasório
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#525-controles-corretivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.5 · Controles corretivos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.5 · Controles corretivos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#revogacao-de-tokens-e-credenciais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revogação de tokens e credenciais
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloqueio-de-ips-e-consumidores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloqueio de IPs e consumidores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circuit-breaker-e-isolamento-de-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Circuit breaker e isolamento de endpoints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollback-de-mudancas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rollback de mudanças
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#526-defense-in-depth-os-tres-tipos-como-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.6 · Defense in depth — os três tipos como sistema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2.6 · Defense in depth — os três tipos como sistema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#um-cenario-integrado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Um cenário integrado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="modulo-5-seguranca-de-apis">Módulo 5 · Segurança de APIs</h1>
+<h2 id="capitulo-52-o-arsenal-de-seguranca-de-apis-preventivo-detectivo-e-corretivo">Capítulo 5.2 · O arsenal de segurança de APIs — preventivo, detectivo e corretivo</h2>
+<blockquote>
+<p><strong>Série:</strong> Gerenciamento e Governança de APIs
+<strong>Nível:</strong> Técnico e operacional
+<strong>Pré-requisito:</strong> Cap 5.1 · Segurança como propriedade do design</p>
+</blockquote>
+<hr />
+<h2 id="sumario">Sumário</h2>
+<ul>
+<li><a href="#521--a-taxonomia-preventivo-detectivo-e-corretivo">5.2.1 · A taxonomia preventivo, detectivo e corretivo</a></li>
+<li><a href="#522--controles-preventivos">5.2.2 · Controles preventivos</a></li>
+<li><a href="#523--controles-detectivos">5.2.3 · Controles detectivos</a></li>
+<li><a href="#524--auditoria-e-não-repúdio--o-vetor-humano">5.2.4 · Auditoria e não-repúdio — o vetor humano</a></li>
+<li><a href="#525--controles-corretivos">5.2.5 · Controles corretivos</a></li>
+<li><a href="#526--defense-in-depth--os-três-tipos-como-sistema">5.2.6 · Defense in depth — os três tipos como sistema</a></li>
+<li><a href="#fontes-e-referências">Fontes e referências</a></li>
+</ul>
+<hr />
+<h2 id="521-a-taxonomia-preventivo-detectivo-e-corretivo">5.2.1 · A taxonomia preventivo, detectivo e corretivo</h2>
+<p>Controles de segurança não são intercambiáveis. Cada um tem uma função específica na arquitetura de segurança — e um controle que faz bem uma função não necessariamente faz bem outra. Organizar o arsenal de segurança pela função que cada controle desempenha — prevenir, detectar, corrigir — é mais útil do que listá-los como inventário de ferramentas, porque revela o que acontece quando qualquer tipo está ausente.</p>
+<p><strong>Controles preventivos</strong> atuam antes que o problema aconteça. Eles tentam impedir que um ataque chegue ao sistema, que um token inválido seja aceito, que um payload malformado cause dano. São o primeiro nível de defesa — e o mais visível.</p>
+<p><strong>Controles detectivos</strong> atuam durante ou depois que o problema aconteceu. Eles identificam que algo errado está acontecendo — ou já aconteceu — através da análise de comportamento, logs e padrões anômalos.</p>
+<p><strong>Controles corretivos</strong> atuam depois que o problema foi identificado. Eles respondem ao incidente, limitam o dano, restauram o serviço e previnem que o mesmo vetor seja usado novamente.</p>
+<p><strong>Auditoria e não-repúdio</strong> formam uma categoria transversal — presente tanto na dimensão detectiva quanto na preventiva. São o que garante que qualquer ação pode ser atribuída inequivocamente a um ator, incluindo atores internos autorizados. Tratamos essa dimensão em seção própria por sua importância e especificidade.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart LR
+    prev["Preventivos
+    impedem o ataque
+    WAF · rate limiting · TLS/mTLS
+    autenticação · validação · secrets
+    SAST · SCA"]
+
+    det["Detectivos
+    identificam o ataque
+    monitoramento · análise de logs
+    alertas · anomalias · DAST · SIEM"]
+
+    audit["Auditoria e não-repúdio
+    responsabilizam os atores
+    trilha imutável · rastreabilidade
+    vetor humano interno"]
+
+    corr["Corretivos
+    respondem ao ataque
+    revogação · bloqueio
+    circuit breaker · rollback"]
+
+    ataque["Vetor de ataque
+    externo ou interno"]
+
+    ataque --&gt;|"bloqueado"| prev
+    ataque --&gt;|"passa pelo preventivo"| det
+    det --&gt;|"incidente identificado"| corr
+    audit --&gt;|"responsabilização"| prev
+    audit --&gt;|"investigação"| det</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<p>A ausência de qualquer tipo cria uma lacuna distinta. Um portfólio apenas com controles preventivos é cego ao que já passou pelos controles. Um portfólio sem auditoria é incapaz de responsabilizar atores internos ou investigar incidentes com profundidade.</p>
+<p>Uma limitação estrutural importante confirmada pela pesquisa: WAFs tradicionais foram projetados para detectar vulnerabilidades por assinatura e têm dificuldade fundamental de bloquear ataques que parecem requisições legítimas — como IDOR, mass assignment e abuso de lógica de negócio. Controles preventivos complementam design seguro, não o substituem.</p>
+<hr />
+<h2 id="522-controles-preventivos">5.2.2 · Controles preventivos</h2>
+<hr />
+<h3 id="waf-web-application-firewall-para-apis">WAF — Web Application Firewall para APIs</h3>
+<p>O WAF opera inspecionando o tráfego HTTP/HTTPS antes que chegue à aplicação. Usando rulesets — o OWASP Core Rule Set é o mais amplamente adotado — o WAF detecta e bloqueia padrões conhecidos de ataque: injeção de SQL, cross-site scripting, path traversal, cabeçalhos malformados. O ModSecurity, transferido para a OWASP em 2024, é o engine open source de referência.</p>
+<blockquote>
+<p><em>OWASP ModSecurity Project. Disponível em: <a href="https://owasp.org/www-project-modsecurity/">owasp.org/www-project-modsecurity</a></em></p>
+</blockquote>
+<p>O que o WAF faz bem: bloquear ataques por assinatura conhecida, filtrar payloads com padrões de injeção, detectar ferramentas de scanning automatizado, limitar exposição a CVEs conhecidos.</p>
+<p>O que o WAF não consegue fazer: detectar IDOR — uma requisição legítima com ID de outro usuário é indistinguível de uma requisição normal; detectar mass assignment — um payload com campos extras mas sem padrões de injeção passa pelo WAF; detectar abuso de lógica de negócio. Essas são limitações estruturais, não de implementação.</p>
+<hr />
+<h3 id="rate-limiting-e-throttling">Rate limiting e throttling</h3>
+<p><strong>Rate limiting</strong> define o número máximo de requisições que um consumidor pode fazer em uma janela de tempo. Quando o limite é atingido, as requisições são rejeitadas com 429 Too Many Requests.</p>
+<p><strong>Throttling</strong> reduz a velocidade de processamento quando o sistema está sob pressão — em vez de rejeitar, processa mais lentamente para proteger recursos.</p>
+<p>A granularidade do rate limiting é crítica para sua eficácia:</p>
+<p><strong>Por consumidor</strong> — garante que nenhum consumidor individual pode monopolizar a capacidade ou realizar enumeração em escala. É o controle mais importante.</p>
+<p><strong>Por operação</strong> — operações sensíveis merecem limites mais restritivos. Um endpoint de autenticação merece limites muito mais restritivos do que um endpoint de leitura.</p>
+<p><strong>Por IP</strong> — útil para ataques de credential stuffing sem token. Complementa o rate limit por consumidor, não o substitui.</p>
+<hr />
+<h3 id="tls-e-mtls">TLS e mTLS</h3>
+<p>O TLS — Transport Layer Security — garante confidencialidade e integridade do tráfego em trânsito. A versão 1.3, especificada no RFC 8446 em agosto de 2018, é a versão atual e a única que deve ser aceita em APIs novas. TLS 1.0 e 1.1 são considerados inseguros e devem ser desabilitados.</p>
+<blockquote>
+<p><em>Rescorla, E. The Transport Layer Security (TLS) Protocol Version 1.3. RFC 8446, agosto 2018. Disponível em: <a href="https://datatracker.ietf.org/doc/html/rfc8446">datatracker.ietf.org/doc/html/rfc8446</a></em></p>
+</blockquote>
+<p><strong>mTLS — mutual TLS</strong> adiciona autenticação mútua: o servidor também verifica a identidade do cliente através de um certificado. Cria uma camada de autenticação antes mesmo que a requisição chegue à camada de aplicação. Especialmente relevante para comunicação entre serviços e ambientes Zero Trust. O RFC 8705 formaliza o uso de mTLS em contextos OAuth.</p>
+<hr />
+<h3 id="validacao-de-input">Validação de input</h3>
+<p>Validação de input no gateway complementa — nunca substitui — a validação na aplicação. O gateway pode validar: formato e tipo de parâmetros, presença de headers obrigatórios, tamanho máximo do payload, e conformidade com o schema OpenAPI declarado.</p>
+<p>A combinação de validação no gateway com <code>additionalProperties: false</code> no schema — como discutido no <a href="../cap_5_1_seg_propriedade_desing/">Cap 5.1</a> — rejeita automaticamente payloads com campos não declarados, reduzindo a superfície de mass assignment sem código adicional na aplicação.</p>
+<hr />
+<h3 id="secrets-management-gestao-de-credenciais">Secrets management — gestão de credenciais</h3>
+<p>Secrets expostos em código-fonte, logs ou repositórios públicos representam uma falha que nenhum outro controle compensa. O NIST SP 800-57 — Recommendation for Key Management — é a referência normativa para gestão de chaves e credenciais.</p>
+<blockquote>
+<p><em>Barker, E. Recommendation for Key Management: Part 1 – General. NIST SP 800-57 Part 1 Rev. 5, maio 2020. Disponível em: <a href="https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final">csrc.nist.gov/pubs/sp/800/57/pt1/r5/final</a></em></p>
+</blockquote>
+<p>Princípios fundamentais: secrets nunca em código-fonte; rotação periódica e automática seguindo crypto-periods; revogação imediata em caso de comprometimento; least privilege aplicado a credenciais — cada serviço acessa apenas os secrets que precisa.</p>
+<hr />
+<h3 id="analise-de-codigo-sast-e-sca">Análise de código — SAST e SCA</h3>
+<p>A análise de código-fonte como controle de segurança é a implementação mais concreta do princípio shift-left: encontrar vulnerabilidades quando ainda é mais barato e menos arriscado corrigi-las. O NIST SP 800-218 — Secure Software Development Framework (SSDF) v1.1 — publicado em fevereiro de 2022, é a referência normativa que formaliza a integração de ferramentas de análise de código no SDLC.</p>
+<blockquote>
+<p><em>Souppaya, M., Scarfone, K. &amp; Dodson, D. Secure Software Development Framework (SSDF) v1.1. NIST SP 800-218, fevereiro 2022. Disponível em: <a href="https://doi.org/10.6028/NIST.SP.800-218">doi.org/10.6028/NIST.SP.800-218</a></em></p>
+</blockquote>
+<p><strong>SAST — Static Application Security Testing</strong></p>
+<p>SAST analisa o código-fonte sem executá-lo — identificando vulnerabilidades durante o desenvolvimento, antes do deploy. Opera como white-box testing: tem acesso ao código completo e pode realizar análise de fluxo de dados, rastreamento de taint e análise de control-flow para identificar caminhos que levam a vulnerabilidades.</p>
+<p>No contexto de APIs: SAST identifica injeção de SQL em queries, uso inseguro de dependências, ausência de validação de input, hard-coded secrets, e padrões que levam a mass assignment. É um gate natural no pipeline de CI/CD — executado em cada pull request, antes do merge.</p>
+<p><strong>SCA — Software Composition Analysis</strong></p>
+<p>Com a maioria do código moderno composto de dependências open source, SCA analisa o grafo de dependências do projeto para identificar componentes com CVEs conhecidos, licenças incompatíveis e versões desatualizadas.</p>
+<p>No contexto de APIs: uma dependência de serialização com vulnerabilidade de desserialização insegura pode comprometer toda a API. Uma biblioteca HTTP com CVE de SSRF pode ser explorada por um atacante. SCA é o controle que torna visível o risco da cadeia de fornecimento de software antes que chegue a produção.</p>
+<p>A combinação SAST + SCA no pipeline de CI/CD cobre as duas principais fontes de vulnerabilidade preventivamente: o código que o time escreveu e o código que o time trouxe de terceiros.</p>
+<hr />
+<h2 id="523-controles-detectivos">5.2.3 · Controles detectivos</h2>
+<hr />
+<h3 id="monitoramento-de-comportamento-e-anomalias">Monitoramento de comportamento e anomalias</h3>
+<p>O monitoramento de segurança vai além de disponibilidade e latência — analisa padrões de comportamento para identificar atividade maliciosa mesmo quando tecnicamente válida.</p>
+<p>Padrões que merecem atenção:</p>
+<p><strong>Volume anômalo por consumidor</strong> — um consumidor que normalmente faz 100 requisições por hora e de repente faz 10.000 pode estar realizando enumeração ou com credenciais comprometidas.</p>
+<p><strong>Padrões sequenciais de identificadores</strong> — requisições que percorrem IDs em sequência numérica são sinal claro de tentativa de enumeração.</p>
+<p><strong>Acessos em horários atípicos</strong> — um consumidor que normalmente opera em horário comercial e passa a fazer requisições às 3h pode ter credenciais comprometidas.</p>
+<p><strong>Padrão de erros de autenticação</strong> — múltiplas tentativas com credenciais diferentes em sequência rápida — credential stuffing.</p>
+<hr />
+<h3 id="analise-de-logs-de-seguranca">Análise de logs de segurança</h3>
+<p>O NIST SP 800-92 — Guide to Computer Security Log Management — é a referência normativa para gestão de logs de segurança.</p>
+<blockquote>
+<p><em>Kent, K. &amp; Souppaya, M. Guide to Computer Security Log Management. NIST SP 800-92, setembro 2006. Disponível em: <a href="https://csrc.nist.gov/pubs/sp/800/92/final">csrc.nist.gov/pubs/sp/800/92/final</a></em></p>
+</blockquote>
+<p>O que registrar em logs de segurança de APIs, para cada requisição: timestamp com precisão de milissegundos, identificador do consumidor, endpoint e método HTTP, código de resposta, tamanho do payload, latência e correlation ID.</p>
+<p>O que <strong>não</strong> registrar: tokens de autenticação, payloads completos com dados sensíveis e stack traces em logs de acesso.</p>
+<hr />
+<h3 id="dast-dynamic-application-security-testing">DAST — Dynamic Application Security Testing</h3>
+<p>DAST testa a aplicação em execução simulando o comportamento de um atacante externo — sem acesso ao código-fonte. Opera como black-box testing: envia requisições e analisa as respostas para identificar vulnerabilidades que só se manifestam em runtime.</p>
+<p>No contexto de APIs: DAST identifica configurações inseguras de CORS, endpoints que retornam dados de autenticação em respostas de erro, vulnerabilidades de injeção que o SAST não detectou, e comportamentos inesperados sob condições de input anômalo.</p>
+<p>DAST é mais eficaz quando aplicado a ambientes que reproduzem fielmente a produção — staging com dados e configurações representativos. Diferente do SAST, que é executado em cada commit, DAST tipicamente é executado em cadências menos frequentes devido ao tempo de execução e ao risco de efeitos colaterais em dados de teste.</p>
+<p>A combinação SAST + DAST é recomendada pelo NIST SSDF e pela literatura de segurança de aplicações como cobertura complementar: SAST encontra vulnerabilidades no código antes da execução; DAST confirma quais são exploráveis em runtime.</p>
+<blockquote>
+<p><em>OWASP Foundation. OWASP Web Security Testing Guide v4. Disponível em: <a href="https://owasp.org/www-project-web-security-testing-guide/">owasp.org/www-project-web-security-testing-guide</a></em></p>
+</blockquote>
+<hr />
+<h3 id="siem-e-correlacao-de-eventos">SIEM e correlação de eventos</h3>
+<p>SIEM — Security Information and Event Management — centraliza logs de múltiplas fontes e correlaciona eventos para identificar padrões não visíveis em cada fonte individualmente. Para APIs, é especialmente útil quando o portfólio é grande e ataques distribuídos — que ficam abaixo dos limites individuais de cada API — só são detectáveis pela correlação entre APIs.</p>
+<p>O SIEM é uma plataforma que transcende o contexto de APIs — é parte da estratégia de segurança de toda a organização de TI. Seu detalhamento completo, incluindo arquiteturas, critérios de adoção e integração com programas de APIs, está no <strong><a href="../../anexos/f_siem/">Anexo F · SIEM e correlação de eventos de segurança</a></strong>.</p>
+<hr />
+<h2 id="524-auditoria-e-nao-repudio-o-vetor-humano">5.2.4 · Auditoria e não-repúdio — o vetor humano</h2>
+<p>Controles preventivos e detectivos são projetados primariamente contra ameaças externas. Mas uma das ameaças mais significativas para sistemas de informação é interna: o ator com acesso legítimo que age de forma maliciosa, negligente ou além de suas permissões.</p>
+<p>Um administrador insatisfeito com acesso a credenciais de produção. Um desenvolvedor com permissões excessivas que acessa dados que não deveria. Um parceiro com escopos amplos que extrai dados além do necessário para seu caso de uso. Esses vetores têm em comum que passam pelos controles preventivos — porque têm credenciais válidas — e frequentemente passam pelos controles detectivos — porque o volume e o padrão de acesso podem parecer normais.</p>
+<p>O que os diferencia de atacantes externos é que há um ator identificável responsável pelas ações. A auditoria e o não-repúdio são os controles que garantem que esse ator pode ser responsabilizado.</p>
+<hr />
+<h3 id="o-principio-de-nao-repudio">O princípio de não-repúdio</h3>
+<p>Não-repúdio é a garantia de que uma ação pode ser atribuída inequivocamente a um ator específico de forma que esse ator não possa negar tê-la realizado. O NIST SP 800-53 Rev. 5 dedica o controle AU-10 explicitamente ao não-repúdio dentro da família Audit and Accountability.</p>
+<blockquote>
+<p><em>NIST. Security and Privacy Controls for Information Systems and Organizations. NIST SP 800-53 Rev. 5, setembro 2020. Disponível em: <a href="https://doi.org/10.6028/NIST.SP.800-53r5">doi.org/10.6028/NIST.SP.800-53r5</a></em></p>
+</blockquote>
+<p>A família AU do NIST SP 800-53 define os controles de auditoria com precisão:</p>
+<ul>
+<li><strong>AU-2</strong> — quais eventos devem ser registrados</li>
+<li><strong>AU-3</strong> — o conteúdo obrigatório de cada registro: tipo de evento, timestamp, localização, origem, resultado e identidade do ator</li>
+<li><strong>AU-9</strong> — proteção dos registros de auditoria contra modificação ou exclusão</li>
+<li><strong>AU-10</strong> — não-repúdio: evidência irrefutável de que um ator realizou uma ação específica</li>
+<li><strong>AU-11</strong> — retenção dos registros pelo período necessário</li>
+</ul>
+<hr />
+<h3 id="o-que-uma-trilha-de-auditoria-de-apis-precisa-registrar">O que uma trilha de auditoria de APIs precisa registrar</h3>
+<p>Para que o não-repúdio seja efetivo no contexto de APIs, cada ação com consequências de segurança precisa estar registrada com informação suficiente para atribuição inequívoca:</p>
+<p><strong>Identidade do ator</strong> — não apenas o IP ou o client_id do sistema consumidor, mas a identidade do usuário humano quando aplicável. Em sistemas com autenticação delegada, o sub do JWT que identifica o usuário final é o que permite responsabilização individual.</p>
+<p><strong>A ação realizada</strong> — qual operação foi chamada, qual recurso foi acessado ou modificado, qual dado foi lido.</p>
+<p><strong>O momento exato</strong> — timestamp sincronizado com servidor de tempo confiável (AU-8 do NIST SP 800-53 trata explicitamente de sincronização de timestamps).</p>
+<p><strong>O resultado</strong> — sucesso, falha, e em casos de falha o motivo.</p>
+<p><strong>O contexto</strong> — de onde a requisição veio, qual versão da API foi usada, qual escopo estava no token.</p>
+<hr />
+<h3 id="protecao-da-trilha-de-auditoria">Proteção da trilha de auditoria</h3>
+<p>Uma trilha de auditoria que pode ser modificada pelo ator auditado não oferece não-repúdio. O controle AU-9 do NIST SP 800-53 estabelece explicitamente que os registros de auditoria devem ser protegidos contra acesso não autorizado, modificação e deleção.</p>
+<p>No contexto de APIs, isso significa:</p>
+<p><strong>Imutabilidade</strong> — logs de auditoria não devem poder ser modificados por nenhum processo, incluindo os administradores do sistema auditado. Soluções de armazenamento com write-once semantics ou logs enviados para um sistema separado sem permissão de escrita reversa.</p>
+<p><strong>Separação de duties</strong> — quem administra as APIs não deve ter acesso de escrita aos logs de auditoria dessas mesmas APIs. A separação previne que um administrador malicioso apague evidências de suas próprias ações.</p>
+<p><strong>Retenção adequada</strong> — os registros precisam ser mantidos pelo período que a regulação e os requisitos de compliance determinam. Logs descartados prematuramente invalidam investigações forenses.</p>
+<hr />
+<h3 id="o-efeito-dissuasorio">O efeito dissuasório</h3>
+<p>Auditoria tem também uma dimensão preventiva que frequentemente é subestimada: a consciência de que todas as ações são registradas e podem ser revisadas tem efeito dissuasório sobre atores internos. Um administrador que sabe que cada acesso a dados de produção gera um registro auditável que pode ser revisado pela gestão ou por auditores externos tende a ser mais criterioso no uso de seus privilégios.</p>
+<p>Esse efeito dissuasório é especialmente relevante para APIs com escopos administrativos ou com acesso a dados pessoais — onde a tentação de abuso de privilégio é maior e onde as consequências regulatórias de um vazamento interno são mais severas.</p>
+<hr />
+<h2 id="525-controles-corretivos">5.2.5 · Controles corretivos</h2>
+<hr />
+<h3 id="revogacao-de-tokens-e-credenciais">Revogação de tokens e credenciais</h3>
+<p>A capacidade de revogar tokens e credenciais rapidamente é o controle corretivo mais crítico em incidentes de segurança. Um token comprometido que não pode ser revogado é uma janela de vulnerabilidade que persiste até a expiração natural.</p>
+<p>O design de tokens com vida curta — access tokens com expiração em minutos — reduz o impacto de um token comprometido. Mas não elimina a necessidade de revogação: em incidentes graves, mesmo minutos de exposição são inaceitáveis.</p>
+<p>A RFC 7009 — OAuth 2.0 Token Revocation — define o protocolo padrão. O processo operacional de revogação deve ser documentado e testado antes de ser necessário em um incidente real.</p>
+<hr />
+<h3 id="bloqueio-de-ips-e-consumidores">Bloqueio de IPs e consumidores</h3>
+<p>O bloqueio de IPs é eficaz para ataques com infraestrutura limitada. Para ataques com credenciais comprometidas, o bloqueio de consumidor — suspender um client_id específico — é mais eficaz, mas requer comunicação imediata com o consumidor legítimo para restaurar acesso com novas credenciais.</p>
+<hr />
+<h3 id="circuit-breaker-e-isolamento-de-endpoints">Circuit breaker e isolamento de endpoints</h3>
+<p>Em incidentes onde um endpoint específico está sendo explorado ativamente, o isolamento temporário desse endpoint no gateway pode ser a ação corretiva mais rápida enquanto a vulnerabilidade é investigada. A decisão requer análise de impacto imediata — que o service mapping do Cap 4.3 habilita.</p>
+<hr />
+<h3 id="rollback-de-mudancas">Rollback de mudanças</h3>
+<p>Quando um incidente é causado por uma mudança recente — configuração de gateway, política de segurança removida, atualização de dependência com vulnerabilidade — o rollback para a versão anterior é frequentemente o controle corretivo mais rápido. Depende da maturidade do change management do Cap 4.4: Change Records com plano de reversão, versionamento de configurações e pipelines que permitem deploy da versão anterior rapidamente.</p>
+<hr />
+<h2 id="526-defense-in-depth-os-tres-tipos-como-sistema">5.2.6 · Defense in depth — os três tipos como sistema</h2>
+<p>A taxonomia preventivo-detectivo-corretivo tem valor real apenas quando os três tipos operam como sistema. Cada tipo tem limitações que os outros compensam.</p>
+<p>Controles preventivos não conseguem bloquear o que não reconhecem como ameaça. Controles detectivos não conseguem prevenir o dano inicial. Controles corretivos não conseguem desfazer o dano já causado. Auditoria não previne o ato — responsabiliza depois.</p>
+<hr />
+<h3 id="um-cenario-integrado">Um cenário integrado</h3>
+<p>Um atacante obtém credenciais comprometidas de um consumidor legítimo e inicia extração de dados:</p>
+<p><strong>Camada preventiva — detecção parcial:</strong> o WAF não detecta nada — requisições com credenciais válidas sem padrões de injeção. Rate limit por consumidor não é violado — o atacante fica dentro dos limites. TLS está correto. Os controles preventivos não bloquearam porque o atacante parece legítimo.</p>
+<p><strong>Camada detectiva — alerta:</strong> monitoramento comportamental identifica volume dobrado nas últimas 2 horas, padrão sequencial de IDs e horário incomum. Alerta gerado. Time de segurança confirma comprometimento de credenciais.</p>
+<p><strong>Auditoria — responsabilização e investigação:</strong> a trilha de auditoria mostra exatamente quais objetos foram acessados, com timestamps precisos. Evidência irrefutável para análise forense, notificação regulatória e, se aplicável, ação legal.</p>
+<p><strong>Camada corretiva — resposta:</strong> credenciais revogadas via RFC 7009. Consumidor legítimo notificado. Logs preservados. Volume de dados potencialmente expostos avaliado para obrigações de notificação.</p>
+<p>O post-mortem identifica: alertas comportamentais poderiam ter sido mais sensíveis; a auditoria forneceu evidência completa que o monitoramento operacional não teria.</p>
+<hr />
+<h2 id="pontos-chave-do-capitulo">Pontos-chave do capítulo</h2>
+<ul>
+<li>A taxonomia preventivo-detectivo-corretivo organiza controles pela função que desempenham. Auditoria e não-repúdio formam uma categoria transversal que responsabiliza atores — incluindo internos autorizados</li>
+<li>WAF tem limitações estruturais para APIs: não detecta IDOR, mass assignment nem lógica de negócio. É controle complementar, não substituto de design seguro</li>
+<li>SAST e SCA são controles preventivos que pertencem ao pipeline de CI/CD: SAST encontra vulnerabilidades no código que o time escreveu; SCA encontra vulnerabilidades no código de terceiros que o time usa. O NIST SP 800-218 (SSDF) formaliza sua integração no SDLC</li>
+<li>DAST é controle detectivo que testa a aplicação em execução — confirmando quais vulnerabilidades são exploráveis em runtime. Complementar ao SAST, não substituto</li>
+<li>Auditoria e não-repúdio — formalizados na família AU do NIST SP 800-53 — são os controles que protegem contra o vetor humano interno. A trilha de auditoria precisa ser imutável, com identidade do ator, ação, timestamp e resultado. Seu efeito dissuasório tem também dimensão preventiva</li>
+<li>O SIEM é tratado com profundidade no <a href="../../anexos/f_siem/">Anexo F</a>, por transcender o contexto específico de APIs</li>
+<li>Defense in depth: nenhum tipo de controle é suficiente isoladamente. A eficácia de cada tipo depende dos outros dois</li>
+</ul>
+<hr />
+<h2 id="fontes-e-referencias">Fontes e referências</h2>
+<table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Referência completa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OWASP API Security Top 10 (2023)</strong></td>
+<td>OWASP Foundation. <em>OWASP API Security Top 10 2023</em>. Disponível em: <a href="https://owasp.org/www-project-api-security/">owasp.org/www-project-api-security</a></td>
+</tr>
+<tr>
+<td><strong>OWASP ModSecurity</strong></td>
+<td>OWASP Foundation. <em>OWASP ModSecurity Project</em>. Disponível em: <a href="https://owasp.org/www-project-modsecurity/">owasp.org/www-project-modsecurity</a></td>
+</tr>
+<tr>
+<td><strong>RFC 8446 — TLS 1.3 (2018)</strong></td>
+<td>Rescorla, E. <em>The Transport Layer Security (TLS) Protocol Version 1.3</em>. RFC 8446, agosto 2018. Disponível em: <a href="https://datatracker.ietf.org/doc/html/rfc8446">datatracker.ietf.org/doc/html/rfc8446</a></td>
+</tr>
+<tr>
+<td><strong>RFC 8705 — mTLS OAuth (2020)</strong></td>
+<td>Campbell, B. et al. <em>OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens</em>. RFC 8705, fevereiro 2020. Disponível em: <a href="https://datatracker.ietf.org/doc/html/rfc8705">datatracker.ietf.org/doc/html/rfc8705</a></td>
+</tr>
+<tr>
+<td><strong>NIST SP 800-57 Pt1 Rev.5 (2020)</strong></td>
+<td>Barker, E. <em>Recommendation for Key Management: Part 1 – General</em>. NIST SP 800-57 Part 1 Revision 5, maio 2020. Disponível em: <a href="https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final">csrc.nist.gov/pubs/sp/800/57/pt1/r5/final</a></td>
+</tr>
+<tr>
+<td><strong>NIST SP 800-218 — SSDF (2022)</strong></td>
+<td>Souppaya, M., Scarfone, K. &amp; Dodson, D. <em>Secure Software Development Framework (SSDF) v1.1</em>. NIST SP 800-218, fevereiro 2022. Disponível em: <a href="https://doi.org/10.6028/NIST.SP.800-218">doi.org/10.6028/NIST.SP.800-218</a></td>
+</tr>
+<tr>
+<td><strong>NIST SP 800-53 Rev. 5 (2020)</strong></td>
+<td>NIST. <em>Security and Privacy Controls for Information Systems and Organizations</em>. NIST SP 800-53 Rev. 5, setembro 2020. Disponível em: <a href="https://doi.org/10.6028/NIST.SP.800-53r5">doi.org/10.6028/NIST.SP.800-53r5</a></td>
+</tr>
+<tr>
+<td><strong>NIST SP 800-92 (2006)</strong></td>
+<td>Kent, K. &amp; Souppaya, M. <em>Guide to Computer Security Log Management</em>. NIST SP 800-92, setembro 2006. Disponível em: <a href="https://csrc.nist.gov/pubs/sp/800/92/final">csrc.nist.gov/pubs/sp/800/92/final</a></td>
+</tr>
+<tr>
+<td><strong>OWASP Testing Guide v4</strong></td>
+<td>OWASP Foundation. <em>OWASP Web Security Testing Guide v4</em>. Disponível em: <a href="https://owasp.org/www-project-web-security-testing-guide/">owasp.org/www-project-web-security-testing-guide</a></td>
+</tr>
+<tr>
+<td><strong>RFC 7009 — Token Revocation</strong></td>
+<td>Lodderstedt, T. &amp; Dronia, S. <em>OAuth 2.0 Token Revocation</em>. RFC 7009, agosto 2013. Disponível em: <a href="https://datatracker.ietf.org/doc/html/rfc7009">datatracker.ietf.org/doc/html/rfc7009</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="proximo-capitulo">Próximo capítulo</h2>
+<p><strong>5.3 · OWASP API Security Top 10 — os riscos mais críticos</strong> — análise profunda das dez categorias de risco mais prevalentes em APIs, com causa raiz, padrão de exploração e mitigação para cada uma.</p>
+<hr />
+<p><em>Série: Gerenciamento e Governança de APIs · Módulo 5 · Capítulo 5.2</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Fabio Mira
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/fgmira/estudo-api-management" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.esm.min.mjs" type="module"></script>
+      
+        <script src="../../assets/javascripts/panzoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/zoompan.js"></script>
+      
+    
+  </body>
+</html>

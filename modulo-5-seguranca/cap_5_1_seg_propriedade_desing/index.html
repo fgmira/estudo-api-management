@@ -1,0 +1,4918 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de estudos sobre API Management">
+      
+      
+        <meta name="author" content="Fabio">
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../cap_5_2_arsenal_seguranca/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>5.1 Segurança como Propriedade do Design - Estudo API Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/panzoom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="panzoom-theme" content="material">
+<meta name="panzoom-data" content='{"selectors": [".d2", ".mermaid"], "initial_zoom_level": 1.0}'> </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-5-seguranca-de-apis" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Estudo API Management" class="md-header__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estudo API Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              5.1 Segurança como Propriedade do Design
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estudo API Management" class="md-nav__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Estudo API Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-1-fundamentos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 1 — Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 1 — Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_1_o_que_e_uma_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 O que é uma API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_2_api_como_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 API como Produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_3__governanca_de_api_conceitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Governança de API — Conceitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_4_diferenca_gerenciamento_governanca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Diferença entre Gerenciamento e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_5_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Os Três Planos — Controle, Dados e Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_6_estilos_arquiteturais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 Estilos arquiteturais e suas implicações de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_7_heterogeneidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 Heterogeneidade de infraestrutura e governança multi-ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-2-ciclo-de-vida/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_1_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 As Fases do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_2_design_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Design-first vs. Code-first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_3_contratos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Contratos de API — OpenAPI, AsyncAPI e gRPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_4_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Documentação de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_5_versionamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Versionamento e Gestão de Breaking Changes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_6_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 Depreciação e Sunset Controlado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_7_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 Os Três Planos ao Longo do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-3-governanca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 3 — Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 3 — Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_1_pilares/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Pilares da Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_2_papeis_reponsabilidades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Papéis e Responsabilidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_3_coe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 O Centro de Excelência de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_4_guia_estilo_politica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Style Guides e Políticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_5_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Catálogo e Descoberta de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_6_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Governança de APIs de Parceiros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_7_modelos_organizacionais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 Modelos Organizacionais — Centralizado, Federado e Híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_8_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 Os Três Planos como Instrumentos de Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-4-itil/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 4 — ITIL & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 4 — ITIL & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_1_itil_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_2_quatro_dimensoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 As Quatro Dimensões do ITIL 4 no contexto de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_3_cmdb_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Configuration Management e CMDB para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_4_change_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Change Enablement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_5_catalogo_servico_slm_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Service Catalog e SLM para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_6_incidente_problema_melhoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Incident, Problem e Continual Improvement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_7_itil_devops_sre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 ITIL, SRE e DevOps — Convergências e Complementaridades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_8_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 Descoberta de APIs — os Dois Prismas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 5 — Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 5 — Segurança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Segurança como Propriedade do Design
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Segurança como Propriedade do Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-51-seguranca-como-propriedade-do-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 5.1 · Segurança como propriedade do design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#511-a-distincao-entre-security-by-design-e-security-by-addition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.1 · A distinção entre security by design e security by addition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.1 · A distinção entre security by design e security by addition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-security-by-addition-tem-um-teto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que security by addition tem um teto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-custo-de-retrofit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O custo de retrofit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#512-superficies-de-ataque-no-design-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.2 · Superfícies de ataque no design de APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.2 · Superfícies de ataque no design de APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exposicao-excessiva-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exposição excessiva de dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificadores-previsiveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificadores previsíveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints-sem-granularidade-de-autorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints sem granularidade de autorização
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payloads-sem-restricao-de-escopo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Payloads sem restrição de escopo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operacoes-sem-limites-de-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operações sem limites de volume
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#513-threat-modeling-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.3 · Threat modeling para APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.3 · Threat modeling para APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stride-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STRIDE aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-fazer-threat-modeling-durante-o-design-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como fazer threat modeling durante o design de APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#514-principios-de-design-seguro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.4 · Princípios de design seguro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.4 · Princípios de design seguro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#least-privilege-privilegio-minimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Least privilege — privilégio mínimo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defense-in-depth-defesa-em-profundidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defense in depth — defesa em profundidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-secure-falhar-de-forma-segura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fail secure — falhar de forma segura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimizacao-de-exposicao-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimização de exposição de dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#515-seguranca-como-criterio-do-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.5 · Segurança como critério do contrato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.5 · Segurança como critério do contrato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaracao-de-esquemas-de-seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaração de esquemas de segurança
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escopos-granulares-por-operacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escopos granulares por operação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-restritivo-de-payloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema restritivo de payloads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensagens-de-erro-sem-vazamento-de-informacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensagens de erro sem vazamento de informação
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#516-modelagem-de-escopos-design-taxonomia-e-governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.6 · Modelagem de escopos — design, taxonomia e governança
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.6 · Modelagem de escopos — design, taxonomia e governança">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-dilema-da-granularidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O dilema da granularidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-estrutura-de-uma-taxonomia-de-escopos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A estrutura de uma taxonomia de escopos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boas-praticas-de-modelagem-de-escopos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boas práticas de modelagem de escopos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-evolucao-alem-de-escopos-simples-rich-authorization-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A evolução além de escopos simples — Rich Authorization Requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-o-coe-governa-a-taxonomia-de-escopos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como o CoE governa a taxonomia de escopos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_2_arsenal_seguranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 O Arsenal de Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_3_oswap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OWASP API Security Top 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_4_autenticacao_autorizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Autenticação e Autorização — os Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_5_zero_trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Zero Trust para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_6_seguranca_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Segurança no Ciclo de Vida — Shift Left
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_7_seguranca_gtw_plat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 Segurança no Gateway e na Plataforma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_8_seguranca_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 Segurança em APIs de Parceiros e APIs Públicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_5_9_resposta_incidentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 Resposta a Incidentes de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-6-ia_apis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 6 — IA & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 6 — IA & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_1_ia_api_paradgma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 IA e APIs — o Novo Paradigma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_2_mcp_protocolos_agenticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 MCP e os Protocolos Agênticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_3_identidade_autorizacao_agentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Identidade e Autorização de Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_4_seguranca_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Segurança no Ecossistema Agêntico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_5_ia_produzindo_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 IA Produzindo APIs — Riscos e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_6_ai_gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 AI Gateway — o Novo Plano de Controle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_7_gov_api_era_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Governança de APIs na Era Agêntica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_8_ai_readiness_portifolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.8 AI Readiness do Portfólio — Avaliação e Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-7-maturidade/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_1_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 O que é maturidade — e por que importa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_2_frameworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Os frameworks existentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_3_linguagem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 A linguagem unificada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_4_lideranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Dimensão — Estratégia e Liderança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_5_desing_padroes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5 Dimensão — Design e Padrões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_6_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6 Dimensão — Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_7_seguran%C3%A7a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.7 Dimensão — Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_8_observabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.8 Dimensão — Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_9_dx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.9 Dimensão — Developer Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_10_ai_readness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.10 Dimensão — AI Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_11_operacionalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.11 Dimensão — Operacionalização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_12_diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.12 O diagnóstico holístico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-8-operacionalizando_governan%C3%A7a/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/prefacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prefácio — A plataforma como produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_1_intensao_infra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Da intenção à infraestrutura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_2_contextos_plataforma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Os contextos de uma plataforma de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_3_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 O catálogo como fonte de verdade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_4_politicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 Políticas como código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_5_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.5 O pipeline de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_6_inteligencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.6 Inteligência de portfólio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_7_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.7 Descoberta e reconciliação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_8_portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.8 Portal e a experiência do desenvolvedor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_9_conhecimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.9 Conhecimento como contexto independente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_10_assistencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.10 Assistência inteligente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_11_dx_inteligencia_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.11 DX e inteligência de produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_12_identidade_acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.12 Identidade e acesso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_13_comprar_fazer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.13 Build, buy ou compor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_14_adocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.14 Adoção — o problema mais difícil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_1_breaking_changes_REST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.1 Breaking Changes em APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_2_breaking_changes_graphQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.2 Breaking Changes em APIs GraphQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_3_breaking_changes_grpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.3 Breaking Changes em Protocol Buffers (gRPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_4_breaking_changes_asyncapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.4 Breaking Changes em AsyncAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/b_plano_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Template de Plano de Depreciação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/c_raci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Modelo RACI para Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/d_gestao_conhecimento_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Gestão do Conhecimento no Programa de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/e_design_seguro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E. Falhas de Design Seguro em APIs — Casos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/f_siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    F. SIEM e Correlação de Eventos de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/g_autorizacao_controle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    G. Autorização e Controle de Acesso em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/h_exposicao_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H. Exposição de Dados em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/i_recursos_injecao_gestao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I. Recursos, Injeção e Gestão em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/j_rfcs_oauth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    J. Guia de leitura — os RFCs do OAuth 2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/k_rfcs_token/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K. Guia de leitura — os RFCs dos tokens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/l_rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L. Modelos e Ferramentas de Autorização Fina
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/m_frameworks_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M. Guia Comparativo dos Frameworks de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/n_diagnostico_formulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    N. Questionário de Autodiagnóstico de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-51-seguranca-como-propriedade-do-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 5.1 · Segurança como propriedade do design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#511-a-distincao-entre-security-by-design-e-security-by-addition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.1 · A distinção entre security by design e security by addition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.1 · A distinção entre security by design e security by addition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#por-que-security-by-addition-tem-um-teto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que security by addition tem um teto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-custo-de-retrofit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O custo de retrofit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#512-superficies-de-ataque-no-design-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.2 · Superfícies de ataque no design de APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.2 · Superfícies de ataque no design de APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exposicao-excessiva-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exposição excessiva de dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificadores-previsiveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificadores previsíveis
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#endpoints-sem-granularidade-de-autorizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Endpoints sem granularidade de autorização
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payloads-sem-restricao-de-escopo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Payloads sem restrição de escopo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operacoes-sem-limites-de-volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operações sem limites de volume
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#513-threat-modeling-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.3 · Threat modeling para APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.3 · Threat modeling para APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stride-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STRIDE aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-fazer-threat-modeling-durante-o-design-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como fazer threat modeling durante o design de APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#514-principios-de-design-seguro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.4 · Princípios de design seguro
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.4 · Princípios de design seguro">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#least-privilege-privilegio-minimo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Least privilege — privilégio mínimo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defense-in-depth-defesa-em-profundidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defense in depth — defesa em profundidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fail-secure-falhar-de-forma-segura" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fail secure — falhar de forma segura
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimizacao-de-exposicao-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimização de exposição de dados
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#515-seguranca-como-criterio-do-contrato" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.5 · Segurança como critério do contrato
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.5 · Segurança como critério do contrato">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#declaracao-de-esquemas-de-seguranca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaração de esquemas de segurança
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escopos-granulares-por-operacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Escopos granulares por operação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schema-restritivo-de-payloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schema restritivo de payloads
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensagens-de-erro-sem-vazamento-de-informacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensagens de erro sem vazamento de informação
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#516-modelagem-de-escopos-design-taxonomia-e-governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1.6 · Modelagem de escopos — design, taxonomia e governança
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1.6 · Modelagem de escopos — design, taxonomia e governança">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-dilema-da-granularidade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O dilema da granularidade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-estrutura-de-uma-taxonomia-de-escopos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A estrutura de uma taxonomia de escopos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boas-praticas-de-modelagem-de-escopos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boas práticas de modelagem de escopos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-evolucao-alem-de-escopos-simples-rich-authorization-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A evolução além de escopos simples — Rich Authorization Requests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-o-coe-governa-a-taxonomia-de-escopos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como o CoE governa a taxonomia de escopos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="modulo-5-seguranca-de-apis">Módulo 5 · Segurança de APIs</h1>
+<h2 id="capitulo-51-seguranca-como-propriedade-do-design">Capítulo 5.1 · Segurança como propriedade do design</h2>
+<blockquote>
+<p><strong>Série:</strong> Gerenciamento e Governança de APIs
+<strong>Nível:</strong> Estratégico e técnico
+<strong>Pré-requisito:</strong> Cap 2.2 · Cap 2.3 · Cap 3.4</p>
+</blockquote>
+<hr />
+<h2 id="sumario">Sumário</h2>
+<ul>
+<li><a href="#511--a-distinção-entre-security-by-design-e-security-by-addition">5.1.1 · A distinção entre security by design e security by addition</a></li>
+<li><a href="#512--superfícies-de-ataque-no-design-de-apis">5.1.2 · Superfícies de ataque no design de APIs</a></li>
+<li><a href="#513--threat-modeling-para-apis">5.1.3 · Threat modeling para APIs</a></li>
+<li><a href="#514--princípios-de-design-seguro">5.1.4 · Princípios de design seguro</a></li>
+<li><a href="#515--segurança-como-critério-do-contrato">5.1.5 · Segurança como critério do contrato</a></li>
+<li><a href="#516--modelagem-de-escopos--design-taxonomia-e-governança">5.1.6 · Modelagem de escopos — design, taxonomia e governança</a></li>
+<li><a href="#fontes-e-referências">Fontes e referências</a></li>
+</ul>
+<hr />
+<h2 id="511-a-distincao-entre-security-by-design-e-security-by-addition">5.1.1 · A distinção entre security by design e security by addition</h2>
+<p>Existe uma diferença fundamental entre uma API que é segura e uma API que tem segurança adicionada. A distinção não é sutil — é estrutural — e determina o nível de proteção real que qualquer quantidade de controles adicionais consegue oferecer.</p>
+<p><strong>Security by addition</strong> é o padrão mais comum. A API é projetada para funcionar — para expor os recursos certos, retornar os dados corretos, ter a performance adequada. Quando está pronta, ou quase pronta, a segurança é adicionada: um gateway na frente, rate limiting configurado, autenticação habilitada. Os controles são reais e têm valor. Mas são aplicados sobre um design que não foi pensado com segurança em mente — e há um limite para o que conseguem compensar.</p>
+<p><strong>Security by design</strong> é diferente em natureza, não apenas em timing. Segurança é uma propriedade do design — cada decisão considera suas implicações desde o início. Quais dados este endpoint precisa realmente expor? Como vou garantir que apenas o consumidor certo acessa o objeto certo? O que acontece se este endpoint for chamado com um payload malformado? Essas perguntas são feitas durante o design — não durante a revisão de segurança antes do lançamento.</p>
+<p>O NIST SP 800-160v1r1 — <em>Engineering Trustworthy Secure Systems</em>, publicado em novembro de 2022 — formaliza esse princípio como fundamento da engenharia de sistemas seguros: segurança deve ser tratada como propriedade do sistema desde as fases iniciais de concepção, não como um conjunto de controles adicionados ao final. A publicação substitui e supera o SP 800-160 original de 2018, com ênfase renovada nos princípios de design que tornam sistemas genuinamente confiáveis.</p>
+<blockquote>
+<p><em>Ross, R., McEvilley, M. &amp; Winstead, M. Engineering Trustworthy Secure Systems. NIST Special Publication 800-160v1r1, novembro 2022. Disponível em: <a href="https://doi.org/10.6028/NIST.SP.800-160v1r1">doi.org/10.6028/NIST.SP.800-160v1r1</a></em></p>
+</blockquote>
+<hr />
+<h3 id="por-que-security-by-addition-tem-um-teto">Por que security by addition tem um teto</h3>
+<p>O problema do security by addition não é que os controles são fracos — é que não conseguem compensar decisões de design que criam superfícies de ataque estruturais.</p>
+<p>Três exemplos documentados no OWASP API Security Top 10:</p>
+<p>Um endpoint que usa IDs sequenciais de objetos e retorna os dados sem verificar se o consumidor autenticado tem direito àquele objeto específico. Um gateway com autenticação habilitada não resolve — o consumidor está autenticado, mas está acessando um objeto que não é dele. A vulnerabilidade está no design, não na ausência de autenticação.</p>
+<p>Um endpoint que retorna o objeto completo — incluindo campos internos, flags de sistema e dados sensíveis — quando o consumidor precisa apenas do nome e do email. Rate limiting e WAF não resolvem. A exposição excessiva de dados está no design do contrato.</p>
+<p>Um endpoint que aceita qualquer campo em um payload de atualização e os aplica diretamente ao objeto — incluindo campos que o consumidor não deveria poder alterar, como <code>role</code> ou <code>admin_flag</code>. Validação de schema no gateway não resolve se o schema não especifica exatamente quais campos são permitidos.</p>
+<p>Em todos os três casos, adicionar controles depois não resolve a vulnerabilidade — porque a vulnerabilidade é o design. O <a href="../../anexos/e_design_seguro/">Anexo E · Falhas de design seguro em APIs — casos práticos</a> aprofunda esses e outros padrões com exemplos práticos e casos documentados.</p>
+<hr />
+<h3 id="o-custo-de-retrofit">O custo de retrofit</h3>
+<p>Além da eficácia limitada, security by addition tem um custo prático que security by design não tem: o custo de retrofit.</p>
+<p>Redesenhar um endpoint que expõe objetos por ID sequencial para validar autorização por objeto depois que consumidores já estão integrados é uma breaking change. Remover campos de um payload de resposta depois que consumidores os utilizam é uma breaking change. Restringir quais campos um endpoint aceita depois que consumidores os estão enviando é uma breaking change.</p>
+<p>Security by design evita esse custo — não porque os requisitos de segurança são mais baratos de implementar durante o design, mas porque não forçam breaking changes em consumidores existentes quando são descobertos depois.</p>
+<hr />
+<h2 id="512-superficies-de-ataque-no-design-de-apis">5.1.2 · Superfícies de ataque no design de APIs</h2>
+<p>Superfície de ataque é o conjunto de pontos onde um atacante pode tentar entrar, extrair dados ou causar dano. No contexto de APIs, a superfície de ataque é definida em grande parte pelas decisões de design — antes que qualquer controle de segurança seja aplicado.</p>
+<hr />
+<h3 id="exposicao-excessiva-de-dados">Exposição excessiva de dados</h3>
+<p>Cada campo que um endpoint retorna é parte da superfície de ataque. Campos que o consumidor não precisa — campos internos, flags de sistema, dados de outros contextos, metadados técnicos — são superfície de ataque sem valor para o consumidor legítimo.</p>
+<p>O princípio de minimização de exposição é simples: um endpoint deve retornar apenas os dados que o consumidor específico precisa para o caso de uso específico. Na prática, esse princípio é violado frequentemente porque é mais fácil retornar o objeto completo do que projetar uma resposta específica para cada caso de uso.</p>
+<p>A conexão com o design-first do Cap 2.2 é direta: quando o design começa pela perspectiva do consumidor — o que ele precisa, não o que o backend tem disponível — a tendência natural é minimizar a exposição. Quando o design começa pelo backend e o contrato é gerado automaticamente a partir do modelo de dados, a tendência é expor tudo que existe.</p>
+<hr />
+<h3 id="identificadores-previsiveis">Identificadores previsíveis</h3>
+<p>Identificadores sequenciais — <code>/usuarios/1234</code>, <code>/pedidos/5678</code> — são eficientes para implementação mas criam superfície de ataque. Um atacante que descobre que é o usuário 1234 pode tentar acessar o usuário 1233 e o usuário 1235. Se o endpoint não verifica autorização por objeto, o atacante tem acesso a dados de outros usuários.</p>
+<p>UUIDs aleatórios não eliminam a necessidade de verificação de autorização por objeto — mas eliminam a capacidade de enumeração, reduzindo a superfície de ataque sem custo para o consumidor legítimo.</p>
+<hr />
+<h3 id="endpoints-sem-granularidade-de-autorizacao">Endpoints sem granularidade de autorização</h3>
+<p>Um endpoint que aceita qualquer token válido sem verificar se aquele token específico tem autorização para aquele objeto específico cria superfície de ataque que nenhum controle de gateway resolve. A verificação de autorização por objeto precisa acontecer na implementação, guiada pelo design do contrato.</p>
+<hr />
+<h3 id="payloads-sem-restricao-de-escopo">Payloads sem restrição de escopo</h3>
+<p>Endpoints que aceitam campos arbitrários em payloads de atualização e os aplicam ao objeto — o que a OWASP chama de Mass Assignment — criam superfície de ataque para manipulação de campos que o consumidor não deveria poder alterar. O design do contrato precisa especificar explicitamente quais campos são aceitos em cada operação.</p>
+<hr />
+<h3 id="operacoes-sem-limites-de-volume">Operações sem limites de volume</h3>
+<p>Endpoints sem limites de taxa declarados no design — deixando rate limiting como responsabilidade exclusiva do gateway — criam superfície de ataque para ataques de enumeração, credential stuffing e negação de serviço. O design precisa definir os limites adequados para cada operação.</p>
+<hr />
+<h2 id="513-threat-modeling-para-apis">5.1.3 · Threat modeling para APIs</h2>
+<p>Threat modeling é a prática de identificar ameaças e vulnerabilidades potenciais durante o design — antes que o sistema seja construído. É a versão formal do raciocínio de segurança que security by design pressupõe.</p>
+<p>Para APIs, threat modeling é mais eficaz quando feito durante a fase de design do contrato — depois que as operações e os recursos foram definidos mas antes que a implementação comece.</p>
+<hr />
+<h3 id="stride-aplicado-a-apis">STRIDE aplicado a APIs</h3>
+<p>STRIDE é o framework de threat modeling mais amplamente usado. O acrônimo representa seis categorias de ameaça:</p>
+<p><strong>Spoofing — Falsificação de identidade</strong>
+Um atacante se passa por um consumidor legítimo ou por outro serviço. No contexto de APIs: tokens falsificados, headers de identidade manipulados, ataques de replay. A mitigação começa no design: quais mecanismos de autenticação são adequados para cada operação, como tokens são validados, quais claims são verificados.</p>
+<p><strong>Tampering — Adulteração de dados</strong>
+Um atacante modifica dados em trânsito ou explora vulnerabilidades para modificar dados em repouso. No contexto de APIs: payloads modificados em trânsito, injeção de campos não esperados, mass assignment. A mitigação começa no design: TLS obrigatório, validação rigorosa de schema, lista explícita de campos aceitos.</p>
+<p><strong>Repudiation — Repúdio</strong>
+Um ator nega ter realizado uma ação sem que haja evidência suficiente para refutar. No contexto de APIs: operações sem log adequado, tokens sem identificação do consumidor, ausência de trilha de auditoria. A mitigação começa no design: quais operações precisam de log de auditoria, quais informações precisam estar no token.</p>
+<p><strong>Information Disclosure — Divulgação de informação</strong>
+Dados sensíveis são expostos a quem não deveria ter acesso. No contexto de APIs: exposição excessiva de dados, erros com stack traces, headers com informações de implementação, IDs previsíveis. A mitigação começa no design: minimização de exposição, respostas de erro sem informação técnica.</p>
+<p><strong>Denial of Service — Negação de serviço</strong>
+O serviço é tornado indisponível por sobrecarga ou consumo excessivo de recursos. No contexto de APIs: ausência de rate limiting, payloads sem limite de tamanho, queries sem limite de profundidade em GraphQL, operações computacionalmente caras sem proteção. A mitigação começa no design: definição de limites para cada operação, paginação obrigatória para coleções grandes.</p>
+<p><strong>Elevation of Privilege — Elevação de privilégio</strong>
+Um ator obtém permissões acima do que deveria ter. No contexto de APIs: ausência de verificação de autorização por objeto, endpoints administrativos sem restrição de escopo, mass assignment de campos de role. A mitigação começa no design: verificação de autorização por objeto em todas as operações, escopos granulares por operação.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart TD
+    stride["STRIDE
+    framework de threat modeling"]
+
+    s["Spoofing
+    falsificação de identidade
+    → mecanismos de autenticação"]
+
+    t["Tampering
+    adulteração de dados
+    → TLS · validação de schema"]
+
+    r["Repudiation
+    negação de ação
+    → logging · trilha de auditoria"]
+
+    i["Information Disclosure
+    exposição indevida
+    → minimização de dados · erros seguros"]
+
+    d["Denial of Service
+    sobrecarga do serviço
+    → rate limiting · limites de payload"]
+
+    e["Elevation of Privilege
+    permissões acima do devido
+    → autorização por objeto · escopos"]
+
+    stride --&gt; s
+    stride --&gt; t
+    stride --&gt; r
+    stride --&gt; i
+    stride --&gt; d
+    stride --&gt; e</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="como-fazer-threat-modeling-durante-o-design-de-apis">Como fazer threat modeling durante o design de APIs</h3>
+<p>Uma abordagem pragmática dentro de um processo design-first: para cada operação definida no contrato, perguntar:</p>
+<ul>
+<li>Quem pode chamar esta operação? O mecanismo de autenticação está adequado?</li>
+<li>Para cada objeto que esta operação retorna ou modifica, quem tem direito a ver ou alterar aquele objeto específico? Como isso é verificado?</li>
+<li>Quais dados esta operação retorna que o consumidor não precisa?</li>
+<li>Quais campos esta operação aceita que não deveriam ser aceitos?</li>
+<li>O que acontece se esta operação for chamada 1.000 vezes por segundo?</li>
+<li>O que vazamos nas mensagens de erro desta operação?</li>
+</ul>
+<p>Essas seis perguntas, aplicadas a cada operação durante o design, cobrem a maioria das vulnerabilidades documentadas no OWASP API Security Top 10.</p>
+<hr />
+<h2 id="514-principios-de-design-seguro">5.1.4 · Princípios de design seguro</h2>
+<p>Os princípios de design seguro — formalizados no NIST SP 800-160v1r1 e na tradição de engenharia de segurança que remonta a Saltzer e Schroeder (1975) — são critérios de decisão, não regras mecânicas.</p>
+<hr />
+<h3 id="least-privilege-privilegio-minimo">Least privilege — privilégio mínimo</h3>
+<p>Um consumidor deve ter acesso apenas ao que precisa para o seu caso de uso específico. No contexto de APIs: escopos OAuth granulares por operação em vez de escopos amplos, endpoints que retornam apenas os campos necessários, operações de escrita que aceitam apenas os campos relevantes.</p>
+<h3 id="defense-in-depth-defesa-em-profundidade">Defense in depth — defesa em profundidade</h3>
+<p>Nenhum controle único é suficiente. Segurança robusta combina múltiplas camadas — design seguro, autenticação, autorização por objeto, validação de input, rate limiting, monitoramento. Se uma camada falha, as outras ainda oferecem proteção.</p>
+<p>No contexto de design de APIs, defense in depth significa que o design implementa os controles que só podem ser implementados no design — e não delega toda a responsabilidade para o gateway.</p>
+<h3 id="fail-secure-falhar-de-forma-segura">Fail secure — falhar de forma segura</h3>
+<p>Quando algo falha ou um caso não esperado é encontrado, o comportamento padrão deve ser negar acesso. Um endpoint que encontra uma condição não tratada e retorna os dados mesmo assim está falhando de forma insegura. Autorização por objeto deve ter default de negação — se a verificação falha, a resposta é 403 ou 404, nunca os dados do objeto.</p>
+<h3 id="minimizacao-de-exposicao-de-dados">Minimização de exposição de dados</h3>
+<p>Expor apenas o que é necessário para o caso de uso. No design de contratos OpenAPI: cada campo no schema de resposta é uma decisão consciente de exposição, não um reflexo automático do modelo de dados interno.</p>
+<hr />
+<h2 id="515-seguranca-como-criterio-do-contrato">5.1.5 · Segurança como critério do contrato</h2>
+<p>A spec OpenAPI não é apenas um documento de interface — é o lugar onde as intenções de segurança são declaradas formalmente.</p>
+<hr />
+<h3 id="declaracao-de-esquemas-de-seguranca">Declaração de esquemas de segurança</h3>
+<p>O OpenAPI permite declarar globalmente e por operação quais esquemas de segurança se aplicam. Uma spec que declara <code>securitySchemes</code> com OAuth 2.0 e <code>security</code> por operação com os escopos específicos está expressando intenções verificáveis — pelo lint automático, pela ferramenta de análise de segurança no pipeline e pelo revisor humano.</p>
+<h3 id="escopos-granulares-por-operacao">Escopos granulares por operação</h3>
+<p>A granularidade dos escopos OAuth declarados no contrato determina o princípio de least privilege que o sistema pode implementar. Escopos bem projetados são específicos ao recurso e à operação. Essa granularidade precisa existir no design do contrato para poder ser implementada na autorização. A modelagem de escopos é tratada em profundidade no 5.1.6.</p>
+<h3 id="schema-restritivo-de-payloads">Schema restritivo de payloads</h3>
+<p>Um schema de payload que usa <code>additionalProperties: false</code> — rejeitando qualquer campo não declarado explicitamente — é a implementação no contrato do princípio de least privilege aplicado aos dados de entrada. É a defesa de design contra mass assignment.</p>
+<h3 id="mensagens-de-erro-sem-vazamento-de-informacao">Mensagens de erro sem vazamento de informação</h3>
+<p>Os schemas de resposta de erro definem o que é retornado quando algo falha. Um schema que inclui stack traces, nomes de tabelas de banco de dados ou detalhes de implementação está vazando informação que facilita ataques. O contrato deve especificar schemas de erro que seguem um formato padrão — como RFC 7807 — sem incluir campos que exponham detalhes internos.</p>
+<hr />
+<h2 id="516-modelagem-de-escopos-design-taxonomia-e-governanca">5.1.6 · Modelagem de escopos — design, taxonomia e governança</h2>
+<p>Escopos OAuth são o mecanismo pelo qual o princípio de least privilege se materializa na autorização de APIs. A RFC 6749 define escopos simplesmente como um conjunto de strings delimitadas por espaço no §3.3 — e deliberadamente não especifica a semântica dessas strings. A organização define o significado de cada escopo.</p>
+<blockquote>
+<p><em>Hardt, D. (Ed.). The OAuth 2.0 Authorization Framework. RFC 6749, outubro 2012. §3.3 Access Token Scope. Disponível em: <a href="https://datatracker.ietf.org/doc/html/rfc6749">datatracker.ietf.org/doc/html/rfc6749</a></em></p>
+</blockquote>
+<p>Essa liberdade é poderosa e perigosa ao mesmo tempo. Poderosa porque permite modelar escopos que refletem as necessidades reais do negócio. Perigosa porque sem uma abordagem sistemática produz portfólios com escopos inconsistentes, sobrepostos e impossíveis de auditar.</p>
+<hr />
+<h3 id="o-dilema-da-granularidade">O dilema da granularidade</h3>
+<p>Escopos mal modelados criam dois problemas opostos que qualquer taxonomia precisa navegar:</p>
+<p><strong>Escopos amplos demais violam least privilege.</strong> Um escopo <code>api:full_access</code> que concede acesso irrestrito a todas as operações de todas as APIs é funcionalmente equivalente a não ter escopos. Um consumidor que precisa apenas consultar pedidos não deveria ter um token que também permite cancelar, modificar e criar pedidos.</p>
+<p><strong>Escopos granulares demais criam explosão de complexidade.</strong> Um portfólio com 50 APIs, cada uma com 10 operações, e um escopo por operação produz 500 escopos. Nenhum desenvolvedor consegue selecionar os escopos corretos de uma lista de 500. Nenhum time de operações consegue auditar 500 escopos. O sistema de autorização se torna inoperável na prática.</p>
+<p>O equilíbrio está em modelar escopos ao nível de granularidade que reflete intenções de negócio reais — não ao nível de cada operação individual nem ao nível de "tudo ou nada".</p>
+<hr />
+<h3 id="a-estrutura-de-uma-taxonomia-de-escopos">A estrutura de uma taxonomia de escopos</h3>
+<p>Uma taxonomia bem projetada tem três elementos: um namespace, um recurso e uma ação.</p>
+<p><strong>Namespace</strong> — identifica a API ou o domínio ao qual o escopo pertence. Evita colisões entre escopos de APIs diferentes e torna o escopo auto-descritivo. Exemplos: <code>pagamentos</code>, <code>identidade</code>, <code>pedidos</code>.</p>
+<p><strong>Recurso</strong> — identifica o tipo de objeto ou capacidade dentro do domínio. Nem sempre necessário para domínios simples, mas essencial para domínios com múltiplos recursos distintos. Exemplos: <code>pagamentos:transacoes</code>, <code>pagamentos:recorrencias</code>, <code>identidade:usuarios</code>.</p>
+<p><strong>Ação</strong> — identifica o nível de acesso: leitura, escrita, administração. Seguindo uma convenção consistente em todo o portfólio. Exemplos: <code>pagamentos:transacoes:read</code>, <code>pagamentos:transacoes:write</code>.</p>
+<p>O padrão <code>namespace:recurso:acao</code> produz escopos que são legíveis, consistentes e auditáveis — e permite que o número de escopos cresça proporcionalmente ao portfólio sem explosão de complexidade.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart TD
+    escopo["Estrutura de um escopo
+    namespace:recurso:acao"]
+
+    ns["Namespace
+    identifica o domínio ou API
+    pagamentos · identidade · pedidos"]
+
+    rec["Recurso
+    tipo de objeto dentro do domínio
+    transacoes · recorrencias · usuarios"]
+
+    acao["Ação
+    nível de acesso
+    read · write · admin"]
+
+    exemplos["Exemplos
+    pagamentos:transacoes:read
+    pagamentos:recorrencias:write
+    identidade:usuarios:admin"]
+
+    escopo --&gt; ns
+    escopo --&gt; rec
+    escopo --&gt; acao
+    ns --&gt; exemplos
+    rec --&gt; exemplos
+    acao --&gt; exemplos</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="boas-praticas-de-modelagem-de-escopos">Boas práticas de modelagem de escopos</h3>
+<p><strong>Modelar por intenção de negócio, não por operação técnica.</strong> A granularidade correta é a que reflete o que um consumidor de negócio precisa fazer — não a que mapeia para cada endpoint ou método HTTP. Um consumidor que "consulta pedidos" precisa de <code>pedidos:read</code> — não de escopos separados para <code>GET /pedidos</code>, <code>GET /pedidos/{id}</code> e <code>GET /pedidos/{id}/itens</code>.</p>
+<p><strong>Usar verbos de negócio em vez de verbos HTTP.</strong> <code>pagamentos:transacoes:read</code> é mais expressivo do que <code>pagamentos:transacoes:get</code>. A ação deve refletir o que o consumidor está autorizado a fazer no domínio — ler, criar, modificar, cancelar — não o método HTTP que a operação usa.</p>
+<p><strong>Definir uma hierarquia implícita quando necessário.</strong> Em alguns contextos, um escopo de escrita implica também permissão de leitura. Em outros, são independentes. Essa semântica deve ser definida explicitamente na documentação da taxonomia — não deixada para cada consumidor interpretar.</p>
+<p><strong>Evitar escopos negativos.</strong> Escopos que definem o que o consumidor não pode fazer — <code>pagamentos:sem_cancelamento</code> — são difíceis de auditar e criam ambiguidade. O modelo deve ser baseado em concessão explícita, não em negação.</p>
+<hr />
+<h3 id="a-evolucao-alem-de-escopos-simples-rich-authorization-requests">A evolução além de escopos simples — Rich Authorization Requests</h3>
+<p>A RFC 9396 — <em>OAuth 2.0 Rich Authorization Requests</em> — publicada pelo IETF em 2023, representa uma evolução significativa além de escopos simples. Em vez de strings opacas que definem uma capacidade genérica, o RAR permite especificar permissões estruturadas e contextuais em formato JSON: não apenas "leitura de transações", mas "leitura das transações do contrato X, no período Y, até o valor Z".</p>
+<blockquote>
+<p><em>Lodderstedt, T. et al. OAuth 2.0 Rich Authorization Requests. RFC 9396, maio 2023. Disponível em: <a href="https://www.rfc-editor.org/rfc/rfc9396.html">rfc-editor.org/rfc/rfc9396.html</a></em></p>
+</blockquote>
+<p>O RAR é especialmente relevante para APIs em mercados regulados — como o Open Finance — onde a granularidade de permissões precisa ir além do que strings de escopo conseguem expressar. Para a maioria dos portfólios corporativos, a taxonomia de escopos bem projetada é suficiente. O RAR é o próximo nível de granularidade quando essa suficiência não existe.</p>
+<hr />
+<h3 id="como-o-coe-governa-a-taxonomia-de-escopos">Como o CoE governa a taxonomia de escopos</h3>
+<p>A consistência de escopos em um portfólio não emerge espontaneamente. Sem governança ativa, times diferentes definem escopos com convenções diferentes — e o portfólio se fragmenta em taxonomias incompatíveis.</p>
+<p><strong>O CoE como definidor da taxonomia central</strong></p>
+<p>O CoE é responsável por definir e manter a taxonomia de escopos do portfólio — os namespaces reconhecidos, as convenções de nomeação, os padrões de ação, a semântica de hierarquia. Essa taxonomia é parte do style guide do Cap 3.4 — não uma recomendação, mas uma política.</p>
+<p><strong>Registro central de escopos</strong></p>
+<p>Cada escopo do portfólio deve estar registrado centralmente — com seu namespace, seu significado, quais operações ele autoriza e quais APIs o utilizam. Esse registro é parte do catálogo do Cap 3.5 e é mantido pelo CoE.</p>
+<p>Sem esse registro, é impossível auditar quais consumidores têm acesso a quê, identificar escopos em desuso e garantir que novos escopos não colidam com escopos existentes.</p>
+<p><strong>Revisão de escopos como gate de publicação</strong></p>
+<p>Antes de publicar uma nova API, o CoE verifica se os escopos declarados no contrato seguem a taxonomia central — e se escopos novos que a API requeira foram aprovados e registrados. Esse gate é parte do processo de change enablement do Cap 4.4.</p>
+<p><strong>Auditoria periódica</strong></p>
+<p>O conjunto de escopos de um portfólio envelhece. Escopos criados para casos de uso que não existem mais permanecem no sistema criando superfície de ataque e confusão. O CoE realiza auditorias periódicas da taxonomia — identificando escopos em desuso, consolidando escopos redundantes e alinhando escopos existentes com a taxonomia atual.</p>
+<hr />
+<h2 id="pontos-chave-do-capitulo">Pontos-chave do capítulo</h2>
+<ul>
+<li>A distinção entre security by design e security by addition é estrutural, não de timing. Controles adicionados depois não conseguem compensar decisões de design que criam superfícies de ataque — e retrofit frequentemente força breaking changes em consumidores existentes. O NIST SP 800-160v1r1 formaliza esse princípio como fundamento da engenharia de sistemas seguros</li>
+<li>Superfícies de ataque em APIs são criadas no design: exposição excessiva de dados, identificadores previsíveis, ausência de autorização por objeto, payloads sem restrição de escopo, operações sem limites de volume</li>
+<li>Threat modeling com STRIDE durante o design do contrato — seis perguntas por operação — cobre a maioria das vulnerabilidades documentadas no OWASP API Security Top 10 antes que o código seja escrito</li>
+<li>Os princípios de design seguro — least privilege, defense in depth, fail secure, minimização de exposição — são critérios de decisão que o NIST SP 800-160v1r1 formaliza como parte da engenharia de sistemas confiáveis</li>
+<li>A spec OpenAPI expressa intenções de segurança formalmente: esquemas de autenticação, escopos por operação, schemas restritivos de payload e schemas de erro sem vazamento de informação</li>
+<li>Escopos OAuth são definidos pela RFC 6749 §3.3 como strings opacas — a organização define a semântica. Escopos mal modelados criam dois problemas opostos: amplos demais violam least privilege; granulares demais criam explosão de complexidade. A taxonomia <code>namespace:recurso:acao</code> equilibra os dois extremos</li>
+<li>O CoE governa a taxonomia de escopos através do style guide, do registro central, do gate de publicação e de auditorias periódicas — garantindo consistência e auditabilidade em todo o portfólio</li>
+</ul>
+<hr />
+<h2 id="fontes-e-referencias">Fontes e referências</h2>
+<table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Referência completa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>NIST SP 800-160v1r1 (2022)</strong></td>
+<td>Ross, R., McEvilley, M. &amp; Winstead, M. <em>Engineering Trustworthy Secure Systems</em>. NIST Special Publication 800-160v1r1, novembro 2022. Disponível em: <a href="https://doi.org/10.6028/NIST.SP.800-160v1r1">doi.org/10.6028/NIST.SP.800-160v1r1</a></td>
+</tr>
+<tr>
+<td><strong>OWASP API Security Top 10 (2023)</strong></td>
+<td>OWASP Foundation. <em>OWASP API Security Top 10 2023</em>. Disponível em: <a href="https://owasp.org/www-project-api-security/">owasp.org/www-project-api-security</a></td>
+</tr>
+<tr>
+<td><strong>STRIDE</strong></td>
+<td>Microsoft Security. <em>Threat Modeling Tool Threats</em>. Disponível em: <a href="https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats">learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats</a></td>
+</tr>
+<tr>
+<td><strong>RFC 6749 — OAuth 2.0 (2012)</strong></td>
+<td>Hardt, D. (Ed.). <em>The OAuth 2.0 Authorization Framework</em>. RFC 6749, outubro 2012. Disponível em: <a href="https://datatracker.ietf.org/doc/html/rfc6749">datatracker.ietf.org/doc/html/rfc6749</a></td>
+</tr>
+<tr>
+<td><strong>RFC 9700 — OAuth 2.0 Security BCP (2025)</strong></td>
+<td>Lodderstedt, T. et al. <em>Best Current Practice for OAuth 2.0 Security</em>. RFC 9700, janeiro 2025. Disponível em: <a href="https://datatracker.ietf.org/doc/rfc9700/">datatracker.ietf.org/doc/rfc9700</a></td>
+</tr>
+<tr>
+<td><strong>RFC 9396 — Rich Authorization Requests (2023)</strong></td>
+<td>Lodderstedt, T. et al. <em>OAuth 2.0 Rich Authorization Requests</em>. RFC 9396, maio 2023. Disponível em: <a href="https://www.rfc-editor.org/rfc/rfc9396.html">rfc-editor.org/rfc/rfc9396.html</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="proximo-capitulo">Próximo capítulo</h2>
+<p><strong>5.2 · O arsenal de segurança de APIs — preventivo, detectivo e corretivo</strong> — o panorama completo dos controles de segurança disponíveis, organizados pela sua função na arquitetura de segurança: WAF, tokens, rate limiting, monitoramento de comportamento, análise de logs, revogação.</p>
+<hr />
+<p><em>Série: Gerenciamento e Governança de APIs · Módulo 5 · Capítulo 5.1</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Fabio Mira
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/fgmira/estudo-api-management" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.esm.min.mjs" type="module"></script>
+      
+        <script src="../../assets/javascripts/panzoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/zoompan.js"></script>
+      
+    
+  </body>
+</html>

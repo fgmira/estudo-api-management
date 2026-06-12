@@ -1,0 +1,4739 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de estudos sobre API Management">
+      
+      
+        <meta name="author" content="Fabio">
+      
+      
+      
+        <link rel="prev" href="../cap_6_2_mcp_protocolos_agenticos/">
+      
+      
+        <link rel="next" href="../cap_6_4_seguranca_agentica/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>6.3 Identidade e Autorização de Agentes - Estudo API Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/panzoom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="panzoom-theme" content="material">
+<meta name="panzoom-data" content='{"selectors": [".d2", ".mermaid"], "initial_zoom_level": 1.0}'> </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-6-ia-e-apis" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Estudo API Management" class="md-header__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estudo API Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              6.3 Identidade e Autorização de Agentes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estudo API Management" class="md-nav__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Estudo API Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-1-fundamentos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 1 — Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 1 — Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_1_o_que_e_uma_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 O que é uma API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_2_api_como_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 API como Produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_3__governanca_de_api_conceitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Governança de API — Conceitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_4_diferenca_gerenciamento_governanca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Diferença entre Gerenciamento e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_5_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Os Três Planos — Controle, Dados e Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_6_estilos_arquiteturais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 Estilos arquiteturais e suas implicações de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_7_heterogeneidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 Heterogeneidade de infraestrutura e governança multi-ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-2-ciclo-de-vida/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_1_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 As Fases do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_2_design_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Design-first vs. Code-first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_3_contratos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Contratos de API — OpenAPI, AsyncAPI e gRPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_4_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Documentação de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_5_versionamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Versionamento e Gestão de Breaking Changes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_6_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 Depreciação e Sunset Controlado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_7_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 Os Três Planos ao Longo do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-3-governanca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 3 — Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 3 — Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_1_pilares/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Pilares da Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_2_papeis_reponsabilidades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Papéis e Responsabilidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_3_coe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 O Centro de Excelência de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_4_guia_estilo_politica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Style Guides e Políticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_5_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Catálogo e Descoberta de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_6_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Governança de APIs de Parceiros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_7_modelos_organizacionais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 Modelos Organizacionais — Centralizado, Federado e Híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_8_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 Os Três Planos como Instrumentos de Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-4-itil/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 4 — ITIL & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 4 — ITIL & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_1_itil_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_2_quatro_dimensoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 As Quatro Dimensões do ITIL 4 no contexto de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_3_cmdb_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Configuration Management e CMDB para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_4_change_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Change Enablement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_5_catalogo_servico_slm_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Service Catalog e SLM para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_6_incidente_problema_melhoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Incident, Problem e Continual Improvement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_7_itil_devops_sre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 ITIL, SRE e DevOps — Convergências e Complementaridades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-4-itil/cap_4_8_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 Descoberta de APIs — os Dois Prismas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-5-seguranca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 5 — Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 5 — Segurança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_1_seg_propriedade_desing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Segurança como Propriedade do Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_2_arsenal_seguranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 O Arsenal de Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_3_oswap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OWASP API Security Top 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_4_autenticacao_autorizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Autenticação e Autorização — os Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_5_zero_trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Zero Trust para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_6_seguranca_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Segurança no Ciclo de Vida — Shift Left
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_7_seguranca_gtw_plat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 Segurança no Gateway e na Plataforma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_8_seguranca_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 Segurança em APIs de Parceiros e APIs Públicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_9_resposta_incidentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 Resposta a Incidentes de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 6 — IA & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 6 — IA & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_6_1_ia_api_paradgma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 IA e APIs — o Novo Paradigma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_6_2_mcp_protocolos_agenticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 MCP e os Protocolos Agênticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Identidade e Autorização de Agentes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Identidade e Autorização de Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-63-identidade-e-autorizacao-de-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 6.3 · Identidade e autorização de agentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#631-por-que-iam-tradicional-falha-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.1 · Por que IAM tradicional falha para agentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#632-identidade-de-agentes-os-modelos-disponiveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.2 · Identidade de agentes — os modelos disponíveis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#633-delegacao-em-cascata-o-problema-central" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.3 · Delegação em cascata — o problema central
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#634-token-exchange-em-cadeias-agenticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.4 · Token Exchange em cadeias agênticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.4 · Token Exchange em cadeias agênticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constraint-de-scope-na-cadeia-agentica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constraint de scope na cadeia agêntica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#635-least-privilege-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.5 · Least privilege para agentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.5 · Least privilege para agentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#just-in-time-e-just-enough-access-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Just-in-Time e Just-Enough-Access para agentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#636-fga-em-contexto-agentico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.6 · FGA em contexto agêntico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.6 · FGA em contexto agêntico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contextual-authorization-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contextual authorization para agentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#637-identidade-efemera-o-padrao-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.7 · Identidade efêmera — o padrão recomendado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.7 · Identidade efêmera — o padrão recomendado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-o-coe-governa-neste-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que o CoE governa neste modelo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_6_4_seguranca_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Segurança no Ecossistema Agêntico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_6_5_ia_produzindo_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 IA Produzindo APIs — Riscos e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_6_6_ai_gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 AI Gateway — o Novo Plano de Controle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_6_7_gov_api_era_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Governança de APIs na Era Agêntica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_6_8_ai_readiness_portifolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.8 AI Readiness do Portfólio — Avaliação e Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-7-maturidade/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_1_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 O que é maturidade — e por que importa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_2_frameworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Os frameworks existentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_3_linguagem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 A linguagem unificada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_4_lideranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Dimensão — Estratégia e Liderança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_5_desing_padroes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5 Dimensão — Design e Padrões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_6_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6 Dimensão — Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_7_seguran%C3%A7a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.7 Dimensão — Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_8_observabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.8 Dimensão — Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_9_dx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.9 Dimensão — Developer Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_10_ai_readness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.10 Dimensão — AI Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_11_operacionalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.11 Dimensão — Operacionalização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_12_diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.12 O diagnóstico holístico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-8-operacionalizando_governan%C3%A7a/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/prefacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prefácio — A plataforma como produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_1_intensao_infra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Da intenção à infraestrutura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_2_contextos_plataforma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Os contextos de uma plataforma de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_3_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 O catálogo como fonte de verdade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_4_politicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 Políticas como código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_5_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.5 O pipeline de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_6_inteligencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.6 Inteligência de portfólio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_7_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.7 Descoberta e reconciliação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_8_portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.8 Portal e a experiência do desenvolvedor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_9_conhecimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.9 Conhecimento como contexto independente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_10_assistencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.10 Assistência inteligente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_11_dx_inteligencia_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.11 DX e inteligência de produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_12_identidade_acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.12 Identidade e acesso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_13_comprar_fazer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.13 Build, buy ou compor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_14_adocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.14 Adoção — o problema mais difícil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_1_breaking_changes_REST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.1 Breaking Changes em APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_2_breaking_changes_graphQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.2 Breaking Changes em APIs GraphQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_3_breaking_changes_grpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.3 Breaking Changes em Protocol Buffers (gRPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_4_breaking_changes_asyncapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.4 Breaking Changes em AsyncAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/b_plano_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Template de Plano de Depreciação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/c_raci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Modelo RACI para Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/d_gestao_conhecimento_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Gestão do Conhecimento no Programa de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/e_design_seguro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E. Falhas de Design Seguro em APIs — Casos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/f_siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    F. SIEM e Correlação de Eventos de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/g_autorizacao_controle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    G. Autorização e Controle de Acesso em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/h_exposicao_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H. Exposição de Dados em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/i_recursos_injecao_gestao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I. Recursos, Injeção e Gestão em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/j_rfcs_oauth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    J. Guia de leitura — os RFCs do OAuth 2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/k_rfcs_token/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K. Guia de leitura — os RFCs dos tokens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/l_rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L. Modelos e Ferramentas de Autorização Fina
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/m_frameworks_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M. Guia Comparativo dos Frameworks de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/n_diagnostico_formulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    N. Questionário de Autodiagnóstico de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-63-identidade-e-autorizacao-de-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 6.3 · Identidade e autorização de agentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#631-por-que-iam-tradicional-falha-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.1 · Por que IAM tradicional falha para agentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#632-identidade-de-agentes-os-modelos-disponiveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.2 · Identidade de agentes — os modelos disponíveis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#633-delegacao-em-cascata-o-problema-central" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.3 · Delegação em cascata — o problema central
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#634-token-exchange-em-cadeias-agenticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.4 · Token Exchange em cadeias agênticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.4 · Token Exchange em cadeias agênticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constraint-de-scope-na-cadeia-agentica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constraint de scope na cadeia agêntica
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#635-least-privilege-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.5 · Least privilege para agentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.5 · Least privilege para agentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#just-in-time-e-just-enough-access-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Just-in-Time e Just-Enough-Access para agentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#636-fga-em-contexto-agentico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.6 · FGA em contexto agêntico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.6 · FGA em contexto agêntico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contextual-authorization-para-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Contextual authorization para agentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#637-identidade-efemera-o-padrao-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3.7 · Identidade efêmera — o padrão recomendado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3.7 · Identidade efêmera — o padrão recomendado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-o-coe-governa-neste-modelo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que o CoE governa neste modelo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="modulo-6-ia-e-apis">Módulo 6 · IA e APIs</h1>
+<h2 id="capitulo-63-identidade-e-autorizacao-de-agentes">Capítulo 6.3 · Identidade e autorização de agentes</h2>
+<blockquote>
+<p><strong>Série:</strong> Gerenciamento e Governança de APIs
+<strong>Nível:</strong> Técnico e arquitetural
+<strong>Pré-requisito:</strong> Cap 5.4 · Cap 5.4.12 · Cap 6.1 · Cap 6.2</p>
+</blockquote>
+<hr />
+<h2 id="sumario">Sumário</h2>
+<ul>
+<li><a href="#631--por-que-iam-tradicional-falha-para-agentes">6.3.1 · Por que IAM tradicional falha para agentes</a></li>
+<li><a href="#632--identidade-de-agentes--os-modelos-disponíveis">6.3.2 · Identidade de agentes — os modelos disponíveis</a></li>
+<li><a href="#633--delegação-em-cascata--o-problema-central">6.3.3 · Delegação em cascata — o problema central</a></li>
+<li><a href="#634--token-exchange-em-cadeias-agênticas">6.3.4 · Token Exchange em cadeias agênticas</a></li>
+<li><a href="#635--least-privilege-para-agentes">6.3.5 · Least privilege para agentes</a></li>
+<li><a href="#636--fga-em-contexto-agêntico">6.3.6 · FGA em contexto agêntico</a></li>
+<li><a href="#637--identidade-efêmera--o-padrão-recomendado">6.3.7 · Identidade efêmera — o padrão recomendado</a></li>
+<li><a href="#fontes-e-referências">Fontes e referências</a></li>
+</ul>
+<hr />
+<h2 id="631-por-que-iam-tradicional-falha-para-agentes">6.3.1 · Por que IAM tradicional falha para agentes</h2>
+<p>O Identity and Access Management tradicional foi construído sobre premissas que sistemas agênticos violam sistematicamente.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>graph TB
+    subgraph iam_tradicional["IAM tradicional — premissas quebradas por agentes"]
+        direction LR
+
+        p1["Premissa: um principal por sessão
+        um humano ou um sistema
+        com identidade estável
+        ❌ Agentes agem em nome de humanos
+        que delegaram a sistemas
+        que orquestraram outros agentes"]
+
+        p2["Premissa: comportamento previsível
+        a aplicação sempre faz as mesmas
+        chamadas na mesma ordem
+        ❌ Agentes decidem autonomamente
+        quais APIs chamar e quando"]
+
+        p3["Premissa: permissões estáticas
+        o conjunto de permissões
+        é definido na configuração
+        ❌ Agentes precisam de permissões
+        dinâmicas baseadas na tarefa atual"]
+
+        p4["Premissa: auditoria por sistema
+        o log registra qual sistema
+        fez qual chamada
+        ❌ Agentes executam ações que
+        nenhum humano solicitou diretamente"]
+    end
+
+    style p1 fill:#ffe6e6,stroke:#cc0000
+    style p2 fill:#ffe6e6,stroke:#cc0000
+    style p3 fill:#ffe6e6,stroke:#cc0000
+    style p4 fill:#ffe6e6,stroke:#cc0000</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<p>A ISACA documentou esse gap em 2025 como "a crise de autorização iminente": IAM legado usa permissões pré-existentes estáticas e granulares que são muito grossas para lidar com agentes que raciocinam e planejam autonomamente. O resultado prático é que organizações estão solucionando o problema de duas formas inadequadas: dando aos agentes permissões excessivamente amplas "para funcionar", ou bloqueando completamente o acesso agêntico "por segurança".</p>
+<p>Ambas as soluções são insustentáveis. A primeira cria superfície de ataque massiva. A segunda inviabiliza casos de uso legítimos.</p>
+<hr />
+<h2 id="632-identidade-de-agentes-os-modelos-disponiveis">6.3.2 · Identidade de agentes — os modelos disponíveis</h2>
+<p>Há quatro modelos de identidade que organizações estão usando para agentes, com trade-offs distintos:</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>graph TB
+    subgraph modelos["Modelos de identidade para agentes"]
+        direction LR
+
+        subgraph m1["Modelo 1 — Service Account compartilhada"]
+            m1a["Múltiplos agentes compartilham
+            um único client_id"]
+            m1b["✅ Simples de implementar
+            ❌ Sem rastreabilidade individual
+            ❌ Blast radius: comprometimento
+            de uma afeta todos
+            ❌ Permissões do mínimo múltiplo"]
+        end
+
+        subgraph m2["Modelo 2 — Service Account por agente"]
+            m2a["Cada instância de agente
+            tem seu próprio client_id"]
+            m2b["✅ Rastreabilidade individual
+            ✅ Revogação granular
+            ❌ Gestão manual não escala
+            ❌ Credential sprawl em instâncias dinâmicas"]
+        end
+
+        subgraph m3["Modelo 3 — Identidade delegada do usuário"]
+            m3a["Agente usa token do usuário
+            que iniciou a tarefa"]
+            m3b["✅ Rastreabilidade ao usuário
+            ✅ Permissões do usuário aplicadas
+            ❌ Token com escopo amplo demais
+            ❌ audience confusion se repassado diretamente"]
+        end
+
+        subgraph m4["Modelo 4 — Identidade efêmera com workload identity"]
+            m4a["Credencial emitida para
+            esta execução específica
+            expira com a tarefa"]
+            m4b["✅ Sem secrets estáticos
+            ✅ Escopo mínimo por tarefa
+            ✅ Revogação automática
+            ✅ Rastreabilidade completa
+            ⚠️ Requer infraestrutura de suporte"]
+        end
+    end
+
+    style m1 fill:#ffe6e6,stroke:#cc0000
+    style m2 fill:#fff9e6,stroke:#cc9900
+    style m3 fill:#fff9e6,stroke:#cc9900
+    style m4 fill:#e6ffe6,stroke:#009900</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<p>O Modelo 4 — identidade efêmera com workload identity — é o padrão recomendado para ambientes agênticos maduros. Ele implementa o princípio Zero Trust do Cap 5.5 de credenciais efêmeras: cada execução de agente obtém uma identidade específica para aquela tarefa, com escopo mínimo, que expira automaticamente ao final da execução.</p>
+<hr />
+<h2 id="633-delegacao-em-cascata-o-problema-central">6.3.3 · Delegação em cascata — o problema central</h2>
+<p>O cenário mais comum em sistemas agênticos não é um único agente agindo de forma independente — é uma cadeia de delegação onde múltiplos atores estão envolvidos em uma única ação sobre uma API.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>sequenceDiagram
+    participant U as 👤 Usuário Ana
+    participant App as Aplicação
+    participant Orch as 🤖 Agente Orquestrador
+    participant Spec as 🤖 Agente Especializado
+    participant API as API Pagamentos
+
+    U-&gt;&gt;App: "processe o reembolso do pedido #4521"
+
+    App-&gt;&gt;Orch: delega tarefa com token de Ana
+    Note over App,Orch: token: sub=ana, scope=reembolsos:write
+
+    Orch-&gt;&gt;Orch: planeja: preciso chamar o agente de pagamentos
+
+    Orch-&gt;&gt;Spec: A2A: "processe reembolso pedido #4521, R$150"
+    Note over Orch,Spec: como identificar Orch?
+    Note over Orch,Spec: como preservar Ana como responsável?
+
+    Spec-&gt;&gt;API: POST /reembolsos
+    Note over Spec,API: quem autorizou esta ação?
+    Note over Spec,API: Ana? App? Orch? Spec?
+    Note over Spec,API: como o log vai registrar?
+
+    API-&gt;&gt;Spec: reembolso processado
+    Spec-&gt;&gt;Orch: concluído
+    Orch-&gt;&gt;App: tarefa concluída
+    App-&gt;&gt;U: reembolso processado</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<p>A questão crítica não é técnica — é de responsabilização. Quando a API Pagamentos registra no log de auditoria que um reembolso foi processado, quem é o ator registrado? O agente especializado que fez a chamada? O orquestrador que delegou? A aplicação que iniciou a cadeia? O usuário Ana que deu a instrução original?</p>
+<p>Para fins de auditoria, conformidade regulatória e investigação de incidentes, a resposta precisa ser: <strong>todos eles, com sua posição na cadeia explicitamente registrada</strong>.</p>
+<hr />
+<h2 id="634-token-exchange-em-cadeias-agenticas">6.3.4 · Token Exchange em cadeias agênticas</h2>
+<p>O RFC 8693 — Token Exchange — é a base técnica para resolver delegação em cascata de forma rastreável. O Cap 5.4.9 introduziu o Token Exchange no contexto de microserviços; em cadeias agênticas, o mesmo mecanismo resolve um problema ainda mais complexo.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>sequenceDiagram
+    participant U as 👤 Ana
+    participant App as Aplicação
+    participant AS as Authorization Server
+    participant Orch as 🤖 Orquestrador
+    participant Spec as 🤖 Agente Pagamentos
+    participant API as API Pagamentos
+
+    U-&gt;&gt;App: autoriza com scope reembolsos:write
+    App-&gt;&gt;AS: obtém token para Ana
+    AS-&gt;&gt;App: token_ana {sub: ana, scope: reembolsos:write}
+
+    App-&gt;&gt;AS: Token Exchange para Orquestrador
+    Note over App,AS: subject_token: token_ana
+    Note over App,AS: actor_token: token_orquestrador
+    Note over App,AS: scope: reembolsos:write (preservado ou reduzido)
+    AS-&gt;&gt;Orch: token_delegado_orch
+    Note over AS,Orch: sub: ana (responsável original)
+    Note over AS,Orch: act: {sub: orquestrador} (quem age)
+    Note over AS,Orch: scope: reembolsos:write
+
+    Orch-&gt;&gt;AS: Token Exchange para Agente Pagamentos
+    Note over Orch,AS: subject_token: token_delegado_orch
+    Note over Orch,AS: actor_token: token_agente_pagamentos
+    Note over Orch,AS: scope: reembolsos:write (mínimo necessário)
+    AS-&gt;&gt;Spec: token_delegado_spec
+    Note over AS,Spec: sub: ana
+    Note over AS,Spec: act: {sub: agente_pagamentos,
+    Note over AS,Spec:       act: {sub: orquestrador}}
+    Note over AS,Spec: scope: reembolsos:write
+
+    Spec-&gt;&gt;API: POST /reembolsos com token_delegado_spec
+    API-&gt;&gt;API: loga: sub=ana, act=agente_pagamentos
+    Note over API: via orquestrador
+    Note over API: trilha de auditoria completa</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<p>O claim <code>act</code> aninhado preserva toda a cadeia de delegação. A API que recebe a chamada sabe:
+- <strong>Quem</strong> é o responsável original: <code>sub = ana</code>
+- <strong>Quem</strong> está executando agora: <code>act.sub = agente_pagamentos</code>
+- <strong>Por delegação de quem</strong>: <code>act.act.sub = orquestrador</code></p>
+<p>Essa rastreabilidade completa é o que permite investigação forense, conformidade regulatória e responsabilização em sistemas agênticos.</p>
+<hr />
+<h3 id="constraint-de-scope-na-cadeia-agentica">Constraint de scope na cadeia agêntica</h3>
+<p>Uma propriedade fundamental do Token Exchange que se torna ainda mais importante em cadeias agênticas: <strong>um ator não pode delegar mais permissões do que tem</strong>.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart LR
+    ana["Ana
+    scope: reembolsos:read
+           reembolsos:write
+           pedidos:read"]
+
+    orch["Orquestrador
+    scope delegado:
+    reembolsos:write
+    pedidos:read
+    (não pode incluir
+    reembolsos:read —
+    já está implícito em write
+    segundo a política)"]
+
+    spec["Agente Pagamentos
+    scope delegado:
+    reembolsos:write
+    (apenas o necessário
+    para a tarefa)"]
+
+    api["API Pagamentos
+    verifica:
+    scope = reembolsos:write ✅
+    sub = ana ✅
+    act chain válida ✅"]
+
+    ana --&gt;|"Token Exchange
+    scope reduction"| orch
+    orch --&gt;|"Token Exchange
+    scope reduction"| spec
+    spec --&gt;|"chamada autorizada"| api</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<p>O Authorization Server enforça essa constraint — se o orquestrador tentar delegar um scope que Ana não tem, o Token Exchange é rejeitado. Se o agente especializado tentar ampliar o scope recebido, é rejeitado. A cadeia só pode reduzir, nunca ampliar.</p>
+<hr />
+<h2 id="635-least-privilege-para-agentes">6.3.5 · Least privilege para agentes</h2>
+<p>O princípio de least privilege do Cap 5.1.4 — um consumidor deve ter acesso apenas ao que precisa para o caso de uso específico — é ainda mais importante para agentes do que para sistemas determinísticos.</p>
+<p>Um sistema determinístico usa exatamente as permissões que o desenvolvedor configurou. Um agente pode usar qualquer permissão que tiver disponível de formas que nenhum desenvolvedor antecipou. Permissões excessivas em um agente não são apenas desnecessárias — são risco ativo.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>graph TB
+    subgraph anti_pattern["❌ Anti-padrão — permissões amplas por conveniência"]
+        ap1["Agente recebe scope: api:full_access
+        'para funcionar sem erros'"]
+        ap2["Resultado: agente pode acessar
+        qualquer recurso · qualquer operação
+        · qualquer dado da API"]
+        ap3["Risco: prompt injection que
+        manipula o agente pode exfiltrar
+        ou modificar qualquer dado"]
+        ap1 --&gt; ap2 --&gt; ap3
+    end
+
+    subgraph pattern["✅ Padrão — least privilege por tarefa"]
+        p1["Tarefa: 'consulte pedidos atrasados'"]
+        p2["Agente recebe apenas:
+        scope: pedidos:read
+        recurso: pedidos com status=atrasado
+        janela temporal: últimos 30 dias"]
+        p3["Resultado: mesmo que comprometido
+        o agente só pode ler pedidos atrasados
+        blast radius drasticamente reduzido"]
+        p1 --&gt; p2 --&gt; p3
+    end
+
+    style anti_pattern fill:#ffe6e6,stroke:#cc0000
+    style pattern fill:#e6ffe6,stroke:#009900</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="just-in-time-e-just-enough-access-para-agentes">Just-in-Time e Just-Enough-Access para agentes</h3>
+<p>Dois padrões de IAM que ganham importância crítica em ambientes agênticos:</p>
+<p><strong>Just-in-Time (JIT)</strong> — permissões são concedidas apenas quando necessário e revogadas imediatamente após o uso. Um agente que precisa executar uma operação de alto risco solicita a permissão, executa, e a permissão é revogada. Não há permissões permanentes de alto risco — apenas janelas de acesso auditadas.</p>
+<p><strong>Just-Enough-Access (JEA)</strong> — o escopo concedido é o mínimo para aquela tarefa específica. Em vez de <code>pagamentos:write</code> genérico, o agente recebe <code>pagamentos:reembolso:write</code> para aquela categoria específica de operação.</p>
+<p>A combinação JIT + JEA é o padrão de identidade efêmera descrito no Modelo 4 do 6.3.2.</p>
+<hr />
+<h2 id="636-fga-em-contexto-agentico">6.3.6 · FGA em contexto agêntico</h2>
+<p>A autorização fina do Cap 5.4.12 — verificar se este sujeito pode acessar este objeto específico neste contexto — é especialmente crítica para agentes porque:</p>
+<p>Um agente com <code>scope: pedidos:read</code> pode tecnicamente tentar ler qualquer pedido. Sem FGA, um agente que recebeu a tarefa "verifique todos os pedidos atrasados" pode ler os pedidos de todos os clientes, não apenas dos relevantes para a tarefa. Com FGA, a API verifica que o agente — agindo em nome do usuário Ana — só pode acessar pedidos da conta de Ana.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>graph LR
+    subgraph sem_fga["Sem FGA — agente acessa tudo no scope"]
+        s1["Agente com
+        scope: pedidos:read"]
+        s2["Pode ler pedidos
+        de QUALQUER cliente
+        desde que autenticado"]
+        s3["Tarefa 'verifique pedidos atrasados'
+        pode resultar em varredura
+        de toda a base de pedidos"]
+        s1 --&gt; s2 --&gt; s3
+    end
+
+    subgraph com_fga["Com FGA — agente acessa o contexto delegado"]
+        f1["Agente com
+        scope: pedidos:read
+        sub: ana (delegante)"]
+        f2["Pode ler apenas pedidos
+        onde pedido.cliente_id
+        == ana.cliente_id"]
+        f3["Tarefa 'verifique pedidos atrasados'
+        retorna apenas pedidos de Ana
+        blast radius contido"]
+        f1 --&gt; f2 --&gt; f3
+    end
+
+    style sem_fga fill:#ffe6e6,stroke:#cc0000
+    style com_fga fill:#e6ffe6,stroke:#009900</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="contextual-authorization-para-agentes">Contextual authorization para agentes</h3>
+<p>Em cenários agênticos avançados, a decisão de autorização pode incluir o contexto da tarefa em andamento — não apenas a identidade do agente e o objeto:</p>
+<div class="highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Autorização contextual para agente:
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>- Quem delegou: usuário Ana (sub = ana)
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- Tarefa em andamento: consulta de pedidos atrasados (objetivo documentado)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>- Objeto solicitado: pedido #4521
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>- Verificações: pedido pertence à Ana? ✅
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                tarefa permite leitura de pedidos? ✅
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                horário dentro da janela autorizada? ✅
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                volume de requisições dentro do esperado? ✅
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>→ ALLOW
+</span></code></pre></div>
+<p>Essa contextual authorization vai além do que OpenFGA e OPA fazem nativamente hoje — é uma área de desenvolvimento ativo em frameworks de AI governance.</p>
+<hr />
+<h2 id="637-identidade-efemera-o-padrao-recomendado">6.3.7 · Identidade efêmera — o padrão recomendado</h2>
+<p>Consolidando os princípios deste capítulo, o padrão de identidade efêmera para agentes combina:</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>graph TB
+    subgraph padrao["Padrão: Identidade Efêmera para Agentes"]
+        direction TB
+
+        step1["1. Tarefa iniciada pelo usuário
+        usuário autentica via OIDC
+        obtém token com scope amplo para aplicação"]
+
+        step2["2. Aplicação delimita escopo da tarefa
+        Token Exchange: scope mínimo para a tarefa
+        act claim: identidade da aplicação"]
+
+        step3["3. Orquestrador recebe token delimitado
+        Workload Identity para o orquestrador
+        Token Exchange para cada agente especializado
+        scope reduzido ao mínimo necessário para sub-tarefa"]
+
+        step4["4. Agente especializado executa
+        Token efêmero — expira com a tarefa
+        FGA aplicada por objeto
+        Cada chamada auditada com cadeia completa"]
+
+        step5["5. Tarefa concluída
+        Tokens expiram automaticamente
+        Log completo: sub=usuário, act=cadeia de agentes
+        Nenhum secret permanente criado"]
+
+        step1 --&gt; step2 --&gt; step3 --&gt; step4 --&gt; step5
+    end
+
+    style step1 fill:#e6f0ff,stroke:#0044cc
+    style step2 fill:#fff0e6,stroke:#cc6600
+    style step3 fill:#fff0e6,stroke:#cc6600
+    style step4 fill:#e6ffe6,stroke:#009900
+    style step5 fill:#e6ffe6,stroke:#009900</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="o-que-o-coe-governa-neste-modelo">O que o CoE governa neste modelo</h3>
+<p><strong>Políticas de identidade agêntica</strong> — quais modelos de identidade são permitidos para agentes em produção. Service accounts compartilhadas são proibidas para agentes com acesso a dados sensíveis.</p>
+<p><strong>Registro de agentes</strong> — análogo ao credenciamento de consumidores do Cap 5.8.4, agentes que operam em produção devem ser registrados com: propósito documentado, owner responsável, escopos máximos autorizados e tipo de identidade.</p>
+<p><strong>Auditoria obrigatória</strong> — toda chamada de agente a APIs deve registrar a cadeia completa de delegação — não apenas o agente imediato. Log sem <code>sub</code> original e cadeia <code>act</code> é log insuficiente.</p>
+<p><strong>Revisão periódica de permissões</strong> — agentes acumulam permissões ao longo do tempo. O CoE realiza revisões periódicas para identificar privilege drift — permissões que foram necessárias em algum momento mas não são mais.</p>
+<hr />
+<h2 id="pontos-chave-do-capitulo">Pontos-chave do capítulo</h2>
+<ul>
+<li>IAM tradicional falha para agentes em quatro premissas: um principal por sessão, comportamento previsível, permissões estáticas e auditoria por sistema</li>
+<li>Quatro modelos de identidade para agentes — service account compartilhada, por agente, delegada do usuário, efêmera com workload identity. O Modelo 4 (efêmero) é o padrão recomendado</li>
+<li>Delegação em cascata é o problema central: quando um agente age em nome de um usuário via um orquestrador, a responsabilização precisa rastrear toda a cadeia — não apenas o ator imediato</li>
+<li>Token Exchange (RFC 8693) com claim <code>act</code> aninhado é a base técnica para rastreabilidade completa em cadeias agênticas. Scope reduction é enforçado em cada hop — a cadeia só pode reduzir, nunca ampliar</li>
+<li>Least privilege para agentes é mais crítico do que para sistemas determinísticos: agentes podem usar qualquer permissão disponível de formas não antecipadas. JIT + JEA é o padrão operacional</li>
+<li>FGA é indispensável em contextos agênticos: sem verificação por objeto, um agente com scope válido pode acessar dados além do contexto delegado</li>
+<li>O CoE governa: políticas de identidade agêntica, registro de agentes com propósito e owner, auditoria obrigatória com cadeia completa e revisão periódica de privilege drift</li>
+</ul>
+<hr />
+<h2 id="fontes-e-referencias">Fontes e referências</h2>
+<table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Referência completa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RFC 8693 — Token Exchange</strong></td>
+<td>Jones, M. &amp; Campbell, B. <em>OAuth 2.0 Token Exchange</em>. RFC 8693, janeiro 2020. Disponível em: <a href="https://datatracker.ietf.org/doc/html/rfc8693">datatracker.ietf.org/doc/html/rfc8693</a></td>
+</tr>
+<tr>
+<td><strong>ISACA — The Looming Authorization Crisis (2025)</strong></td>
+<td>ISACA. <em>The Looming Authorization Crisis: Why Traditional IAM Fails Agentic AI</em>. 2025. Disponível em: <a href="https://www.isaca.org/resources/news-and-trends/industry-news/2025/the-looming-authorization-crisis-why-traditional-iam-fails-agentic-ai">isaca.org/resources/news-and-trends/industry-news/2025</a></td>
+</tr>
+<tr>
+<td><strong>NIST AI RMF</strong></td>
+<td>NIST. <em>AI Risk Management Framework</em>. Disponível em: <a href="https://www.nist.gov/artificial-intelligence">nist.gov/artificial-intelligence</a></td>
+</tr>
+<tr>
+<td><strong>State of AI Agent Security (2025)</strong></td>
+<td>Gravitee. <em>State of AI Agent Security Report</em>. 2025. Disponível em: <a href="https://www.gravitee.io/state-of-ai-agent-security">gravitee.io/state-of-ai-agent-security</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="proximo-capitulo">Próximo capítulo</h2>
+<p><strong>6.4 · Segurança no ecossistema agêntico</strong> — prompt injection como vetor de ataque em APIs, OWASP LLM Top 10 e OWASP Agentic Top 10, tool poisoning, casos documentados.</p>
+<hr />
+<p><em>Série: Gerenciamento e Governança de APIs · Módulo 6 · Capítulo 6.3</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Fabio Mira
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/fgmira/estudo-api-management" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.esm.min.mjs" type="module"></script>
+      
+        <script src="../../assets/javascripts/panzoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/zoompan.js"></script>
+      
+    
+  </body>
+</html>

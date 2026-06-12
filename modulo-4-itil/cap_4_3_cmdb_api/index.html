@@ -1,0 +1,5016 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de estudos sobre API Management">
+      
+      
+        <meta name="author" content="Fabio">
+      
+      
+      
+        <link rel="prev" href="../cap_4_2_quatro_dimensoes/">
+      
+      
+        <link rel="next" href="../cap_4_4_change_api/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>4.3 Configuration Management e CMDB para APIs - Estudo API Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/panzoom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="panzoom-theme" content="material">
+<meta name="panzoom-data" content='{"selectors": [".d2", ".mermaid"], "initial_zoom_level": 1.0}'> </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-4-itil-e-apis" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Estudo API Management" class="md-header__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estudo API Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.3 Configuration Management e CMDB para APIs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estudo API Management" class="md-nav__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Estudo API Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-1-fundamentos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 1 — Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 1 — Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_1_o_que_e_uma_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 O que é uma API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_2_api_como_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 API como Produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_3__governanca_de_api_conceitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Governança de API — Conceitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_4_diferenca_gerenciamento_governanca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Diferença entre Gerenciamento e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_5_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Os Três Planos — Controle, Dados e Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_6_estilos_arquiteturais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 Estilos arquiteturais e suas implicações de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_7_heterogeneidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 Heterogeneidade de infraestrutura e governança multi-ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-2-ciclo-de-vida/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_1_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 As Fases do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_2_design_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Design-first vs. Code-first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_3_contratos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Contratos de API — OpenAPI, AsyncAPI e gRPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_4_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Documentação de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_5_versionamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Versionamento e Gestão de Breaking Changes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_6_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 Depreciação e Sunset Controlado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_7_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 Os Três Planos ao Longo do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-3-governanca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 3 — Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 3 — Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_1_pilares/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Pilares da Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_2_papeis_reponsabilidades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Papéis e Responsabilidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_3_coe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 O Centro de Excelência de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_4_guia_estilo_politica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Style Guides e Políticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_5_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Catálogo e Descoberta de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_6_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Governança de APIs de Parceiros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_7_modelos_organizacionais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 Modelos Organizacionais — Centralizado, Federado e Híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_8_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 Os Três Planos como Instrumentos de Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 4 — ITIL & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 4 — ITIL & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_1_itil_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_2_quatro_dimensoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 As Quatro Dimensões do ITIL 4 no contexto de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Configuration Management e CMDB para APIs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Configuration Management e CMDB para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-43-configuration-management-e-cmdb-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 4.3 · Configuration Management e CMDB para APIs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#431-configuration-management-como-pratica-nao-como-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 · Configuration Management como prática — não como banco de dados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.1 · Configuration Management como prática — não como banco de dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-a-pratica-realmente-envolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que a prática realmente envolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#432-o-que-e-um-ic-no-contexto-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 · O que é um IC no contexto de APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.2 · O que é um IC no contexto de APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-niveis-de-ic-em-um-programa-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os níveis de IC em um programa de APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-do-encadeamento-de-criterios-e-a-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema do encadeamento de critérios — e a solução
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#os-atributos-essenciais-de-cada-ic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os atributos essenciais de cada IC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#433-service-mapping-da-oferta-de-negocio-ao-menor-ic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 · Service mapping — da oferta de negócio ao menor IC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.3 · Service mapping — da oferta de negócio ao menor IC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-cadeia-do-servico-de-negocio-ao-ic-mais-granular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A cadeia do serviço de negócio ao IC mais granular
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-service-mapping-transforma-change-management-e-incident-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o service mapping transforma change management e incident management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-construir-o-service-mapping-progressivamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como construir o service mapping progressivamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#434-relacionamentos-entre-ics-o-que-o-cmdb-precisa-saber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.4 · Relacionamentos entre ICs — o que o CMDB precisa saber
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.4 · Relacionamentos entre ICs — o que o CMDB precisa saber">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-relacionamentos-essenciais-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os relacionamentos essenciais para APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-analise-de-impacto-habilitada-pelos-relacionamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A análise de impacto habilitada pelos relacionamentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#435-contract-drift-e-rastreabilidade-fechando-o-elo-perdido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.5 · Contract drift e rastreabilidade — fechando o elo perdido
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.5 · Contract drift e rastreabilidade — fechando o elo perdido">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-elo-que-estava-faltando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O elo que estava faltando
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-cadeia-bidirecional-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A cadeia bidirecional completa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-condicao-necessaria-ics-registrados-no-momento-certo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A condição necessária — ICs registrados no momento certo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#436-manter-o-cmdb-atualizado-em-ambientes-de-deploy-continuo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.6 · Manter o CMDB atualizado em ambientes de deploy contínuo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.6 · Manter o CMDB atualizado em ambientes de deploy contínuo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-especifico-de-apis-em-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema específico de APIs em CI/CD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-pode-ser-automatizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que pode ser automatizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-exige-acao-humana" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que exige ação humana
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-drift-no-proprio-cmdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration drift no próprio CMDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#437-configuration-management-como-fundacao-das-outras-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.7 · Configuration Management como fundação das outras práticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.7 · Configuration Management como fundação das outras práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-management-e-change-enablement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Management e Change Enablement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-management-e-incident-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Management e Incident Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-management-e-service-level-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Management e Service Level Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_4_change_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Change Enablement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_5_catalogo_servico_slm_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Service Catalog e SLM para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_6_incidente_problema_melhoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Incident, Problem e Continual Improvement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_7_itil_devops_sre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 ITIL, SRE e DevOps — Convergências e Complementaridades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_8_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 Descoberta de APIs — os Dois Prismas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-5-seguranca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 5 — Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 5 — Segurança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_1_seg_propriedade_desing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Segurança como Propriedade do Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_2_arsenal_seguranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 O Arsenal de Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_3_oswap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OWASP API Security Top 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_4_autenticacao_autorizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Autenticação e Autorização — os Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_5_zero_trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Zero Trust para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_6_seguranca_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Segurança no Ciclo de Vida — Shift Left
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_7_seguranca_gtw_plat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 Segurança no Gateway e na Plataforma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_8_seguranca_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 Segurança em APIs de Parceiros e APIs Públicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_9_resposta_incidentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 Resposta a Incidentes de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-6-ia_apis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 6 — IA & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 6 — IA & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_1_ia_api_paradgma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 IA e APIs — o Novo Paradigma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_2_mcp_protocolos_agenticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 MCP e os Protocolos Agênticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_3_identidade_autorizacao_agentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Identidade e Autorização de Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_4_seguranca_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Segurança no Ecossistema Agêntico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_5_ia_produzindo_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 IA Produzindo APIs — Riscos e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_6_ai_gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 AI Gateway — o Novo Plano de Controle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_7_gov_api_era_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Governança de APIs na Era Agêntica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_8_ai_readiness_portifolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.8 AI Readiness do Portfólio — Avaliação e Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-7-maturidade/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_1_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 O que é maturidade — e por que importa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_2_frameworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Os frameworks existentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_3_linguagem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 A linguagem unificada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_4_lideranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Dimensão — Estratégia e Liderança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_5_desing_padroes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5 Dimensão — Design e Padrões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_6_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6 Dimensão — Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_7_seguran%C3%A7a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.7 Dimensão — Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_8_observabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.8 Dimensão — Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_9_dx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.9 Dimensão — Developer Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_10_ai_readness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.10 Dimensão — AI Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_11_operacionalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.11 Dimensão — Operacionalização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_12_diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.12 O diagnóstico holístico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-8-operacionalizando_governan%C3%A7a/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/prefacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prefácio — A plataforma como produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_1_intensao_infra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Da intenção à infraestrutura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_2_contextos_plataforma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Os contextos de uma plataforma de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_3_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 O catálogo como fonte de verdade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_4_politicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 Políticas como código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_5_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.5 O pipeline de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_6_inteligencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.6 Inteligência de portfólio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_7_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.7 Descoberta e reconciliação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_8_portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.8 Portal e a experiência do desenvolvedor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_9_conhecimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.9 Conhecimento como contexto independente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_10_assistencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.10 Assistência inteligente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_11_dx_inteligencia_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.11 DX e inteligência de produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_12_identidade_acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.12 Identidade e acesso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_13_comprar_fazer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.13 Build, buy ou compor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_14_adocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.14 Adoção — o problema mais difícil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_1_breaking_changes_REST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.1 Breaking Changes em APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_2_breaking_changes_graphQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.2 Breaking Changes em APIs GraphQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_3_breaking_changes_grpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.3 Breaking Changes em Protocol Buffers (gRPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_4_breaking_changes_asyncapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.4 Breaking Changes em AsyncAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/b_plano_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Template de Plano de Depreciação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/c_raci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Modelo RACI para Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/d_gestao_conhecimento_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Gestão do Conhecimento no Programa de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/e_design_seguro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E. Falhas de Design Seguro em APIs — Casos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/f_siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    F. SIEM e Correlação de Eventos de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/g_autorizacao_controle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    G. Autorização e Controle de Acesso em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/h_exposicao_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H. Exposição de Dados em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/i_recursos_injecao_gestao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I. Recursos, Injeção e Gestão em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/j_rfcs_oauth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    J. Guia de leitura — os RFCs do OAuth 2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/k_rfcs_token/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K. Guia de leitura — os RFCs dos tokens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/l_rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L. Modelos e Ferramentas de Autorização Fina
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/m_frameworks_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M. Guia Comparativo dos Frameworks de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/n_diagnostico_formulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    N. Questionário de Autodiagnóstico de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-43-configuration-management-e-cmdb-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 4.3 · Configuration Management e CMDB para APIs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#431-configuration-management-como-pratica-nao-como-banco-de-dados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 · Configuration Management como prática — não como banco de dados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.1 · Configuration Management como prática — não como banco de dados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-a-pratica-realmente-envolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que a prática realmente envolve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#432-o-que-e-um-ic-no-contexto-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 · O que é um IC no contexto de APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.2 · O que é um IC no contexto de APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-niveis-de-ic-em-um-programa-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os níveis de IC em um programa de APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-do-encadeamento-de-criterios-e-a-solucao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema do encadeamento de critérios — e a solução
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#os-atributos-essenciais-de-cada-ic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os atributos essenciais de cada IC
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#433-service-mapping-da-oferta-de-negocio-ao-menor-ic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 · Service mapping — da oferta de negócio ao menor IC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.3 · Service mapping — da oferta de negócio ao menor IC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-cadeia-do-servico-de-negocio-ao-ic-mais-granular" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A cadeia do serviço de negócio ao IC mais granular
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#por-que-o-service-mapping-transforma-change-management-e-incident-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Por que o service mapping transforma change management e incident management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-construir-o-service-mapping-progressivamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como construir o service mapping progressivamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#434-relacionamentos-entre-ics-o-que-o-cmdb-precisa-saber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.4 · Relacionamentos entre ICs — o que o CMDB precisa saber
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.4 · Relacionamentos entre ICs — o que o CMDB precisa saber">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#os-relacionamentos-essenciais-para-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Os relacionamentos essenciais para APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-analise-de-impacto-habilitada-pelos-relacionamentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A análise de impacto habilitada pelos relacionamentos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#435-contract-drift-e-rastreabilidade-fechando-o-elo-perdido" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.5 · Contract drift e rastreabilidade — fechando o elo perdido
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.5 · Contract drift e rastreabilidade — fechando o elo perdido">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-elo-que-estava-faltando" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O elo que estava faltando
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-cadeia-bidirecional-completa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A cadeia bidirecional completa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-condicao-necessaria-ics-registrados-no-momento-certo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A condição necessária — ICs registrados no momento certo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#436-manter-o-cmdb-atualizado-em-ambientes-de-deploy-continuo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.6 · Manter o CMDB atualizado em ambientes de deploy contínuo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.6 · Manter o CMDB atualizado em ambientes de deploy contínuo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-problema-especifico-de-apis-em-cicd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O problema específico de APIs em CI/CD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-pode-ser-automatizado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que pode ser automatizado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-exige-acao-humana" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que exige ação humana
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-drift-no-proprio-cmdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration drift no próprio CMDB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#437-configuration-management-como-fundacao-das-outras-praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.7 · Configuration Management como fundação das outras práticas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3.7 · Configuration Management como fundação das outras práticas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-management-e-change-enablement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Management e Change Enablement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-management-e-incident-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Management e Incident Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-management-e-service-level-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration Management e Service Level Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="modulo-4-itil-e-apis">Módulo 4 · ITIL e APIs</h1>
+<h2 id="capitulo-43-configuration-management-e-cmdb-para-apis">Capítulo 4.3 · Configuration Management e CMDB para APIs</h2>
+<blockquote>
+<p><strong>Série:</strong> Gerenciamento e Governança de APIs
+<strong>Nível:</strong> Operacional e estratégico
+<strong>Pré-requisito:</strong> Cap 2.1.4 · Cap 4.1 · Cap 4.2</p>
+</blockquote>
+<hr />
+<h2 id="sumario">Sumário</h2>
+<ul>
+<li><a href="#431--configuration-management-como-prática--não-como-banco-de-dados">4.3.1 · Configuration Management como prática — não como banco de dados</a></li>
+<li><a href="#432--o-que-é-um-ic-no-contexto-de-apis">4.3.2 · O que é um IC no contexto de APIs</a></li>
+<li><a href="#433--service-mapping--da-oferta-de-negócio-ao-menor-ic">4.3.3 · Service mapping — da oferta de negócio ao menor IC</a></li>
+<li><a href="#434--relacionamentos-entre-ics--o-que-o-cmdb-precisa-saber">4.3.4 · Relacionamentos entre ICs — o que o CMDB precisa saber</a></li>
+<li><a href="#435--contract-drift-e-rastreabilidade--fechando-o-elo-perdido">4.3.5 · Contract drift e rastreabilidade — fechando o elo perdido</a></li>
+<li><a href="#436--manter-o-cmdb-atualizado-em-ambientes-de-deploy-contínuo">4.3.6 · Manter o CMDB atualizado em ambientes de deploy contínuo</a></li>
+<li><a href="#437--configuration-management-como-fundação-das-outras-práticas">4.3.7 · Configuration Management como fundação das outras práticas</a></li>
+<li><a href="#fontes-e-referências">Fontes e referências</a></li>
+</ul>
+<hr />
+<h2 id="431-configuration-management-como-pratica-nao-como-banco-de-dados">4.3.1 · Configuration Management como prática — não como banco de dados</h2>
+<p>Configuration Management é frequentemente reduzido ao seu artefato principal — o CMDB. Organizações que tratam configuration management como "o projeto de popular o CMDB" invariavelmente produzem um banco de dados que foi preciso no momento da carga inicial e que envelhece progressivamente até se tornar mais perigoso do que útil. Um CMDB desatualizado que inspira confiança falsa é pior do que não ter CMDB.</p>
+<p>A prática de Configuration Management — definida no ITIL 4 como Service Configuration Management — é o conjunto de atividades que garante que informação precisa e confiável sobre os ICs e seus relacionamentos está disponível quando e onde é necessária. O CMDB é a ferramenta que armazena essa informação. A prática é o que mantém essa informação confiável ao longo do tempo.</p>
+<hr />
+<h3 id="o-que-a-pratica-realmente-envolve">O que a prática realmente envolve</h3>
+<p>Configuration Management como prática tem quatro atividades fundamentais que precisam operar continuamente — não apenas no momento da implementação inicial:</p>
+<p><strong>Identificação</strong> — decidir quais ativos precisam ser registrados como ICs, com qual granularidade e com quais atributos. No contexto de APIs, essa é a atividade mais estratégica — e a que mais frequentemente é feita de forma inadequada.</p>
+<p><strong>Controle</strong> — garantir que mudanças nos ICs só acontecem através de processos autorizados. Nenhum IC muda sem um Change Record correspondente. Essa atividade é o elo entre Configuration Management e Change Enablement.</p>
+<p><strong>Status accounting</strong> — registrar e reportar o estado atual e o histórico de cada IC. Qual versão está em produção, qual está em staging, qual está em depreciação, qual foi retirada.</p>
+<p><strong>Verificação e auditoria</strong> — confirmar periodicamente que os ICs registrados no CMDB correspondem aos ICs que existem na realidade. A divergência entre o que o CMDB diz e o que existe é o principal indicador de maturidade da prática.</p>
+<p>A pesquisa de Marrone e Kolbe identificou configuration management como uma das práticas de ITSM com maior impacto positivo na qualidade operacional — especialmente na capacidade de resposta a incidentes e na eficácia de change management. Essa relação causal é direta: change management e incident management dependem de configuration management para ter a visibilidade que precisam.</p>
+<blockquote>
+<p><em>Marrone, M. &amp; Kolbe, L. M. Impact of IT Service Management Frameworks on the IT Organization. Business &amp; Information Systems Engineering, 3(1), pp. 5-18, 2011. Disponível em: <a href="https://doi.org/10.1007/s12599-010-0141-5">doi.org/10.1007/s12599-010-0141-5</a></em></p>
+</blockquote>
+<hr />
+<h2 id="432-o-que-e-um-ic-no-contexto-de-apis">4.3.2 · O que é um IC no contexto de APIs</h2>
+<p>Um Configuration Item é qualquer componente que precisa ser gerenciado para garantir a entrega de um serviço de TI. No contexto de APIs, os ICs relevantes formam uma hierarquia com diferentes níveis de granularidade — e a decisão de qual granularidade usar em cada contexto é uma das mais importantes do design do CMDB de APIs.</p>
+<hr />
+<h3 id="os-niveis-de-ic-em-um-programa-de-apis">Os níveis de IC em um programa de APIs</h3>
+<p><strong>Nível 1 — A API como produto</strong>
+O IC de mais alto nível representa a API como produto — independente de versões e implementações. Atributos essenciais: nome, domínio de negócio, owner, classificação (privada / parceiro / pública), data de criação.</p>
+<p><strong>Nível 2 — A versão da API</strong>
+Cada versão ativa da API é um IC separado — com sua spec OpenAPI específica, seus endpoints de gateway, seu SLA e seu status no ciclo de vida. Atributos essenciais: número de versão, link para a spec, status (ativa / em depreciação / retirada), data de publicação, data de sunset se aplicável.</p>
+<p><strong>Nível 3 — A operação</strong>
+Operações individuais da API como ICs próprios. Esse nível é necessário quando a operação tem características que a distinguem materialmente das demais operações da mesma versão: dependências de backends distintos, SLA específico, ou criticidade diferente do contrato geral.</p>
+<p><strong>Os ICs de infraestrutura e plataforma</strong>
+Além dos ICs da API em si, o CMDB precisa registrar os componentes que a sustentam: o backend que implementa a API, os bancos de dados que o backend consome, a configuração do gateway, os certificados TLS e as dependências de outros serviços ou APIs.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart TD
+    api["IC Nível 1
+    API como produto
+    pagamentos-api"]
+
+    v1["IC Nível 2
+    Versão ativa
+    pagamentos-api v2"]
+
+    v2["IC Nível 2
+    Versão em depreciação
+    pagamentos-api v1"]
+
+    op1["IC Nível 3
+    Operação com orquestração
+    POST /pagamentos/recorrentes"]
+
+    spec["IC
+    Spec OpenAPI
+    pagamentos-api-v2.yaml"]
+
+    gw["IC
+    Gateway config
+    pagamentos-v2-prod"]
+
+    backend["IC
+    Backend
+    pagamentos-service"]
+
+    cert["IC
+    Certificado TLS
+    pagamentos.empresa.com"]
+
+    api --&gt; v1
+    api --&gt; v2
+    v1 --&gt; op1
+    v1 --&gt; spec
+    v1 --&gt; gw
+    v1 --&gt; cert
+    v1 --&gt; backend</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="o-problema-do-encadeamento-de-criterios-e-a-solucao">O problema do encadeamento de critérios — e a solução</h3>
+<p>A tentação natural ao definir quais ICs registrar é criar critérios baseados nas características de cada objeto: "registre operações quando tiverem múltiplos backends", "registre separadamente quando o SLA for diferente". Esse caminho produz um processo que exige avaliação caso a caso — e inevitavelmente se transforma em um encadeamento de condicionais que ninguém aplica consistentemente.</p>
+<p>A solução é eliminar a avaliação caso a caso. A granularidade do CMDB é uma <strong>decisão de configuração por domínio</strong> — tomada uma vez no onboarding do domínio ao programa de governança, derivada da classificação de criticidade que já existe no catálogo:</p>
+<table>
+<thead>
+<tr>
+<th>Classificação do domínio</th>
+<th>Granularidade padrão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domínio crítico ou regulado</td>
+<td>IC por versão + IC por operação quando há dependências externas</td>
+</tr>
+<tr>
+<td>Domínio padrão</td>
+<td>IC por versão da API</td>
+</tr>
+<tr>
+<td>Domínio experimental</td>
+<td>IC por API</td>
+</tr>
+</tbody>
+</table>
+<p>Essa decisão é registrada no catálogo como metadado do domínio. Times que onboardam novas APIs naquele domínio seguem a granularidade definida — sem precisar avaliar cada caso individualmente. O CoE revisa a decisão periodicamente como parte do ciclo de evolução do framework de governança, não para cada API nova.</p>
+<hr />
+<h3 id="os-atributos-essenciais-de-cada-ic">Os atributos essenciais de cada IC</h3>
+<p>Independente do nível de granularidade, cada IC de API precisa ter no mínimo:</p>
+<ul>
+<li><strong>Identificador único</strong> — estável ao longo do tempo, não baseado em nome ou versão que pode mudar</li>
+<li><strong>Owner</strong> — quem é responsável pelo IC e pela acuracidade de seus metadados</li>
+<li><strong>Status</strong> — o estado atual no ciclo de vida</li>
+<li><strong>Relacionamentos</strong> — os outros ICs dos quais este depende ou que dependem deste</li>
+<li><strong>Histórico de mudanças</strong> — trilha de auditoria com referência ao Change Record correspondente</li>
+</ul>
+<hr />
+<h2 id="433-service-mapping-da-oferta-de-negocio-ao-menor-ic">4.3.3 · Service mapping — da oferta de negócio ao menor IC</h2>
+<p>Service mapping é a prática de construir e manter no CMDB a cadeia de relacionamentos que conecta o serviço de negócio que o cliente vê até os componentes técnicos mais granulares que o sustentam. É o que transforma o CMDB de um inventário de componentes isolados em um mapa de dependências que habilita análise de impacto real.</p>
+<p>Sem service mapping, o CMDB responde à pergunta "o que existe?". Com service mapping, ele responde à pergunta que realmente importa para change management e incident management: <strong>"se este componente falhar ou mudar, qual serviço de negócio é impactado — e quão gravemente?"</strong></p>
+<hr />
+<h3 id="a-cadeia-do-servico-de-negocio-ao-ic-mais-granular">A cadeia do serviço de negócio ao IC mais granular</h3>
+<p>No contexto de APIs, o service mapping percorre pelo menos cinco níveis de abstração:</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart TD
+    negocio["Serviço de negócio
+    Processamento de Pagamentos
+    o que o cliente vê e usa"]
+
+    api["API como serviço
+    pagamentos-api
+    a interface que expõe o serviço"]
+
+    versao["Versão ativa da API
+    pagamentos-api v2
+    o contrato em vigor"]
+
+    operacao["Operação crítica
+    POST /pagamentos/recorrentes
+    orquestra múltiplos backends"]
+
+    backend1["Backend primário
+    pagamentos-service
+    processa a transação"]
+
+    backend2["Serviço de dependência
+    fraude-service
+    valida antes de processar"]
+
+    backend3["Serviço de dependência
+    limites-service
+    verifica limites antes de processar"]
+
+    db["Banco de dados
+    pagamentos-db
+    armazena as transações"]
+
+    infra["Infraestrutura
+    cluster kubernetes pagamentos-prod
+    executa os serviços"]
+
+    negocio --&gt; api
+    api --&gt; versao
+    versao --&gt; operacao
+    operacao --&gt; backend1
+    operacao --&gt; backend2
+    operacao --&gt; backend3
+    backend1 --&gt; db
+    backend1 --&gt; infra
+    backend2 --&gt; infra
+    backend3 --&gt; infra</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<p>Cada seta nesse diagrama é um relacionamento registrado no CMDB. A qualidade do service mapping é medida pela completude e acuracidade dessas setas — não pela quantidade de ICs registrados.</p>
+<hr />
+<h3 id="por-que-o-service-mapping-transforma-change-management-e-incident-management">Por que o service mapping transforma change management e incident management</h3>
+<p><strong>No change management:</strong>
+Um engenheiro propõe uma mudança no <code>pagamentos-service</code>. Sem service mapping, ele sabe que a mudança afeta o backend. Com service mapping, o CMDB mostra imediatamente que <code>pagamentos-service</code> é consumido por <code>pagamentos-api v2</code> — que expõe o serviço de negócio "Processamento de Pagamentos" — com SLA de 99,9% e impacto em parceiros estratégicos. O nível de aprovação necessário para a mudança muda completamente.</p>
+<p><strong>No incident management:</strong>
+Um alerta dispara: <code>fraude-service</code> está com latência acima do threshold. Sem service mapping, a equipe sabe que <code>fraude-service</code> está degradado. Com service mapping, o CMDB mostra em segundos que <code>fraude-service</code> é dependência de <code>POST /pagamentos/recorrentes</code> — operação crítica da <code>pagamentos-api v2</code> — que sustenta o serviço de negócio "Processamento de Pagamentos". A prioridade do incidente sobe automaticamente para o nível correto.</p>
+<p>A diferença entre os dois cenários não é técnica — é de visibilidade. O service mapping constrói essa visibilidade de forma sistemática.</p>
+<hr />
+<h3 id="como-construir-o-service-mapping-progressivamente">Como construir o service mapping progressivamente</h3>
+<p>A armadilha mais comum é tentar construir o service mapping completo de uma vez. Esse approach falha invariavelmente por sobrecarga.</p>
+<p>A abordagem sustentável é progressiva e orientada por criticidade:</p>
+<p><strong>Fase 1</strong> — mapear os serviços de negócio críticos e as APIs que os sustentam. Apenas os dois primeiros níveis da hierarquia. Isso já produz valor imediato para incident management.</p>
+<p><strong>Fase 2</strong> — mapear as dependências de backend das APIs críticas. Acrescenta o terceiro e quarto níveis para os serviços de maior risco.</p>
+<p><strong>Fase 3</strong> — expandir para APIs padrão e aprofundar o mapeamento de infraestrutura onde o risco justifica.</p>
+<p>A cobertura do service mapping não precisa ser completa para ser útil. Oitenta por cento de cobertura nos vinte por cento mais críticos do portfólio produz mais valor do que cobertura uniforme e superficial em todo o portfólio.</p>
+<hr />
+<h2 id="434-relacionamentos-entre-ics-o-que-o-cmdb-precisa-saber">4.3.4 · Relacionamentos entre ICs — o que o CMDB precisa saber</h2>
+<p>Os relacionamentos são o que transforma o CMDB de inventário em mapa. Cada relacionamento tem um tipo que carrega semântica específica — e que habilita diferentes tipos de análise.</p>
+<hr />
+<h3 id="os-relacionamentos-essenciais-para-apis">Os relacionamentos essenciais para APIs</h3>
+<p><strong>Depende-de</strong> — este IC falha quando aquele falha ou fica indisponível. É o relacionamento mais crítico para incident management e análise de impacto. <code>pagamentos-api v2</code> depende-de <code>pagamentos-service</code>. <code>POST /pagamentos/recorrentes</code> depende-de <code>fraude-service</code>, <code>limites-service</code> e <code>pagamentos-service</code>.</p>
+<p><strong>É-implementado-por</strong> — o IC do contrato é implementado pelo IC do backend. <code>pagamentos-api v2 spec</code> é-implementada-por <code>pagamentos-service</code>. Este é o relacionamento que fecha o elo do contract drift — quando a spec muda sem Change Record correspondente no backend, ou quando o backend muda sem Change Record correspondente na spec, a inconsistência é detectável.</p>
+<p><strong>É-versão-de</strong> — este IC é uma versão de um IC de nível superior. <code>pagamentos-api v2</code> é-versão-de <code>pagamentos-api</code>. Esse relacionamento habilita o gerenciamento do ciclo de vida multi-versão — saber quantas versões ativas existem de uma mesma API e qual é o status de cada uma.</p>
+<p><strong>É-consumido-por</strong> — este IC é consumido por aquele. <code>pagamentos-api v2</code> é-consumida-por <code>checkout-frontend</code>, <code>app-mobile</code> e pelo parceiro <code>fintech-parceiro-a</code>. Este é o relacionamento que habilita o processo de depreciação — sem ele, não sabemos quem notificar.</p>
+<p><strong>É-configurado-por</strong> — este IC de infraestrutura é configurado por este IC de configuração. <code>pagamentos-api v2 gateway config</code> é-configurado-por <code>pagamentos-prod-gateway-config.yaml</code>. Esse relacionamento garante que mudanças de configuração do gateway são rastreadas como mudanças em ICs.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart LR
+    spec["Spec OpenAPI
+    pagamentos-api-v2.yaml"]
+
+    versao["Versão da API
+    pagamentos-api v2"]
+
+    backend["Backend
+    pagamentos-service"]
+
+    consumidor1["Consumidor
+    checkout-frontend"]
+
+    consumidor2["Consumidor
+    app-mobile"]
+
+    gw["Gateway config
+    pagamentos-v2-prod"]
+
+    versao --&gt;|"é-implementado-por"| backend
+    versao --&gt;|"usa-contrato"| spec
+    versao --&gt;|"é-configurado-por"| gw
+    consumidor1 --&gt;|"consome"| versao
+    consumidor2 --&gt;|"consome"| versao
+    backend --&gt;|"implementa"| spec</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="a-analise-de-impacto-habilitada-pelos-relacionamentos">A análise de impacto habilitada pelos relacionamentos</h3>
+<p>Com os relacionamentos registrados, o CMDB responde automaticamente às perguntas que as outras práticas precisam:</p>
+<ul>
+<li>Quais APIs são afetadas se <code>pagamentos-service</code> for modificado? → Percorrer todos os relacionamentos "é-implementado-por" upstream</li>
+<li>Quem precisa ser notificado antes de deprecar <code>pagamentos-api v1</code>? → Percorrer todos os relacionamentos "é-consumido-por"</li>
+<li>Se <code>fraude-service</code> ficar indisponível, quais operações de API falham? → Percorrer todos os relacionamentos "depende-de" downstream</li>
+<li>Quantas versões ativas de <code>pagamentos-api</code> existem? → Contar todos os ICs com relacionamento "é-versão-de" e status ativo</li>
+</ul>
+<hr />
+<h2 id="435-contract-drift-e-rastreabilidade-fechando-o-elo-perdido">4.3.5 · Contract drift e rastreabilidade — fechando o elo perdido</h2>
+<p>No Cap 2.1.4 introduzimos dois sintomas que identificamos como sendo da mesma falha de governança: o <strong>contract drift</strong> — divergência entre a spec OpenAPI e a implementação real — e a <strong>perda de rastreabilidade</strong> — não saber quem consome o quê. Este subcapítulo fecha essa promessa.</p>
+<hr />
+<h3 id="o-elo-que-estava-faltando">O elo que estava faltando</h3>
+<p>A raiz dos dois problemas é a mesma: <strong>ausência dos relacionamentos "é-implementado-por" e "é-consumido-por" no CMDB</strong>. Quando esses relacionamentos não existem, a spec e o backend são ICs isolados sem conexão formal — e os consumidores são desconhecidos para o sistema de registro.</p>
+<p>O contract drift emerge da desconexão entre spec e backend. O backend evolui para atender uma necessidade operacional. A mudança não passa por change management formal porque é percebida como mudança interna de implementação — não de contrato. A spec não é atualizada porque ninguém sabe que precisa ser. Consumidores que integram com base na spec encontram comportamento diferente em produção.</p>
+<p>A perda de rastreabilidade emerge da ausência do relacionamento "é-consumido-por". Quando uma API precisa ser depreciada, a pergunta "quem precisa ser notificado?" não tem resposta no CMDB — precisa de investigação manual em logs de gateway, em código de sistemas que podem ou não ter sido documentados, em conversas com times que podem ou não lembrar que integram com aquela API.</p>
+<hr />
+<h3 id="a-cadeia-bidirecional-completa">A cadeia bidirecional completa</h3>
+<p>O CMDB com relacionamentos completos cria uma cadeia bidirecional que resolve ambos os problemas:</p>
+<p><strong>Direção upstream — o que esta API depende</strong></p>
+<p>O relacionamento entre a spec OpenAPI e o backend cria o elo que detecta contract drift. Quando o backend recebe um Change Record, o change management pode verificar automaticamente: existe alguma spec que registra esse backend como implementação? Se sim, a spec precisa ser revisada como parte da mesma mudança.</p>
+<p>Essa verificação pode ser automatizada no pipeline de CI/CD: "este serviço de backend é referenciado como implementação de alguma spec OpenAPI?" Se sim, um check de conformidade entre a spec e o backend é executado antes do merge.</p>
+<p><strong>Direção downstream — quem depende desta API</strong></p>
+<p>Os relacionamentos "é-consumido-por" criam o mapa de dependências que torna a depreciação controlada possível. Quando uma versão de API precisa ser depreciada, o CMDB retorna a lista completa de consumidores registrados — internos, parceiros, sistemas — com seus dados de contato e os volumes de uso via gateway.</p>
+<p>O processo de depreciação do Cap 2.6 pressupõe essa visibilidade. Sem os relacionamentos no CMDB, o processo existe no papel mas falha na execução.</p>
+<hr />
+<h3 id="a-condicao-necessaria-ics-registrados-no-momento-certo">A condição necessária — ICs registrados no momento certo</h3>
+<p>O relacionamento "é-implementado-por" entre spec e backend só existe se ambos os ICs forem registrados antes da publicação da API. Esse é o gate de configuration management no ciclo de vida: antes de promover uma API para produção, o CMDB precisa ter:</p>
+<ul>
+<li>IC da versão da API com a spec linkada</li>
+<li>IC do backend com o relacionamento de implementação</li>
+<li>ICs das dependências do backend com relacionamentos "depende-de"</li>
+<li>Configuração do gateway como IC com relacionamento "é-configurado-por"</li>
+</ul>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart TD
+    gate["Gate de Configuration Management
+    antes da publicação em produção"]
+
+    check1{"IC da versão
+    registrado com spec?"}
+    check2{"IC do backend com
+    rel. é-implementado-por?"}
+    check3{"Dependências do backend
+    com rel. depende-de?"}
+    check4{"Gateway config
+    como IC?"}
+
+    ok["Promover para produção
+    CMDB reflete o estado real"]
+
+    block["Bloqueado
+    CMDB incompleto
+    processos subsequentes falhariam"]
+
+    gate --&gt; check1
+    check1 --&gt;|"sim"| check2
+    check1 --&gt;|"não"| block
+    check2 --&gt;|"sim"| check3
+    check2 --&gt;|"não"| block
+    check3 --&gt;|"sim"| check4
+    check3 --&gt;|"não"| block
+    check4 --&gt;|"sim"| ok
+    check4 --&gt;|"não"| block</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h2 id="436-manter-o-cmdb-atualizado-em-ambientes-de-deploy-continuo">4.3.6 · Manter o CMDB atualizado em ambientes de deploy contínuo</h2>
+<p>O maior desafio operacional de configuration management para APIs não é a carga inicial — é a manutenção contínua em ambientes onde APIs evoluem com frequência alta. Um CMDB que foi preciso no dia da carga inicial e que envelheceu progressivamente é o estado mais comum — e o mais perigoso.</p>
+<hr />
+<h3 id="o-problema-especifico-de-apis-em-cicd">O problema específico de APIs em CI/CD</h3>
+<p>Em ambientes de deploy contínuo, APIs podem ter múltiplos deploys por semana. Se cada deploy exige atualização manual do CMDB, o overhead torna o processo insustentável — e o CMDB inevitavelmente diverge da realidade.</p>
+<p>A resposta não é reduzir a frequência de deploys para acomodar o processo manual. É automatizar as atualizações do CMDB para que aconteçam como parte natural do pipeline.</p>
+<hr />
+<h3 id="o-que-pode-ser-automatizado">O que pode ser automatizado</h3>
+<p><strong>Integração com o pipeline de CI/CD</strong>
+Quando uma nova versão da spec OpenAPI é aprovada e promovida para produção, o CMDB é atualizado automaticamente: o IC da versão tem seu status atualizado, a spec linkada é atualizada, a data de publicação é registrada. Sem intervenção humana.</p>
+<p><strong>Integração com o gateway</strong>
+O gateway é a fonte de verdade sobre o que está em produção. Os ICs de configuração do gateway são sincronizados periodicamente do gateway para o CMDB. Mudanças de configuração que passaram pelo change management têm Change Records correspondentes. Mudanças sem Change Record são sinalizadas como anomalias.</p>
+<p><strong>Integração com service discovery e observabilidade</strong>
+Em ambientes cloud native, ferramentas de service discovery conhecem quais serviços existem e como se comunicam. Essa informação pode alimentar automaticamente os relacionamentos "depende-de" para as dependências técnicas detectáveis via tráfego de rede.</p>
+<p><strong>Reconciliação periódica</strong>
+Um processo automatizado que periodicamente compara o estado do CMDB com o estado real do ambiente. Divergências são sinalizadas como itens de trabalho para revisão humana.</p>
+<hr />
+<h3 id="o-que-exige-acao-humana">O que exige ação humana</h3>
+<p>Alguns metadados e relacionamentos exigem julgamento que automação não substitui:</p>
+<p><strong>Relacionamentos de negócio</strong> — quais consumidores externos dependem desta API, especialmente parceiros e sistemas legados que não aparecem no tráfego do gateway como entidades identificadas.</p>
+<p><strong>Classificação e criticidade</strong> — quando há mudança de contexto de negócio que não se reflete automaticamente nos metadados técnicos.</p>
+<p><strong>Dependências de serviços externos</strong> — dependências de sistemas externos à organização, que não aparecem no service discovery interno.</p>
+<p>Para esses casos, o CMDB gera alertas periódicos para os owners dos ICs — itens de trabalho com prazo e impacto na avaliação de conformidade do portfólio.</p>
+<hr />
+<h3 id="configuration-drift-no-proprio-cmdb">Configuration drift no próprio CMDB</h3>
+<p>O conceito de drift se aplica ao próprio CMDB. Configuration drift do CMDB é quando o banco de dados diz que um IC está em produção mas foi desativado, ou diz que uma dependência existe mas foi removida.</p>
+<p>Organizações maduras medem o configuration drift do CMDB como uma métrica de qualidade da prática — não apenas como problema a resolver quando surge. A frequência de reconciliações e o número de divergências encontradas são indicadores diretos de quão confiável é o CMDB para suportar as outras práticas.</p>
+<hr />
+<h2 id="437-configuration-management-como-fundacao-das-outras-praticas">4.3.7 · Configuration Management como fundação das outras práticas</h2>
+<p>Configuration Management não é uma prática isolada — é a fundação sobre a qual change management, incident management e service level management operam. A qualidade dessas práticas é limitada pela qualidade do configuration management subjacente.</p>
+<hr />
+<h3 id="configuration-management-e-change-enablement">Configuration Management e Change Enablement</h3>
+<p>Change management precisa de configuration management para responder à pergunta mais básica antes de aprovar uma mudança: quais outros ICs são afetados? Sem o service mapping e os relacionamentos do CMDB, a análise de impacto é manual e incompleta.</p>
+<p>Cada Change Record deve referenciar os ICs afetados — e essa referência só é possível quando os ICs e seus relacionamentos existem no CMDB. Change management sem configuration management é aprovação de mudanças sem análise de impacto real.</p>
+<hr />
+<h3 id="configuration-management-e-incident-management">Configuration Management e Incident Management</h3>
+<p>Quando um incidente acontece, as perguntas mais urgentes são: qual serviço de negócio está impactado, qual é a severidade e qual é a causa raiz provável? As três dependem do service mapping e dos relacionamentos do CMDB para serem respondidas com velocidade.</p>
+<p>O MTTI — Mean Time to Identify — de um incidente em uma API sem service mapping pode ser de horas. Com service mapping e relacionamentos completos, o mesmo incidente pode ser correlacionado com o componente afetado em minutos — porque o caminho do sintoma à causa raiz está mapeado.</p>
+<hr />
+<h3 id="configuration-management-e-service-level-management">Configuration Management e Service Level Management</h3>
+<p>SLM precisa saber quais componentes sustentam cada SLA. Se um SLA de 99,9% para uma API depende de um backend com disponibilidade histórica de 99,5%, o SLA está em risco estrutural — e sem o service mapping no CMDB, essa relação de dependência não é visível. SLAs definidos sem visibilidade das dependências que os sustentam são compromissos feitos sem informação completa.</p>
+<hr />
+<h2 id="pontos-chave-do-capitulo">Pontos-chave do capítulo</h2>
+<ul>
+<li>Configuration Management é uma prática contínua — não um projeto de carga de dados. O CMDB é o artefato; a prática é o que mantém esse artefato confiável ao longo do tempo com identificação, controle, status accounting e verificação periódica</li>
+<li>Os ICs de APIs formam uma hierarquia de três níveis: API como produto, versão e operação. A granularidade é definida por domínio no onboarding ao programa de governança — derivada da classificação de criticidade — eliminando a avaliação caso a caso que cria encadeamentos de regras inconsistentes</li>
+<li>Service mapping constrói a cadeia do serviço de negócio ao IC mais granular. É o que transforma o CMDB em mapa de dependências e habilita análise de impacto real em change management e incident management</li>
+<li>Os relacionamentos são o coração do CMDB: depende-de, é-implementado-por, é-versão-de, é-consumido-por, é-configurado-por. Cada tipo habilita análises que nenhum outro mecanismo oferece de forma confiável</li>
+<li>Contract drift e perda de rastreabilidade são sintomas da mesma falha: ausência dos relacionamentos "é-implementado-por" e "é-consumido-por". Com esses relacionamentos, contract drift é detectável automaticamente e depreciação tem a lista de notificações disponível no CMDB</li>
+<li>Em ambientes de deploy contínuo, a manutenção do CMDB deve ser automatizada via pipeline, gateway e service discovery. O que não pode ser automatizado é gerenciado via alertas periódicos para owners com prazo de resolução</li>
+<li>A qualidade de change management, incident management e SLM é limitada pela qualidade do configuration management subjacente. Nenhuma dessas práticas funciona bem sem um CMDB confiável</li>
+</ul>
+<hr />
+<h2 id="fontes-e-referencias">Fontes e referências</h2>
+<table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Referência completa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITIL 4 Foundation (2019)</strong></td>
+<td>Axelos. <em>ITIL Foundation: ITIL 4 Edition</em>. The Stationery Office, 2019. Disponível em: <a href="https://www.axelos.com/certifications/itil-service-management">axelos.com/certifications/itil-service-management</a></td>
+</tr>
+<tr>
+<td><strong>Marrone &amp; Kolbe (2011)</strong></td>
+<td>Marrone, M. &amp; Kolbe, L. M. Impact of IT Service Management Frameworks on the IT Organization. <em>Business &amp; Information Systems Engineering</em>, 3(1), pp. 5-18, 2011. Disponível em: <a href="https://doi.org/10.1007/s12599-010-0141-5">doi.org/10.1007/s12599-010-0141-5</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="proximo-capitulo">Próximo capítulo</h2>
+<p><strong>4.4 · Change Enablement para APIs</strong> — como o processo de change enablement do ITIL 4 governa breaking changes, depreciações e evoluções de APIs. A hierarquia de mudanças — standard, normal, emergency — e como gates de governança no pipeline são change management automatizado.</p>
+<hr />
+<p><em>Série: Gerenciamento e Governança de APIs · Módulo 4 · Capítulo 4.3</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Fabio Mira
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/fgmira/estudo-api-management" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.esm.min.mjs" type="module"></script>
+      
+        <script src="../../assets/javascripts/panzoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/zoompan.js"></script>
+      
+    
+  </body>
+</html>

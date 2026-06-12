@@ -1,0 +1,4943 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação de estudos sobre API Management">
+      
+      
+        <meta name="author" content="Fabio">
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../cap_4_2_quatro_dimensoes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs - Estudo API Management</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/panzoom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <meta name="panzoom-theme" content="material">
+<meta name="panzoom-data" content='{"selectors": [".d2", ".mermaid"], "initial_zoom_level": 1.0}'> </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modulo-4-itil-e-apis" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="Estudo API Management" class="md-header__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Estudo API Management
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Estudo API Management" class="md-nav__button md-logo" aria-label="Estudo API Management" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Estudo API Management
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fgmira/estudo-api-management" title="Ir para repositório" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    fgmira/estudo-api-management
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-1-fundamentos/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 1 — Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 1 — Fundamentos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_1_o_que_e_uma_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 O que é uma API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_2_api_como_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 API como Produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_3__governanca_de_api_conceitos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 Governança de API — Conceitos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_4_diferenca_gerenciamento_governanca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Diferença entre Gerenciamento e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_5_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Os Três Planos — Controle, Dados e Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_6_estilos_arquiteturais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 Estilos arquiteturais e suas implicações de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-1-fundamentos/cap_1_7_heterogeneidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 Heterogeneidade de infraestrutura e governança multi-ambiente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-2-ciclo-de-vida/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 2 — Ciclo de Vida de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_1_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 As Fases do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_2_design_code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Design-first vs. Code-first
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_3_contratos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Contratos de API — OpenAPI, AsyncAPI e gRPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_4_documentacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Documentação de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_5_versionamento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Versionamento e Gestão de Breaking Changes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_6_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.6 Depreciação e Sunset Controlado
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-2-ciclo-de-vida/cap_2_7_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 Os Três Planos ao Longo do Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-3-governanca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 3 — Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 3 — Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_1_pilares/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Pilares da Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_2_papeis_reponsabilidades/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Papéis e Responsabilidades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_3_coe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 O Centro de Excelência de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_4_guia_estilo_politica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Style Guides e Políticas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_5_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Catálogo e Descoberta de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_6_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Governança de APIs de Parceiros
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_7_modelos_organizacionais/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.7 Modelos Organizacionais — Centralizado, Federado e Híbrido
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-3-governanca/cap_3_8_tres_planos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.8 Os Três Planos como Instrumentos de Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 4 — ITIL & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 4 — ITIL & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 O Sistema de Valor de Serviço (SVS) aplicado a APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-41-o-sistema-de-valor-de-servico-svs-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 4.1 · O Sistema de Valor de Serviço (SVS) aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-o-svs-como-modelo-de-sistema-nao-de-processo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 · O SVS como modelo de sistema — não de processo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.1 · O SVS como modelo de sistema — não de processo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-observacao-sobre-o-pdca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A observação sobre o PDCA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-transicao-de-processo-para-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A transição de processo para sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#412-os-cinco-componentes-do-svs-aplicados-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 · Os cinco componentes do SVS aplicados a APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.2 · Os cinco componentes do SVS aplicados a APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principios-orientadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Princípios Orientadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governança
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-value-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Value Chain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práticas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#melhoria-continua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Melhoria Contínua
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#413-os-sete-principios-orientadores-como-guia-de-decisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 · Os sete princípios orientadores como guia de decisão
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.3 · Os sete princípios orientadores como guia de decisão">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-focus-on-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Focus on Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-start-where-you-are" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Start Where You Are
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-progress-iteratively-with-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Progress Iteratively with Feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-collaborate-and-promote-visibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Collaborate and Promote Visibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-think-and-work-holistically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Think and Work Holistically
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-keep-it-simple-and-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Keep it Simple and Practical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-optimize-and-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Optimize and Automate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#414-a-service-value-chain-aplicada-ao-ciclo-de-vida-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.4 · A Service Value Chain aplicada ao ciclo de vida de APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.4 · A Service Value Chain aplicada ao ciclo de vida de APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improve-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Improve aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engage-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engage aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-transition-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design &amp; Transition aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtainbuild-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtain/Build aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deliver-support-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliver &amp; Support aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-mapeamento-entre-svc-e-ciclo-de-vida-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O mapeamento entre SVC e ciclo de vida de APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#415-apis-como-servicos-no-svs-implicacoes-de-governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.5 · APIs como serviços no SVS — implicações de governança
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.5 · APIs como serviços no SVS — implicações de governança">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-apis-herdam-quando-sao-tratadas-como-servicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que APIs herdam quando são tratadas como serviços
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-apis-adicionam-ao-svs-existente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que APIs adicionam ao SVS existente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-mapping-a-visibilidade-holistica-do-svs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service mapping — a visibilidade holística do SVS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_2_quatro_dimensoes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 As Quatro Dimensões do ITIL 4 no contexto de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_3_cmdb_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Configuration Management e CMDB para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_4_change_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Change Enablement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_5_catalogo_servico_slm_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Service Catalog e SLM para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_6_incidente_problema_melhoria/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.6 Incident, Problem e Continual Improvement para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_7_itil_devops_sre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.7 ITIL, SRE e DevOps — Convergências e Complementaridades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cap_4_8_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.8 Descoberta de APIs — os Dois Prismas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-5-seguranca/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 5 — Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 5 — Segurança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_1_seg_propriedade_desing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.1 Segurança como Propriedade do Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_2_arsenal_seguranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.2 O Arsenal de Segurança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_3_oswap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.3 OWASP API Security Top 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_4_autenticacao_autorizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.4 Autenticação e Autorização — os Fundamentos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_5_zero_trust/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.5 Zero Trust para APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_6_seguranca_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.6 Segurança no Ciclo de Vida — Shift Left
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_7_seguranca_gtw_plat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.7 Segurança no Gateway e na Plataforma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_8_seguranca_parceiros/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.8 Segurança em APIs de Parceiros e APIs Públicas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-5-seguranca/cap_5_9_resposta_incidentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5.9 Resposta a Incidentes de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-6-ia_apis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 6 — IA & APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 6 — IA & APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_1_ia_api_paradgma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.1 IA e APIs — o Novo Paradigma
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_2_mcp_protocolos_agenticos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.2 MCP e os Protocolos Agênticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_3_identidade_autorizacao_agentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.3 Identidade e Autorização de Agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_4_seguranca_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.4 Segurança no Ecossistema Agêntico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_5_ia_produzindo_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.5 IA Produzindo APIs — Riscos e Governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_6_ai_gateway/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.6 AI Gateway — o Novo Plano de Controle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_7_gov_api_era_agentica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.7 Governança de APIs na Era Agêntica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-6-ia_apis/cap_6_8_ai_readiness_portifolio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6.8 AI Readiness do Portfólio — Avaliação e Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-7-maturidade/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 7 — Maturidade em Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_1_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.1 O que é maturidade — e por que importa
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_2_frameworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.2 Os frameworks existentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_3_linguagem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.3 A linguagem unificada
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_4_lideranca/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.4 Dimensão — Estratégia e Liderança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_5_desing_padroes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.5 Dimensão — Design e Padrões
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_6_ciclo_vida/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.6 Dimensão — Ciclo de Vida
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_7_seguran%C3%A7a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.7 Dimensão — Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_8_observabilidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.8 Dimensão — Observabilidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_9_dx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.9 Dimensão — Developer Experience
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_10_ai_readness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.10 Dimensão — AI Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_11_operacionalizacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.11 Dimensão — Operacionalização
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-7-maturidade/cap_7_12_diagnostico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7.12 O diagnóstico holístico
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../modulo-8-operacionalizando_governan%C3%A7a/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Módulo 8 — Operacionalizando a Governança de APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/prefacio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prefácio — A plataforma como produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_1_intensao_infra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1 Da intenção à infraestrutura
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_2_contextos_plataforma/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2 Os contextos de uma plataforma de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_3_catalogo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3 O catálogo como fonte de verdade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_4_politicas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4 Políticas como código
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_5_pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.5 O pipeline de governança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_6_inteligencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.6 Inteligência de portfólio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_7_descoberta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.7 Descoberta e reconciliação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_8_portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.8 Portal e a experiência do desenvolvedor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_9_conhecimento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.9 Conhecimento como contexto independente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_10_assistencia/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.10 Assistência inteligente
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_11_dx_inteligencia_produto/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.11 DX e inteligência de produto
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_12_identidade_acesso/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.12 Identidade e acesso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_13_comprar_fazer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.13 Build, buy ou compor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modulo-8-operacionalizando_governan%C3%A7a/cap_8_14_adocao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.14 Adoção — o problema mais difícil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Anexos
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Anexos
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_1_breaking_changes_REST/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.1 Breaking Changes em APIs REST
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_2_breaking_changes_graphQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.2 Breaking Changes em APIs GraphQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_3_breaking_changes_grpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.3 Breaking Changes em Protocol Buffers (gRPC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/a_4_breaking_changes_asyncapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A.4 Breaking Changes em AsyncAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/b_plano_depreciacao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Template de Plano de Depreciação
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/c_raci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Modelo RACI para Governança de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/d_gestao_conhecimento_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Gestão do Conhecimento no Programa de APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/e_design_seguro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E. Falhas de Design Seguro em APIs — Casos Práticos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/f_siem/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    F. SIEM e Correlação de Eventos de Segurança
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/g_autorizacao_controle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    G. Autorização e Controle de Acesso em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/h_exposicao_dados/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    H. Exposição de Dados em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/i_recursos_injecao_gestao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    I. Recursos, Injeção e Gestão em APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/j_rfcs_oauth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    J. Guia de leitura — os RFCs do OAuth 2.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/k_rfcs_token/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    K. Guia de leitura — os RFCs dos tokens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/l_rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L. Modelos e Ferramentas de Autorização Fina
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/m_frameworks_maturidade/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M. Guia Comparativo dos Frameworks de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../anexos/n_diagnostico_formulario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    N. Questionário de Autodiagnóstico de Maturidade
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#capitulo-41-o-sistema-de-valor-de-servico-svs-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capítulo 4.1 · O Sistema de Valor de Serviço (SVS) aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sumario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sumário
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411-o-svs-como-modelo-de-sistema-nao-de-processo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 · O SVS como modelo de sistema — não de processo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.1 · O SVS como modelo de sistema — não de processo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-observacao-sobre-o-pdca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A observação sobre o PDCA
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-transicao-de-processo-para-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A transição de processo para sistema
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#412-os-cinco-componentes-do-svs-aplicados-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 · Os cinco componentes do SVS aplicados a APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.2 · Os cinco componentes do SVS aplicados a APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#principios-orientadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Princípios Orientadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Governança
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-value-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service Value Chain
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#praticas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Práticas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#melhoria-continua" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Melhoria Contínua
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#413-os-sete-principios-orientadores-como-guia-de-decisao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 · Os sete princípios orientadores como guia de decisão
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.3 · Os sete princípios orientadores como guia de decisão">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-focus-on-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 · Focus on Value
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-start-where-you-are" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 · Start Where You Are
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-progress-iteratively-with-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3 · Progress Iteratively with Feedback
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-collaborate-and-promote-visibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4 · Collaborate and Promote Visibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-think-and-work-holistically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 · Think and Work Holistically
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-keep-it-simple-and-practical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6 · Keep it Simple and Practical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-optimize-and-automate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7 · Optimize and Automate
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#414-a-service-value-chain-aplicada-ao-ciclo-de-vida-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.4 · A Service Value Chain aplicada ao ciclo de vida de APIs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.4 · A Service Value Chain aplicada ao ciclo de vida de APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plan aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improve-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Improve aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engage-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Engage aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-transition-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design &amp; Transition aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtainbuild-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obtain/Build aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deliver-support-aplicado-a-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deliver &amp; Support aplicado a APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-mapeamento-entre-svc-e-ciclo-de-vida-de-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O mapeamento entre SVC e ciclo de vida de APIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#415-apis-como-servicos-no-svs-implicacoes-de-governanca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.5 · APIs como serviços no SVS — implicações de governança
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.5 · APIs como serviços no SVS — implicações de governança">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-apis-herdam-quando-sao-tratadas-como-servicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que APIs herdam quando são tratadas como serviços
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-que-apis-adicionam-ao-svs-existente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que APIs adicionam ao SVS existente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-mapping-a-visibilidade-holistica-do-svs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Service mapping — a visibilidade holística do SVS
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pontos-chave-do-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pontos-chave do capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fontes-e-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fontes e referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proximo-capitulo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Próximo capítulo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="modulo-4-itil-e-apis">Módulo 4 · ITIL e APIs</h1>
+<h2 id="capitulo-41-o-sistema-de-valor-de-servico-svs-aplicado-a-apis">Capítulo 4.1 · O Sistema de Valor de Serviço (SVS) aplicado a APIs</h2>
+<blockquote>
+<p><strong>Série:</strong> Gerenciamento e Governança de APIs
+<strong>Nível:</strong> Estratégico e operacional
+<strong>Pré-requisito:</strong> Módulos 1, 2 e 3 completos · Cap 3.1 · Pilares da governança</p>
+</blockquote>
+<hr />
+<h2 id="sumario">Sumário</h2>
+<ul>
+<li><a href="#411--o-svs-como-modelo-de-sistema--não-de-processo">4.1.1 · O SVS como modelo de sistema — não de processo</a></li>
+<li><a href="#412--os-cinco-componentes-do-svs-aplicados-a-apis">4.1.2 · Os cinco componentes do SVS aplicados a APIs</a></li>
+<li><a href="#413--os-sete-princípios-orientadores-como-guia-de-decisão">4.1.3 · Os sete princípios orientadores como guia de decisão</a></li>
+<li><a href="#414--a-service-value-chain-aplicada-ao-ciclo-de-vida-de-apis">4.1.4 · A Service Value Chain aplicada ao ciclo de vida de APIs</a></li>
+<li><a href="#415--apis-como-serviços-no-svs--implicações-de-governança">4.1.5 · APIs como serviços no SVS — implicações de governança</a></li>
+<li><a href="#fontes-e-referências">Fontes e referências</a></li>
+</ul>
+<hr />
+<h2 id="411-o-svs-como-modelo-de-sistema-nao-de-processo">4.1.1 · O SVS como modelo de sistema — não de processo</h2>
+<p>O ITIL 4, publicado em 2019 pela Axelos, representou uma ruptura significativa com suas versões anteriores. O ITIL v3, dominante entre 2007 e 2019, organizava a gestão de serviços em um ciclo de vida de cinco fases — Estratégia, Design, Transição, Operação e Melhoria Contínua — com processos bem definidos, entradas, saídas e papéis específicos. Era um modelo prescritivo, detalhado e, para muitas organizações, excessivamente rígido para o ritmo de mudança que o ambiente digital exigia.</p>
+<p>O ITIL 4 substitui esse modelo por algo fundamentalmente diferente: o <strong>Sistema de Valor de Serviço</strong> — uma visão holística de como todos os componentes e atividades de uma organização trabalham juntos como sistema para criar valor a partir da demanda de stakeholders e oportunidades de mercado.</p>
+<p>Essa mudança não é apenas cosmética. Ela reflete um reconhecimento que a gestão de serviços amadureceu o suficiente para perceber o que teorias de gestão já sabiam: sistemas complexos não se comportam como sequências lineares de processos. Eles têm retroalimentação, emergência e interdependências que só são visíveis quando se olha para o todo — não para as partes isoladas.</p>
+<hr />
+<h3 id="a-observacao-sobre-o-pdca">A observação sobre o PDCA</h3>
+<p>Antes de entrar nos detalhes do SVS, vale nomear um padrão que qualquer pessoa familiarizada com frameworks de gestão vai reconhecer: o SVS é mais uma instanciação do ciclo fundamental Plan-Do-Check-Act que Deming formalizou nos anos 1950 e que reaparece em praticamente todos os frameworks de gestão maduros desde então.</p>
+<p>O COBIT 2019 o chama de EDM — Evaluate, Direct, Monitor. A ISO/IEC 38500 usa a mesma nomenclatura. O Scrum tem Sprint Planning, Sprint, Review, Retrospective. O DevOps tem Plan, Code, Build, Test, Release, Deploy, Operate, Monitor. O ITIL 4 tem seu próprio vocabulário dentro do SVS.</p>
+<p>O que muda entre esses frameworks não é o princípio — é o domínio de aplicação, o vocabulário e o nível de granularidade das práticas. O valor do ITIL 4 não está em ter inventado um novo modelo de gestão. Está na profundidade com que cada atividade é definida, nas práticas específicas que as suportam e na maturidade operacional que décadas de implementação em organizações reais acumularam.</p>
+<blockquote>
+<p><em>O SVS do ITIL 4 operacionaliza com precisão o que a teoria de gestão estabeleceu há décadas: definir intenção, executar, verificar e aprender. O valor do ITIL não está no ciclo — está na profundidade com que cada atividade é definida e nas práticas que a suportam.</em></p>
+<p><em>Axelos. ITIL Foundation: ITIL 4 Edition. The Stationery Office, 2019. Disponível em: <a href="https://www.axelos.com/certifications/itil-service-management">axelos.com/certifications/itil-service-management</a></em></p>
+</blockquote>
+<hr />
+<h3 id="a-transicao-de-processo-para-sistema">A transição de processo para sistema</h3>
+<p>No modelo do ITIL v3, a pergunta central era: <em>qual processo gerencia este problema?</em> Um incidente vai para Incident Management. Uma mudança vai para Change Management. Os processos eram compartimentos com seus handoffs.</p>
+<p>No ITIL 4, a pergunta central muda: <em>como o sistema como um todo cria valor?</em> Não existe um processo de Incident Management isolado — existe um conjunto de práticas que colaboram dentro de uma cadeia de valor de serviço para responder a eventos de forma que preserve ou restaure o valor para os consumidores.</p>
+<p>Essa mudança de perspectiva tem implicações diretas para APIs. Uma API não é o output de um processo de desenvolvimento — é um serviço que cria valor continuamente, que tem stakeholders com necessidades distintas, que opera dentro de um sistema mais amplo de serviços interdependentes, e que precisa ser gerenciada de forma holística ao longo de todo o seu ciclo de existência.</p>
+<hr />
+<h2 id="412-os-cinco-componentes-do-svs-aplicados-a-apis">4.1.2 · Os cinco componentes do SVS aplicados a APIs</h2>
+<p>O SVS é composto por cinco elementos que trabalham em conjunto. Nenhum deles é suficiente isoladamente — é a interação entre os cinco que produz o sistema de valor.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart TD
+    demanda["Demanda e oportunidades
+    necessidades de consumidores
+    oportunidades de negócio"]
+
+    principios["Princípios Orientadores
+    guias de decisão universais
+    aplicáveis em qualquer contexto"]
+
+    governanca["Governança
+    Evaluate · Direct · Monitor
+    corpo governante"]
+
+    svc["Service Value Chain
+    seis atividades de criação de valor
+    Plan · Improve · Engage
+    Design/Transition · Obtain/Build · Deliver/Support"]
+
+    praticas["Práticas
+    34 práticas de gestão de serviços
+    Change · Incident · Configuration · etc."]
+
+    melhoria["Melhoria Contínua
+    atividade permanente
+    em todos os níveis"]
+
+    valor["Valor
+    para consumidores e
+    para a organização"]
+
+    demanda --&gt; principios
+    demanda --&gt; governanca
+    principios --&gt; svc
+    governanca --&gt; svc
+    svc --&gt; praticas
+    melhoria --&gt; svc
+    praticas --&gt; valor</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="principios-orientadores">Princípios Orientadores</h3>
+<p>Os sete princípios orientadores são guias de decisão — não regras obrigatórias, mas orientações que ajudam a tomar decisões melhores em qualquer contexto. Trataremos cada um em detalhe no 4.1.3.</p>
+<p>No contexto de APIs, os princípios orientadores são especialmente relevantes porque o programa de APIs frequentemente enfrenta pressões conflitantes: velocidade vs. qualidade, autonomia vs. consistência, inovação vs. estabilidade. Os princípios oferecem critérios para navegar esses conflitos de forma consciente.</p>
+<hr />
+<h3 id="governanca">Governança</h3>
+<p>O componente de Governança do SVS é onde o corpo governante — no contexto de APIs, o CoE — exerce as atividades de Evaluate, Direct e Monitor que estabelecemos no Cap 3.1. A governança no ITIL 4 não é uma camada acima do sistema — é um componente que dirige o sistema a partir do ciclo EDM.</p>
+<p>A conexão entre o Cap 3.1 e o ITIL 4 aqui é explícita e intencional: o COBIT 2019 e o ITIL 4 compartilham o mesmo modelo EDM — o que confirma que estamos construindo sobre fundamentos consistentes entre frameworks, não sobre escolhas arbitrárias de nomenclatura.</p>
+<hr />
+<h3 id="service-value-chain">Service Value Chain</h3>
+<p>A cadeia de valor de serviço é o conjunto de atividades que transforma demanda em valor. É o coração operacional do SVS. Trataremos em detalhe no 4.1.4.</p>
+<hr />
+<h3 id="praticas">Práticas</h3>
+<p>As 34 práticas do ITIL 4 são os recursos organizacionais que suportam as atividades da cadeia de valor. Cada prática tem pessoas, processos, tecnologia e parceiros. Para APIs, as práticas mais relevantes são: Change Enablement, Service Configuration Management, Incident Management, Problem Management, Service Level Management e Continual Improvement — que serão tratadas nos capítulos 4.3 a 4.7.</p>
+<p>A pesquisa sistemática de Bianchi et al. (2023), publicada no International Journal of Information Management, analisou implementações de ITSM entre 2012 e 2021 e concluiu que ITSM funciona como um Management Control System — uma coleção de controles de gestão cujos outcomes incluem maior transparência, qualidade de serviço e orientação ao cliente. As práticas do ITIL 4 não são processos burocráticos — são controles de gestão que produzem outcomes mensuráveis.</p>
+<blockquote>
+<p><em>Bianchi, I. S., Sousa, R. D. &amp; Pereira, R. Implementation and impacts of IT Service Management in the IT function. International Journal of Information Management, 70, 2023. Disponível em: <a href="https://doi.org/10.1016/j.ijinfomgt.2023.102628">doi.org/10.1016/j.ijinfomgt.2023.102628</a></em></p>
+</blockquote>
+<hr />
+<h3 id="melhoria-continua">Melhoria Contínua</h3>
+<p>A melhoria contínua no ITIL 4 não é uma fase ou um processo — é uma atividade que permeia todos os outros componentes do SVS e garante que o sistema não apenas opera, mas evolui.</p>
+<p>No contexto de APIs, melhoria contínua é o Pilar 5 do Cap 3.1 — o mecanismo pelo qual o framework de governança não envelhece. No ITIL 4, ela tem uma prática dedicada com técnicas específicas que, seguindo o padrão universal já identificado, operacionalizam o ciclo Plan-Do-Check-Act para melhoria sistemática.</p>
+<hr />
+<h2 id="413-os-sete-principios-orientadores-como-guia-de-decisao">4.1.3 · Os sete princípios orientadores como guia de decisão</h2>
+<p>Os sete princípios orientadores do ITIL 4 são aplicáveis em qualquer contexto e em qualquer nível da organização. São o elemento do ITIL 4 que mais diretamente conecta o framework com a prática cotidiana de quem gerencia APIs — porque são critérios de decisão, não procedimentos a seguir.</p>
+<hr />
+<h3 id="1-focus-on-value">1 · Focus on Value</h3>
+<p>Toda atividade deve contribuir diretamente ou indiretamente para a criação de valor para os stakeholders. No contexto de APIs: qualquer processo de governança que não contribui para a qualidade do portfólio, para a experiência do consumidor ou para a conformidade com requisitos legais é overhead que deve ser eliminado.</p>
+<p>Este princípio é o antídoto para governança burocrática. Quando um gate de revisão está gerando atraso sem produzir melhoria de qualidade, Focus on Value é o argumento para revisá-lo — não como concessão à pressão dos times, mas como decisão de gestão racional.</p>
+<hr />
+<h3 id="2-start-where-you-are">2 · Start Where You Are</h3>
+<p>Antes de criar algo novo, avalie o que já existe. No contexto de APIs: antes de construir um processo de change management, avalie o que o processo atual produz. Antes de adotar uma nova ferramenta de catálogo, avalie o que o catálogo atual oferece e o que falta. Antes de criar uma nova política de depreciação, verifique se existe política informal já praticada que pode ser formalizada.</p>
+<p>Este princípio previne o desperdício de reconstruir do zero o que já funciona parcialmente, e preserva o conhecimento operacional acumulado que não aparece em documentação formal.</p>
+<hr />
+<h3 id="3-progress-iteratively-with-feedback">3 · Progress Iteratively with Feedback</h3>
+<p>Não espere a solução perfeita antes de agir. Avance em incrementos, colete feedback, ajuste. No contexto de APIs: uma política imperfeita publicada e evoluída com base em feedback real é mais valiosa do que uma política perfeita que ainda está em revisão interna.</p>
+<p>Este princípio conecta diretamente com o Pilar 5 de evolução e aprendizado do Cap 3.1 — e com o mecanismo de exceções como fonte de aprendizado do Cap 3.2.4.</p>
+<hr />
+<h3 id="4-collaborate-and-promote-visibility">4 · Collaborate and Promote Visibility</h3>
+<p>Trabalhe em conjunto e torne o trabalho visível. No contexto de APIs: o CoE que toma decisões de política sem envolver os times de produto viola este princípio. O catálogo que não é acessível aos consumidores viola este princípio. O processo de depreciação que notifica consumidores informalmente viola este princípio.</p>
+<hr />
+<h3 id="5-think-and-work-holistically">5 · Think and Work Holistically</h3>
+<p>Nenhum serviço, prática ou componente funciona isoladamente. No contexto de APIs: uma mudança no plano de controle pode afetar o plano de dados e o plano de observabilidade. Uma decisão de depreciação tem implicações técnicas, comerciais e jurídicas. Uma política de segurança afeta DX, conformidade e tempo de desenvolvimento.</p>
+<p>Este princípio é o fundamento teórico do argumento que percorre o Módulo 3 inteiro: governança de APIs tem três dimensões — organizacional, relacional e técnica — que precisam ser gerenciadas em conjunto.</p>
+<hr />
+<h3 id="6-keep-it-simple-and-practical">6 · Keep it Simple and Practical</h3>
+<p>Se um processo não contribui para a criação de valor, elimine-o. Use o mínimo de passos necessários. No contexto de APIs: gates de governança devem ter o mínimo de etapas necessárias para o nível de risco da decisão. A arquitetura de políticas em camadas do Cap 3.4 é uma aplicação direta deste princípio — o núcleo é pequeno precisamente porque o excesso de obrigatoriedade cria fricção sem valor correspondente.</p>
+<hr />
+<h3 id="7-optimize-and-automate">7 · Optimize and Automate</h3>
+<p>Use os recursos da melhor forma possível. Automatize o que pode ser automatizado para liberar capacidade humana para o que exige julgamento. No contexto de APIs: lint automático, contract testing no pipeline, headers de depreciação automáticos, atualização automática do catálogo via gateway — cada um desses mecanismos aplica este princípio.</p>
+<p>Este princípio é a fundamentação ITIL do argumento central do Cap 3.3: CoE que habilita através de plataforma é mais eficaz e mais escalável do que CoE que faz o trabalho manualmente.</p>
+<hr />
+<h2 id="414-a-service-value-chain-aplicada-ao-ciclo-de-vida-de-apis">4.1.4 · A Service Value Chain aplicada ao ciclo de vida de APIs</h2>
+<p>A Service Value Chain define seis atividades que, em diferentes combinações, criam fluxos de valor para diferentes tipos de demanda. Não é uma sequência linear — as atividades se combinam de formas distintas dependendo do que está sendo produzido ou operado.</p>
+<div class="panzoom-box" data-key="alt" id="panzoom0" oncontextmenu="return false;">
+    
+    <nav class="panzoom-nav">
+    <button class="panzoom-info panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"></path>
+    </svg>
+</button><button class="panzoom-reset panzoom-button">
+    <svg class="panzoom-icon" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <path d="M125.7 160l50.3 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L48 224c-17.7 0-32-14.3-32-32L16 64c0-17.7 14.3-32 32-32s32 14.3 32 32l0 51.2L97.6 97.6c87.5-87.5 229.3-87.5 316.8 0s87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3s-163.8-62.5-226.3 0L125.7 160z"></path>
+    </svg>
+</button>
+    </nav>
+    <pre class="mermaid"><code>flowchart TD
+    plan["Plan
+    garantir compreensão compartilhada
+    da direção e das prioridades"]
+
+    improve["Improve
+    garantir melhoria contínua
+    de todos os componentes"]
+
+    engage["Engage
+    compreender as necessidades
+    de stakeholders e consumidores"]
+
+    design["Design &amp; Transition
+    garantir que produtos e serviços
+    atendam às expectativas"]
+
+    build["Obtain/Build
+    garantir disponibilidade
+    de componentes de serviço"]
+
+    deliver["Deliver &amp; Support
+    garantir entrega e suporte
+    dentro de parâmetros acordados"]
+
+    plan --&gt; design
+    plan --&gt; build
+    engage --&gt; design
+    engage --&gt; deliver
+    design --&gt; deliver
+    build --&gt; deliver
+    improve --&gt; plan
+    deliver --&gt; improve</code></pre> 
+    <div class="panzoom-info-box panzoom-info-box-bottom panzoom-hidden">
+Hold "Alt" / "Option" to enable pan &amp; zoom
+</div>
+</div>
+<hr />
+<h3 id="plan-aplicado-a-apis">Plan aplicado a APIs</h3>
+<p>A atividade Plan garante compreensão compartilhada da visão, do estado atual e da direção de melhoria para o programa de APIs. Manifesta-se como: definição da estratégia de APIs, priorização do portfólio, decisão sobre o modelo organizacional de governança, alocação de recursos para o CoE e para a plataforma. A revisão periódica do modelo organizacional do Cap 3.7.7 é uma manifestação de Plan.</p>
+<hr />
+<h3 id="improve-aplicado-a-apis">Improve aplicado a APIs</h3>
+<p>Improve garante melhoria contínua em todos os componentes do SVS. Para APIs: evolução das políticas com base em exceções e incidentes, maturidade dos gates de governança, qualidade do portfólio ao longo do tempo, evolução da plataforma do CoE. A prática de Continual Improvement que suporta esta atividade é onde o Pilar 5 do Cap 3.1 encontra sua implementação formal.</p>
+<hr />
+<h3 id="engage-aplicado-a-apis">Engage aplicado a APIs</h3>
+<p>Engage garante que a organização entende as necessidades dos stakeholders e consumidores de forma contínua. Para APIs: onboarding de consumidores, gestão de relacionamento com parceiros do Cap 3.6, coleta de feedback sobre qualidade de documentação, consulta formal a consumidores em mudanças de alto impacto. O processo de co-evolução do Cap 3.6.5 é uma manifestação de Engage.</p>
+<hr />
+<h3 id="design-transition-aplicado-a-apis">Design &amp; Transition aplicado a APIs</h3>
+<p>Design &amp; Transition garante que produtos e serviços atendem às expectativas de qualidade, segurança e compliance. Para APIs: as fases de design e desenvolvimento do ciclo de vida do Cap 2.1, o processo design-first do Cap 2.2, os gates de qualidade antes da publicação. A transição é a promoção de uma API de staging para produção — o Change Record que garante que a mudança é controlada.</p>
+<hr />
+<h3 id="obtainbuild-aplicado-a-apis">Obtain/Build aplicado a APIs</h3>
+<p>Obtain/Build garante a disponibilidade dos componentes necessários para a entrega do serviço. Para APIs: implementação do backend, configuração do gateway, construção da documentação, setup da observabilidade. É onde o trabalho técnico de desenvolvimento acontece dentro do framework ITIL.</p>
+<hr />
+<h3 id="deliver-support-aplicado-a-apis">Deliver &amp; Support aplicado a APIs</h3>
+<p>Deliver &amp; Support garante que serviços são entregues e suportados dentro dos parâmetros acordados. Para APIs: operação contínua, gestão de incidentes, suporte a consumidores, enforcement do SLA. É a fase de operação do Cap 2.1.6 vista pela lente do ITIL 4.</p>
+<hr />
+<h3 id="o-mapeamento-entre-svc-e-ciclo-de-vida-de-apis">O mapeamento entre SVC e ciclo de vida de APIs</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade SVC</th>
+<th>Fase do ciclo de vida de APIs</th>
+<th>Capítulo de referência</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plan</td>
+<td>Concepção e estratégia</td>
+<td>Cap 2.1.2</td>
+</tr>
+<tr>
+<td>Engage</td>
+<td>Design — consulta a consumidores</td>
+<td>Cap 2.1.3</td>
+</tr>
+<tr>
+<td>Design &amp; Transition</td>
+<td>Design, Desenvolvimento, Publicação</td>
+<td>Cap 2.1.3, 2.1.4, 2.1.5</td>
+</tr>
+<tr>
+<td>Obtain/Build</td>
+<td>Desenvolvimento e validação</td>
+<td>Cap 2.1.4</td>
+</tr>
+<tr>
+<td>Deliver &amp; Support</td>
+<td>Operação e evolução</td>
+<td>Cap 2.1.6</td>
+</tr>
+<tr>
+<td>Improve</td>
+<td>Todas as fases — especialmente Depreciação</td>
+<td>Cap 2.1.7, 3.1</td>
+</tr>
+</tbody>
+</table>
+<p>O que esse mapeamento revela: o ciclo de vida de APIs do Módulo 2 está naturalmente alinhado com a estrutura da SVC. Ambos derivam dos mesmos princípios de gestão de serviços que a experiência de décadas consolidou.</p>
+<hr />
+<h2 id="415-apis-como-servicos-no-svs-implicacoes-de-governanca">4.1.5 · APIs como serviços no SVS — implicações de governança</h2>
+<p>A implicação mais importante que emerge da aplicação do SVS ao contexto de APIs é deceptivamente simples: <strong>quando APIs são tratadas como serviços dentro do SVS, elas herdam toda a infraestrutura de gestão de serviços da organização</strong>.</p>
+<hr />
+<h3 id="o-que-apis-herdam-quando-sao-tratadas-como-servicos">O que APIs herdam quando são tratadas como serviços</h3>
+<p>Uma organização que já tem processos maduros de ITSM não precisa construir processos equivalentes separados para APIs. Precisa estender os processos existentes para cobrir APIs como um tipo específico de serviço com características próprias.</p>
+<p>Essa extensão é muito mais eficiente do que construir do zero — e produz integração natural com o restante da gestão de serviços. Um Change Record de uma breaking change de API coexiste no mesmo sistema com um Change Record de uma mudança de infraestrutura. Um incidente em uma API aparece no mesmo dashboard que incidentes em outros serviços. Um IC de uma spec OpenAPI vive no mesmo CMDB que ICs de servidores e bancos de dados.</p>
+<p>A pesquisa de Marrone e Kolbe (2011), publicada no Business &amp; Information Systems Engineering Journal, identificou empiricamente que a adoção de frameworks de ITSM impacta positivamente a organização de TI em múltiplas dimensões — incluindo transparência, qualidade e alinhamento com o negócio. A extensão desses processos para APIs herda esses benefícios.</p>
+<blockquote>
+<p><em>Marrone, M. &amp; Kolbe, L. M. Impact of IT Service Management Frameworks on the IT Organization. Business &amp; Information Systems Engineering, 3(1), pp. 5-18, 2011. Disponível em: <a href="https://doi.org/10.1007/s12599-010-0141-5">doi.org/10.1007/s12599-010-0141-5</a></em></p>
+</blockquote>
+<hr />
+<h3 id="o-que-apis-adicionam-ao-svs-existente">O que APIs adicionam ao SVS existente</h3>
+<p>APIs não são apenas mais um tipo de serviço — elas têm características que o SVS genérico não trata de forma específica e que os Módulos 2 e 3 construíram em profundidade:</p>
+<ul>
+<li><strong>Contratos formais</strong> como artefatos de governança — a spec OpenAPI como IC com valor normativo</li>
+<li><strong>Consumidores externos com poder de negociação</strong> — dimensão que o ITSM genérico não endereça para serviços internos</li>
+<li><strong>Ciclo de vida com depreciação controlada</strong> — processo de encerramento que vai além do que o ITIL genérico prescreve</li>
+<li><strong>Ecossistema de parceiros</strong> com relações bilaterais e contratos comerciais</li>
+</ul>
+<p>Essas características específicas de APIs complementam o SVS — não o contradizem. O SVS oferece o framework de sistema de valor; os Módulos 2 e 3 oferecem as práticas específicas que o contexto de APIs exige.</p>
+<hr />
+<h3 id="service-mapping-a-visibilidade-holistica-do-svs">Service mapping — a visibilidade holística do SVS</h3>
+<p>O SVS pressupõe visibilidade holística de como os serviços de negócio são sustentados pelos componentes técnicos subjacentes. <strong>Service mapping</strong> é a prática que constrói e mantém no CMDB essa cadeia de relacionamentos — do serviço de negócio visível ao cliente até os componentes técnicos mais granulares que o sustentam.</p>
+<p>No contexto de APIs, uma API não é apenas um IC isolado — é um nó em uma cadeia que conecta serviços de negócio a backends, bancos de dados, certificados e configurações de gateway. Essa visibilidade é o que torna possível responder às perguntas críticas de change management e incident management: se este componente falhar ou mudar, qual serviço de negócio é impactado?</p>
+<p>O tratamento completo de service mapping no contexto de APIs — incluindo como essa cadeia é modelada no CMDB — está no <strong>Cap 4.3 · Configuration Management e CMDB para APIs</strong>.</p>
+<hr />
+<h2 id="pontos-chave-do-capitulo">Pontos-chave do capítulo</h2>
+<ul>
+<li>O ITIL 4 representa uma mudança de modelo de ciclo de vida de processo para modelo de sistema de valor — o SVS descreve como todos os componentes trabalham juntos para criar valor, não como processos se sucedem linearmente</li>
+<li>O SVS é mais uma instanciação do princípio universal Plan-Do-Check-Act. O valor do ITIL não está no ciclo — está na profundidade das práticas que o suportam e na maturidade operacional acumulada</li>
+<li>Os cinco componentes do SVS — Princípios Orientadores, Governança, Service Value Chain, Práticas e Melhoria Contínua — mapeiam naturalmente sobre os elementos construídos nos Módulos 2 e 3</li>
+<li>Os sete princípios orientadores são critérios de decisão práticos — não declarações de intenção. Cada um resolve tensões reais que surgem na gestão de APIs</li>
+<li>A Service Value Chain e o ciclo de vida de APIs do Módulo 2 estão naturalmente alinhados — ambos derivam dos mesmos princípios de gestão de serviços</li>
+<li>Quando APIs são tratadas como serviços dentro do SVS, elas herdam a infraestrutura de gestão de serviços existente. A extensão é mais eficiente do que construir do zero e produz integração natural com o restante da gestão de TI</li>
+</ul>
+<hr />
+<h2 id="fontes-e-referencias">Fontes e referências</h2>
+<table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Referência completa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITIL 4 Foundation (2019)</strong></td>
+<td>Axelos. <em>ITIL Foundation: ITIL 4 Edition</em>. The Stationery Office, 2019. Disponível em: <a href="https://www.axelos.com/certifications/itil-service-management">axelos.com/certifications/itil-service-management</a></td>
+</tr>
+<tr>
+<td><strong>Bianchi et al. (2023)</strong></td>
+<td>Bianchi, I. S., Sousa, R. D. &amp; Pereira, R. Implementation and impacts of IT Service Management in the IT function. <em>International Journal of Information Management</em>, 70, 2023. Disponível em: <a href="https://doi.org/10.1016/j.ijinfomgt.2023.102628">doi.org/10.1016/j.ijinfomgt.2023.102628</a></td>
+</tr>
+<tr>
+<td><strong>Marrone &amp; Kolbe (2011)</strong></td>
+<td>Marrone, M. &amp; Kolbe, L. M. Impact of IT Service Management Frameworks on the IT Organization. <em>Business &amp; Information Systems Engineering</em>, 3(1), pp. 5-18, 2011. Disponível em: <a href="https://doi.org/10.1007/s12599-010-0141-5">doi.org/10.1007/s12599-010-0141-5</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="proximo-capitulo">Próximo capítulo</h2>
+<p><strong>4.2 · As Quatro Dimensões do ITIL 4 no contexto de APIs</strong> — como as quatro dimensões — organizações e pessoas, informação e tecnologia, parceiros e fornecedores, fluxos de valor e processos — se manifestam especificamente no contexto de APIs e onde os capítulos anteriores se encaixam em cada dimensão.</p>
+<hr />
+<p><em>Série: Gerenciamento e Governança de APIs · Módulo 4 · Capítulo 4.1</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Fabio Mira
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/fgmira/estudo-api-management" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.top", "search.highlight", "search.suggest", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.esm.min.mjs" type="module"></script>
+      
+        <script src="../../assets/javascripts/panzoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/zoompan.js"></script>
+      
+    
+  </body>
+</html>
